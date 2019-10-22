@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logo from '../public/img/Cryptocurrency_Logo.svg';
 import CurrentDate from './CurrentDate';
 import {Link} from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 
 export default class Navbar extends Component {
     constructor() {
@@ -58,10 +59,20 @@ export default class Navbar extends Component {
     }
     render() {
         return (
-            <div id="container">
+            <div className="nav-container fixed-top">
+                <div className="header">
+                    <div className="row">
+                        <div className="col-sm-12 data">
+                            <Helmet>
+                                <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+                            </Helmet>
+                            <coingecko-coin-price-marquee-widget currency="eur" coin-ids="bitcoin,ethereum,dascoin,litecoin,ripple,eos,dash" locale="en" vce-ready=""></coingecko-coin-price-marquee-widget>
+                        </div>
+                    </div>
+                </div>
                 <NavWrapper className={this.state.hasScrolled ? 
-                    'fixed-top navbar navbar-expand-sm navbar-dark' : 
-                    'fixed-top no-op navbar navbar-expand-sm navbar-dark'}>
+                    'navbar navbar-expand-sm navbar-dark' : 
+                    'no-op navbar navbar-expand-sm navbar-dark'}>
                     <Link to="/">
                         <div className="navbar-brand ml-2">
                             <img src={logo} alt="logo" className="navbar-brand-img"/>
@@ -93,7 +104,7 @@ export default class Navbar extends Component {
                                         <i className="fab fa-telegram-plane icon-sm" /></button></li>
                             </ul>
                         </div>
-                    </div> 
+                    </div>
                 </NavWrapper>
             </div>
         )
@@ -101,6 +112,9 @@ export default class Navbar extends Component {
 }
 
 const NavWrapper = styled.nav`
+    .header {
+        margin-top: 7rem;
+    }
     .dateholder {
         background: none;
         border: none;
