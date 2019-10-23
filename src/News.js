@@ -6,7 +6,7 @@ import { ProductConsumer } from './context';
 export default class News extends Component {
     render() {
         return (
-            <NewsWrapper className="my-5">
+            <NewsWrapper className="mb-5">
                 <div className="row">
                     <div className="separator1"></div>
                     <div className="separator2">
@@ -40,18 +40,25 @@ const NewsWrapper = styled.div`
 .separator1{
     background: red;
     width: 10%;
-    height: 1rem;
+    height: 1.8rem;
 }
 .separator2{
     background:red;
     width: 90%;
-    height: 1rem;
+    height: 1.8rem;
 }
 .title-separator{
     font-weight: bold;
     font-size: 1.5rem;
     background: white;
-    border: none;
-    transform: translate(0px, -12px);
+    border: solid 0.5rem red;
+    border-bottom: none;
+    transform: translate(0px, -1.12rem);
+}
+
+@media (max-width: 499px) {
+    .title-separator{
+        font-size: 1.6rem;
+    }
 }
 `

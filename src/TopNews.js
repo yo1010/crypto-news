@@ -3,7 +3,9 @@ import styled from "styled-components";
 import img from '../public/img/top-news.jpg';
 import {ProductConsumer} from './context';
 import News from './News';
-
+import SecondaryNews from './SecondaryNews';
+import TertiaryNews from './TertiaryNews';
+import {Link} from 'react-router-dom';
 export default class TopNews extends Component {
     componentDidUpdate() {
         window.scrollTo(0, 0);
@@ -17,48 +19,35 @@ export default class TopNews extends Component {
         return (
             <ProductConsumer>
                 {value => {
-                    const {title, content, publishedOn} = value.topNews;
+                    const {id, title, content, publishedOn} = value.topNews[0];
                     return (
                         <React.Fragment>
                             <NewsContainer>
                                 <div className="container">
                                     <div className="row mx-auto">
-                                        <div className="img-column mx-auto col-10 col-md-8 col-lg-8">
-                                            <div className="header">{publishedOn}</div>
-                                            <div className="img-column mx-auto">
-                                                <button className="btn-danger">Top News</button>
-                                                <img src={img} className="img img-thumbnail" alt="top-news"/>
-                                                <div className="text-column">
-                                                    <div className="text-container mx-auto">
-                                                        <h3 className="heading text-capitalize">
-                                                            {title}
-                                                        </h3>
-                                                        <h5 className="text">
-                                                            {content}
-                                                        </h5>
+                                        <div className="img-column mx-auto col-10 col-md-8 col-lg-8"
+                                        onClick={() => {value.handleTopDetail(id)}}>
+                                            <Link className="article-link" to={`/newsarticle/${id}`}>
+                                                <div className="header">{publishedOn}</div>
+                                                <div className="img-column mx-auto">
+                                                    <button className="btn-danger">Top News</button>
+                                                    <img src={img} className="img img-thumbnail" alt="top-news"/>
+                                                    <div className="text-column">
+                                                        <div className="text-container mx-auto">
+                                                            <h3 className="heading text-capitalize">
+                                                                {title}
+                                                            </h3>
+                                                            <h5 className="text">
+                                                                {content}
+                                                            </h5>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </Link>
                                         </div>
                                         <div className="img-column display-lg mx-auto col-10 col-md-4 col-lg-4">
-                                                <div className="img-sm-column mx-auto">
-                                                    <div className="img-sm mx-auto">
-                                                        <img src={img} className="img img-thumbnail" alt="top-news"/>
-                                                        <div className="text-column-sm">
-                                                                <h3 className="heading-sm text-capitalize">
-                                                                    news title
-                                                                </h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="img-sm-two mx-auto">
-                                                        <img src={img} className="img img-thumbnail" alt="top-news"/>
-                                                        <div className="text-column-sm">
-                                                                <h3 className="heading-sm text-capitalize">
-                                                                    news title
-                                                                </h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    <SecondaryNews/>
+                                                    <TertiaryNews/>
                                         </div>
                                     </div>
                                 </div>

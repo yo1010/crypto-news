@@ -83,7 +83,7 @@ export default class Navbar extends Component {
                     <button className="navbar-toggler" type="button" data-target="#navbarSupportedContent" 
                     aria-controls="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i className="fas fa-bars"></i>
-                    </button> 
+                    </button>
                     <div className={this.state.toggle ? "navbar-collapse" :
                         "navbar-collapse collapse ml-auto"}  id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
@@ -94,18 +94,18 @@ export default class Navbar extends Component {
                                 </Link>
                             </li>
                         </ul>
-                        <div>
-                            <ul className="navbar-nav icon-nav">
-                                <li className="text-capitalize nav-item ml-1">
-                                    <CurrentDate /></li>                                                                                    
-                                <li className="text-capitalize nav-item">
-                                    <button className="button">
-                                        <i className="fab fa-facebook-f icon-sm" /></button></li>
-                                <li className="text-capitalize nav-item ml-1">
-                                    <button className="button">
-                                        <i className="fab fa-telegram-plane icon-sm" /></button></li>
-                            </ul>
-                        </div>
+                    </div>
+                    <div>
+                        <ul className="navbar-nav icon-nav">
+                            <li className="text-capitalize nav-item ml-1">
+                                <CurrentDate /></li>                                                                                    
+                            <li className="text-capitalize nav-item">
+                                <button className="button">
+                                    <i className="fab fa-facebook-f icon-sm" /></button></li>
+                            <li className="text-capitalize nav-item">
+                                <button className="button">
+                                    <i className="fab fa-telegram-plane icon-sm" /></button></li>
+                        </ul>
                     </div>
                 </NavWrapper>
             </div>
@@ -224,7 +224,6 @@ const NavWrapper = styled.nav`
         }
         .navbar-nav > * {
             margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
         }
         .dateholder {
             display: none;

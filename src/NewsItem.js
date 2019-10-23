@@ -35,7 +35,7 @@ export default class NewsItem extends Component {
 }
 
 const NewsItemWrapper = styled.div`
-    margin-top: 1rem;
+    margin-top: 3rem;
     border-radius: 0.5rem;
     &:hover {
         background: lightgrey;

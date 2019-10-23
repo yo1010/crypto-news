@@ -36,7 +36,7 @@ export default class NewsPage extends Component {
                                                     <i className="fab fa-facebook" /></button>
                                             </div>
                                         </div>
-                                        <div className="img-container col-6">
+                                        <div className="img-container col-4">
                                             <img src={img} className="img-fluid img-thumbnail"alt="news photo"/>
                                         </div>
                                     </div>
@@ -56,6 +56,7 @@ export default class NewsPage extends Component {
 
 const NewsPageWrapper = styled.div`
     margin-top: 7rem;
+    margin-bottom: 2rem;
     .container > * {
         margin-top: 2rem;
     }
