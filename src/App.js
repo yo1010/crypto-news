@@ -18,6 +18,7 @@ class App extends Component {
           <Route path="/newsarticle" component={NewsPage}/>
           <Route component={Default}/>
         </Switch>
+        <News/>
       </React.Fragment>
     );
   }

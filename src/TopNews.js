@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import img from '../public/img/top-news.jpg';
 import {ProductConsumer} from './context';
-import News from './News';
 import SecondaryNews from './SecondaryNews';
 import TertiaryNews from './TertiaryNews';
 import {Link} from 'react-router-dom';
@@ -29,9 +28,11 @@ export default class TopNews extends Component {
                                         onClick={() => {value.handleTopDetail(id)}}>
                                             <Link className="article-link" to={`/newsarticle/${id}`}>
                                                 <div className="header">{publishedOn}</div>
-                                                <div className="img-column mx-auto">
+                                                <div className="img-column-one mx-auto">
                                                     <button className="btn-danger">Top News</button>
-                                                    <img src={img} className="img img-thumbnail" alt="top-news"/>
+                                                    <div className="img-container">
+                                                        <img src={img} className="img-fluid" alt="top-news"/>
+                                                    </div>
                                                     <div className="text-column">
                                                         <div className="text-container mx-auto">
                                                             <h3 className="heading text-capitalize">
@@ -45,14 +46,15 @@ export default class TopNews extends Component {
                                                 </div>
                                             </Link>
                                         </div>
-                                        <div className="img-column display-lg mx-auto col-10 col-md-4 col-lg-4">
-                                                    <SecondaryNews/>
-                                                    <TertiaryNews/>
+                                        <div className="img-column-two display-lg mx-auto col-10 col-md-4 col-lg-4">
+                                                    <div className="editors-choice text-capitalize mx-auto">
+                                                        <SecondaryNews/>
+                                                        <TertiaryNews/>
+                                                    </div>
                                         </div>
                                     </div>
                                 </div>
                             </NewsContainer>
-                            <News/>
                         </React.Fragment>
                     )
                 }}
@@ -70,6 +72,12 @@ const NewsContainer = styled.div`
     margin-top: 7rem;
     border-bottom-color: red;
     border-bottom-width: 1rem;
+    .img-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin-top: 1rem;
+    }
     .btn-danger {
         position: absolute;
         z-index: 1;
@@ -77,6 +85,10 @@ const NewsContainer = styled.div`
         font-size: 2rem;
         background: red !important;
         outline: none;
+    }
+    .editors-choice {
+        margin-top: 1rem;
+        text-align: center;
     }
     .btn-danger-sm {
         position: absolute;
@@ -108,17 +120,10 @@ const NewsContainer = styled.div`
         position: relative;
         margin-top: 1.2rem;
     }
-    .text-column {
-        overflow: hidden;
-        width: 100%;
-        position: absolute;
-        bottom: 0%;
-        color: white;
-        padding: 1rem;
-        height: 70%;
-        margin-bottom: 0.5rem;
+    .second-image {
+        margin-top: 1.3rem;
     }
-    .text-column-sm {
+    .text-column {
         overflow: hidden;
         width: 100%;
         position: absolute;
@@ -128,11 +133,19 @@ const NewsContainer = styled.div`
         height: 40%;
         margin-bottom: 0.5rem;
     }
+    .text-column-sm {
+        overflow: hidden;
+        width: 100%;
+        position: absolute;
+        bottom: -3%;
+        color: white;
+        padding: 1rem;
+        height: 40%;
+        margin-bottom: 0.5rem;
+        background: rgba(0,0,0, 0.6);
+    }
     .container {
         padding: 1rem;
-    }
-    .img-sm-column {
-        margin-top: 1rem;
     }
     .img-column {
         position: relative;
@@ -142,8 +155,29 @@ const NewsContainer = styled.div`
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
-    img {
-        width:100%;
+    .img-column-one {
+        position: relative;
+        border-width: 5px;
+        border-color: red;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0px 0px 2px 2px grey;
+    }
+    .img-column-two {
+        position: relative;
+        border-width: 5px;
+        border-color: red;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .img-sm-column {
+        box-shadow: 0px 0px 2px 2px grey;
+    }
+    img:hover {
+        transition: 1s;
+        transform: scale(1.3);
     }
     .scrollbar-danger::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);

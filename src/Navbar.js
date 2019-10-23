@@ -60,18 +60,6 @@ export default class Navbar extends Component {
     render() {
         return (
             <div className="nav-container fixed-top">
-                <div className="header">
-                    <div className="row">
-                        <div className="col-sm-12 data">
-                            <Helmet>
-                            <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
-                            </Helmet>
-                            <div className="coinlore-priceticker-widget" 
-                            data-mcurrency="usd" data-bcolor="#fff" 
-                            data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
-                        </div>
-                    </div>
-                </div>
                 <NavWrapper className={this.state.hasScrolled ? 
                     'navbar navbar-expand-sm navbar-dark' : 
                     'no-op navbar navbar-expand-sm navbar-dark'}>
@@ -94,26 +82,39 @@ export default class Navbar extends Component {
                                 </Link>
                             </li>
                         </ul>
-                    </div>
-                    <div>
-                        <ul className="navbar-nav icon-nav">
-                            <li className="text-capitalize nav-item ml-1">
-                                <CurrentDate /></li>                                                                                    
-                            <li className="text-capitalize nav-item">
-                                <button className="button">
-                                    <i className="fab fa-facebook-f icon-sm" /></button></li>
-                            <li className="text-capitalize nav-item">
-                                <button className="button">
-                                    <i className="fab fa-telegram-plane icon-sm" /></button></li>
-                        </ul>
+                        <div>
+                            <ul className="navbar-nav icon-nav">
+                                <li className="text-capitalize nav-item ml-1">
+                                    <CurrentDate /></li>                                                                                    
+                                <li className="text-capitalize nav-item">
+                                    <button className="button">
+                                        <i className="fab fa-facebook-f icon-sm" /></button></li>
+                                <li className="text-capitalize nav-item">
+                                    <button className="button">
+                                        <i className="fab fa-telegram-plane icon-sm" /></button></li>
+                            </ul>
+                        </div>
                     </div>
                 </NavWrapper>
+                <div className="header">
+                    <div className="row">
+                        <div className="col-sm-12 data">
+                            <Helmet>
+                            <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
+                            </Helmet>
+                            <div className="coinlore-priceticker-widget" 
+                            data-mcurrency="usd" data-bcolor="#fff" 
+                            data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
 const NavWrapper = styled.nav`
+    background:white;
     .header {
         margin-top: 7rem;
     }
@@ -147,10 +148,6 @@ const NavWrapper = styled.nav`
         font-size: 2rem;
         color: black;
     }
-    button {
-        animation: btn-show 0.5s;
-        animation-timing-frame: ease-out;
-    }
     .btn-about{
         text-transfom: lowercase !important;
         font-family: 'Staatliches', sans-serif;
@@ -169,14 +166,14 @@ const NavWrapper = styled.nav`
         height: 3rem;
     }
     &.no-op{
-        background: var(--Green) !important;
+        background: white;
         transition: 1s !important;
     }
     .navbar-collapse{
         margin-left: auto !important;
     }
     &.fixed-top{
-        background: var(--Green-opacity);
+        background: white;
         transition: 1s !important;
     }
     .navbar-toggler{
@@ -212,12 +209,10 @@ const NavWrapper = styled.nav`
         .navbar-collapse {
             width: 100%;
             margin-top: 0.5rem;
+            margin-right: auto;
         }
         .navbar-collapse > * {
             flex-direction: column !important;
-        }
-        .icon-nav {
-            flex-direction: row !important;
         }
         .icon-sm {
             font-size: 1.5rem !important;
@@ -232,8 +227,5 @@ const NavWrapper = styled.nav`
     @keyframes text-jump {
         from { transform: translate(0px, 0px); }
         to { transform: translate(0px, -3px); }
-    }
-    @keyframes btn-show {
-        from {opacity: 0.5;} to {opacity: 1;}
     }
 `

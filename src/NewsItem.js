@@ -6,26 +6,23 @@ import {Link} from 'react-router-dom';
 
 export default class NewsItem extends Component {
     render() {
-        const {id, title, content, publishedOn} = this.props.article;
+        const {id, title, publishedOn} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <NewsItemWrapper className="col-5 col-md-3 col-lg-2 col-xl-2" 
+                            <NewsItemWrapper className="col-6 col-md-4 col-lg-2 col-xl-2" 
                             onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${id}`}>
-                                    <div className="container">
+                                        <div className="img-container">
+                                            <img src={img} className="img-fluid"alt="news photo"/>
+                                        </div>
+                                        <div className="text my-3">
+                                            <div className="title">{title}</div>
+                                        </div>
                                         <div className="row header mx-1">
                                         <div className="date ml-auto"><i className="far fa-calendar-alt"></i>{publishedOn}</div>
                                         </div>
-                                        <div className="img-container">
-                                            <img src={img} className="img-fluid img-thumbnail"alt="news photo"/>
-                                        </div>
-                                        <div className="text my-3 scrollbar-danger">
-                                            <div className="title">{title}</div>
-                                            <div className="content"><p>{content}</p></div>
-                                        </div>
-                                    </div>
                                 </Link>
                             </NewsItemWrapper>
                         )}}
@@ -36,7 +33,7 @@ export default class NewsItem extends Component {
 
 const NewsItemWrapper = styled.div`
     margin-top: 3rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     &:hover {
         background: lightgrey;
         cursor: pointer;
@@ -45,11 +42,13 @@ const NewsItemWrapper = styled.div`
         position: relative;
         overflow: hidden;
         width: 100%;
+        margin-top: 1rem;
+        border-bottom: solid 5px red;
+        border-radius: 0.2rem;
+        box-shadow: 0px 0px 1px 1px grey;
     }
     .text {
-        height: 150px;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        overflow: hidden;
     }
     .far {
         margin-right: 3px;
@@ -69,15 +68,4 @@ const NewsItemWrapper = styled.div`
         color: red;
         margin-bottom: 0.2rem;
     }
-    .scrollbar-danger::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-        background-color: #F5F5F5;
-        border-radius: 10px; }
-    .scrollbar-danger::-webkit-scrollbar {
-        width: 8px;
-        background-color: #F5F5F5; }
-    .scrollbar-danger::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-        background-color: red; }
 `

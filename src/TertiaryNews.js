@@ -10,10 +10,12 @@ export default function TertiaryNews() {
                 if (value.topNews[2] !== undefined) {
                     const {id, title} = value.topNews[2]
                     return(
-                        <div className="img-sm-column mx-auto" onClick={() => {value.handleTopDetail(id)}}>
+                        <div className="img-sm-column second-image mx-auto" onClick={() => {value.handleTopDetail(id)}}>
                             <Link className="article-link" to={`/newsarticle/${id}`}>
                                 <div className="img-sm mx-auto">
-                                    <img src={img} className="img img-thumbnail" alt="top-news"/>
+                                    <div className="img-container">
+                                        <img src={img} className="img-fluid" alt="top-news"/>
+                                    </div>
                                     <div className="text-column-sm">
                                             <h3 className="heading-sm text-capitalize">
                                                 {title}

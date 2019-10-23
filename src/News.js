@@ -14,19 +14,17 @@ export default class News extends Component {
                         <div className="smallseparator"></div>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="row mx-auto">
-                        <ProductConsumer>
-                            {(value) => {
-                                return value.news.map(
-                                    article => {
-                                        return <NewsItem key={article.id}
-                                                article={article} />
-                                    }
-                                )
-                            }}
-                        </ProductConsumer>
-                    </div>
+                <div className="row mx-auto">
+                    <ProductConsumer>
+                        {(value) => {
+                            return value.news.map(
+                                article => {
+                                    return <NewsItem key={article.id}
+                                            article={article} />
+                                }
+                            )
+                        }}
+                    </ProductConsumer>
                 </div>
             </NewsWrapper>
         )
@@ -36,6 +34,10 @@ export default class News extends Component {
 const NewsWrapper = styled.div`
 .container {
     width: 100%;
+}
+img:hover {
+    transition: 1s;
+    transform: scale(1.3);
 }
 .separator1{
     background: red;
@@ -59,6 +61,12 @@ const NewsWrapper = styled.div`
 @media (max-width: 499px) {
     .title-separator{
         font-size: 1.6rem;
+    }
+}
+@media (max-width: 768px) {
+    .row > * {
+        margin-left:auto;
+        margin-right:auto;
     }
 }
 `

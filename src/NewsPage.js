@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import { ProductConsumer } from './context';
 import img from '../public/img/top-news.jpg';
-import News from './News';
 
 export default class NewsPage extends Component {
     componentDidUpdate() {
@@ -21,8 +20,8 @@ export default class NewsPage extends Component {
                         return (
                             <NewsPageWrapper>
                                 <div className="container mx-auto">
-                                    <div className="row">
-                                        <div className="text-container col-6">
+                                    <div className="row mx-auto">
+                                        <div className="text-container col-5">
                                             <div className="date">
                                                 {publishedOn}
                                             </div>
@@ -36,8 +35,10 @@ export default class NewsPage extends Component {
                                                     <i className="fab fa-facebook" /></button>
                                             </div>
                                         </div>
-                                        <div className="img-container col-4">
-                                            <img src={img} className="img-fluid img-thumbnail"alt="news photo"/>
+                                        <div className="col-7">
+                                            <div className="img-container">
+                                                <img src={img} className="img-fluid img-thumbnail"alt="news photo"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="content">
@@ -48,17 +49,25 @@ export default class NewsPage extends Component {
                         )
                     }}
                 </ProductConsumer>
-                <News/>
             </React.Fragment>
         )
     }
 }
 
 const NewsPageWrapper = styled.div`
-    margin-top: 7rem;
+    margin-top: 9rem;
     margin-bottom: 2rem;
     .container > * {
         margin-top: 2rem;
+    }
+    .img-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin-top: 1rem;
+        border-bottom: solid 5px red;
+        border-radius: 0.2rem;
+        box-shadow: 0px 0px 2px 2px grey;
     }
     .title {
         font-size: 3rem;
@@ -79,6 +88,11 @@ const NewsPageWrapper = styled.div`
     }
     i {
         font-size: 1.5rem;
+    }
+    @media (max-width: 502px) {
+        .title {
+            font-size: 2rem;
+        }
     }
 `
 
