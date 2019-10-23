@@ -64,9 +64,11 @@ export default class Navbar extends Component {
                     <div className="row">
                         <div className="col-sm-12 data">
                             <Helmet>
-                                <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+                            <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
                             </Helmet>
-                            <coingecko-coin-price-marquee-widget currency="eur" coin-ids="bitcoin,ethereum,dascoin,litecoin,ripple,eos,dash" locale="en" vce-ready=""></coingecko-coin-price-marquee-widget>
+                            <div className="coinlore-priceticker-widget" 
+                            data-mcurrency="usd" data-bcolor="#fff" 
+                            data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
                         </div>
                     </div>
                 </div>

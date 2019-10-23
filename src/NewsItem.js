@@ -11,7 +11,7 @@ export default class NewsItem extends Component {
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <NewsItemWrapper className="col-5 col-md-3 col-lg-2 col-xl-2 mx-auto" 
+                            <NewsItemWrapper className="col-5 col-md-3 col-lg-2 col-xl-2" 
                             onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${id}`}>
                                     <div className="container">
@@ -49,6 +49,7 @@ const NewsItemWrapper = styled.div`
     .text {
         height: 150px;
         overflow-y: scroll;
+        overflow-x: hidden;
     }
     .far {
         margin-right: 3px;

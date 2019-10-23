@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import img from '../public/img/top-news.jpg';
+import {ProductConsumer} from './context';
 import News from './News';
 
 export default class TopNews extends Component {
@@ -14,36 +15,70 @@ export default class TopNews extends Component {
     }
     render() {
         return (
-            <React.Fragment>
-                <NewsContainer>
-                    <div className="container">
-                        <div className="row mx-auto">
-                            <div className="img-column mx-auto col-10 col-md-6 col-lg-6">
-                                <button className="btn-danger">Top News</button>
-                                <img src={img} className="img img-thumbnail" alt="top-news"/>
-                            </div>
-                            <div className="text-column mx-auto col-10 col-md-6 col-lg-6">
-                                <div className="text-container scrollbar-danger">
-                                    <h3 className="heading text-capitalize">
-                                        news title
-                                    </h3>
-                                    <h5 className="text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quisnostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </h5>
+            <ProductConsumer>
+                {value => {
+                    const {title, content, publishedOn} = value.topNews;
+                    return (
+                        <React.Fragment>
+                            <NewsContainer>
+                                <div className="container">
+                                    <div className="row mx-auto">
+                                        <div className="img-column mx-auto col-10 col-md-8 col-lg-8">
+                                            <div className="header">{publishedOn}</div>
+                                            <div className="img-column mx-auto">
+                                                <button className="btn-danger">Top News</button>
+                                                <img src={img} className="img img-thumbnail" alt="top-news"/>
+                                                <div className="text-column">
+                                                    <div className="text-container mx-auto">
+                                                        <h3 className="heading text-capitalize">
+                                                            {title}
+                                                        </h3>
+                                                        <h5 className="text">
+                                                            {content}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="img-column display-lg mx-auto col-10 col-md-4 col-lg-4">
+                                                <div className="img-sm-column mx-auto">
+                                                    <div className="img-sm mx-auto">
+                                                        <img src={img} className="img img-thumbnail" alt="top-news"/>
+                                                        <div className="text-column-sm">
+                                                                <h3 className="heading-sm text-capitalize">
+                                                                    news title
+                                                                </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div className="img-sm-two mx-auto">
+                                                        <img src={img} className="img img-thumbnail" alt="top-news"/>
+                                                        <div className="text-column-sm">
+                                                                <h3 className="heading-sm text-capitalize">
+                                                                    news title
+                                                                </h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </NewsContainer>
-                <News/>
-            </React.Fragment>
+                            </NewsContainer>
+                            <News/>
+                        </React.Fragment>
+                    )
+                }}
+            </ProductConsumer>
         )
     }
 }
 
 const NewsContainer = styled.div`
+    overflow-x: hidden;
+    width: 100%;
+    border-top: solid 5px red;
+    background: lightgrey;
     margin-right: 0.8rem;
-    margin-top: 5rem;
+    margin-top: 7rem;
     border-bottom-color: red;
     border-bottom-width: 1rem;
     .btn-danger {
@@ -52,17 +87,63 @@ const NewsContainer = styled.div`
         bottom: 70%;
         font-size: 2rem;
         background: red !important;
+        outline: none;
+    }
+    .btn-danger-sm {
+        position: absolute;
+        z-index: 1;
+        bottom: 70%;
+        font-size: 1.5rem;
+        background: red !important;
+        color: white;
+        outline: none;
+    }
+    .text-container {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    h5 {
+        marging-bottom: 0.5rem;
+    }
+    .heading {
+        margin-top: 0.5rem;
+    }
+    .heading-sm {
+        margin-top: 0.5rem;
+        color: red;
+    }
+    .img-sm {
+        position: relative;
+    }
+    .img-sm-two {
+        position: relative;
+        margin-top: 1.2rem;
+    }
+    .text-column {
+        overflow: hidden;
+        width: 100%;
+        position: absolute;
+        bottom: 0%;
+        color: white;
+        padding: 1rem;
+        height: 70%;
+        margin-bottom: 0.5rem;
+    }
+    .text-column-sm {
+        overflow: hidden;
+        width: 100%;
+        position: absolute;
+        bottom: 0%;
+        color: white;
+        padding: 1rem;
+        height: 40%;
+        margin-bottom: 0.5rem;
     }
     .container {
         padding: 1rem;
     }
-    .text-container {
-        overflow-y: scroll;
-        margin-bottom: 1rem;
+    .img-sm-column {
         margin-top: 1rem;
-    }
-    .heading {
-        margin-top: 0.5rem;
     }
     .img-column {
         position: relative;
@@ -71,10 +152,6 @@ const NewsContainer = styled.div`
         margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
-    }
-    .text {
-        postion: absolute !important;
-        margin-right: 0.5rem;
     }
     img {
         width:100%;
@@ -104,6 +181,9 @@ const NewsContainer = styled.div`
     @media (max-width: 768px) {
         .text-container {
             height: 295px;
+        }
+        .display-lg{
+            display: none;
         }
     }
     @media (min-width: 768px) and (max-width: 992px) {
