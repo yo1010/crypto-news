@@ -14,15 +14,19 @@ export default class NewsItem extends Component {
                             <NewsItemWrapper className="col-6 col-md-4 col-lg-2 col-xl-2" 
                             onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${id}`}>
+                                    <div className="container">
                                         <div className="img-container">
                                             <img src={img} className="img-fluid"alt="news photo"/>
                                         </div>
-                                        <div className="text my-3">
-                                            <div className="title">{title}</div>
+                                        <div className="text-container">
+                                            <div className="text my-3">
+                                                <div className="title">{title}</div>
+                                            </div>
+                                            <div className="row header mx-1">
+                                                <div className="date ml-auto"><i className="far fa-calendar-alt"></i>{publishedOn}</div>
+                                            </div>
                                         </div>
-                                        <div className="row header mx-1">
-                                        <div className="date ml-auto"><i className="far fa-calendar-alt"></i>{publishedOn}</div>
-                                        </div>
+                                    </div>
                                 </Link>
                             </NewsItemWrapper>
                         )}}
@@ -35,8 +39,19 @@ const NewsItemWrapper = styled.div`
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
-        background: lightgrey;
         cursor: pointer;
+    }
+    .container {
+        box-shadow: 0px 0px 2px 2px darkgrey;
+        border-radius: 0.2rem;
+        padding: 0.5rem;
+        margin-right: 1rem;
+        background: rgba(211,211,211, 0.2);
+    }
+    .container:hover {
+        background: lightgrey;
+        transition: 1s;
+        box-shadow: 0px 0px 3px 3px darkgrey;
     }
     .img-container {
         position: relative;

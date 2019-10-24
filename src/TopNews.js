@@ -2,32 +2,62 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import img from '../public/img/top-news.jpg';
 import {ProductConsumer} from './context';
-import SecondaryNews from './SecondaryNews';
-import TertiaryNews from './TertiaryNews';
 import {Link} from 'react-router-dom';
+import SecondaryNews from './SecondaryNews';
 export default class TopNews extends Component {
-    componentDidUpdate() {
-        window.scrollTo(0, 0);
-        console.log('it updated')
+    constructor() {
+        super(),
+        this.state = {
+            slideIndex: 0
+        },
+        this.plusSlides=this.plusSlides.bind(this);
+        this.minusSlides=this.minusSlides.bind(this);
+        this.currentSlide=this.currentSlide.bind(this);
     }
-    componentDidMount() {
-        window.scrollTo(0, 0);
-        console.log('it updated')
+    plusSlides(n) {
+        let slideIndex = this.state.slideIndex;
+        if (slideIndex > 2) {
+            this.setState(() => {
+                return {slideIndex: 0}
+            })
+        } else {
+            this.setState(() => {
+                return {slideIndex: slideIndex + n}
+            })
+        }
+        console.log(slideIndex)
+    }
+    minusSlides(n) {
+        let slideIndex = this.state.slideIndex;
+        if (slideIndex < 1) {
+            this.setState(() => {
+                return {slideIndex: 3}
+            })
+        } else {
+            this.setState(() => {
+                return {slideIndex: slideIndex - n}
+            })
+        }
+        console.log(slideIndex)
+    }
+    currentSlide(n) {
+        this.setState(() => {
+            return {slideIndex: n}
+        })
     }
     render() {
         return (
             <ProductConsumer>
                 {value => {
-                    const {id, title, content, publishedOn} = value.topNews[0];
+                    const {id, title, publishedOn} = value.topNews[this.state.slideIndex];
                     return (
                         <React.Fragment>
                             <NewsContainer>
-                                <div className="container">
+                                <div className="container big-container">
                                     <div className="row mx-auto">
                                         <div className="img-column mx-auto col-10 col-md-8 col-lg-8"
                                         onClick={() => {value.handleTopDetail(id)}}>
                                             <Link className="article-link" to={`/newsarticle/${id}`}>
-                                                <div className="header">{publishedOn}</div>
                                                 <div className="img-column-one mx-auto">
                                                     <button className="btn-danger">Top News</button>
                                                     <div className="img-container">
@@ -39,18 +69,31 @@ export default class TopNews extends Component {
                                                                 {title}
                                                             </h3>
                                                             <h5 className="text">
-                                                                {content}
+                                                                {publishedOn}
                                                             </h5>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </Link>
+                                            <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
+                                                <i className="fas fa-chevron-left arrow"></i></button>
+                                            <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
+                                                <i className="fas fa-chevron-right arrow"></i></button>
+                                            <div className="dots">
+                                                <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
+                                                onClick={()=>this.currentSlide(0)}></span>
+                                                <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
+                                                onClick={()=>this.currentSlide(1)}></span>
+                                                <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
+                                                onClick={()=>this.currentSlide(2)}></span>
+                                                <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
+                                                onClick={()=>this.currentSlide(3)}></span>
+                                            </div>
                                         </div>
-                                        <div className="img-column-two display-lg mx-auto col-10 col-md-4 col-lg-4">
-                                                    <div className="editors-choice text-capitalize mx-auto">
-                                                        <SecondaryNews/>
-                                                        <TertiaryNews/>
-                                                    </div>
+                                        <div className="img-column mx-auto col-10 col-md-4 col-lg-4">
+                                            <div className="container small-container">
+                                                <SecondaryNews/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -64,10 +107,9 @@ export default class TopNews extends Component {
 }
 
 const NewsContainer = styled.div`
-    overflow-x: hidden;
     width: 100%;
     border-top: solid 5px red;
-    background: lightgrey;
+    background: rgba(211,211,211, 0.6);
     margin-right: 0.8rem;
     margin-top: 7rem;
     border-bottom-color: red;
@@ -77,6 +119,61 @@ const NewsContainer = styled.div`
         overflow: hidden;
         width: 100%;
         margin-top: 1rem;
+    }
+    .btn-slide {
+        cursor: pointer;
+        position: absolute;
+        top:50%;
+        color: black;
+        font-weight: bold;
+        transition: 0.6s ease;
+        border: none;
+        user-select: none;
+        z-index: 3;
+        background: none;
+        outline: none;
+    }
+    .prev {
+        left: -1rem;
+        padding-left: 0;
+    }
+    .next {
+        right: -1rem;
+        padding-right: 0;
+    }
+    .btn-slide:hover {
+        color: red;
+        text-shadow: 2px 2px 2px black;
+        animation: text-jump 0.2s;
+        animation-iteration-count: 3;
+    }
+    .arrow {
+        font-size: 2rem;
+    }
+    .big-container {
+        padding: 1rem;
+    }
+    .dots{
+        position: absolute;
+        top: 99%;
+        width:90%;
+        text-align: center;
+        background: none;
+        z-index: 3;
+    }
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        z-index: 4;
+    }
+    .active, .dot: hover {
+        background-color: red;
     }
     .btn-danger {
         position: absolute;
@@ -137,15 +234,12 @@ const NewsContainer = styled.div`
         overflow: hidden;
         width: 100%;
         position: absolute;
-        bottom: -3%;
+        bottom: 56%;
         color: white;
         padding: 1rem;
         height: 40%;
         margin-bottom: 0.5rem;
         background: rgba(0,0,0, 0.6);
-    }
-    .container {
-        padding: 1rem;
     }
     .img-column {
         position: relative;
@@ -179,18 +273,14 @@ const NewsContainer = styled.div`
         transition: 1s;
         transform: scale(1.3);
     }
-    .scrollbar-danger::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-    background-color: #F5F5F5;
-    border-radius: 10px; }
-    .scrollbar-danger::-webkit-scrollbar {
-    width: 10px;
-    background-color: #F5F5F5; }
-    .scrollbar-danger::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-    background-color: red; }
-
+    .fade {
+        opacity: 1;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    @keyframes fade {
+        from {opacity: 0.4} to {opacity: 1}
+    }
     @media (max-width: 767px) {
         .title {
             margin: 3rem;

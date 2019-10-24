@@ -127,7 +127,7 @@ const NavWrapper = styled.nav`
         color: red;
         transform: translate(0px, 5px);
         height: 1.5rem;
-        width: 6rem;
+        width: 8rem;
         border-bottom: 2px solid red;
     }
     .navbar-nav {

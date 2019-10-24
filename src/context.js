@@ -30,7 +30,7 @@ class ProductProvider extends Component {
         })
     };
     componentDidMount() {
-        this.database.limitToLast(3).on('value', snapshot => {
+        this.database.limitToLast(4).on('value', snapshot => {
             this.arrayTopNews =[{}];
             snapshot.forEach(childSnapshot => {
                 this.arrayTopNews.unshift(childSnapshot.val());
@@ -44,14 +44,13 @@ class ProductProvider extends Component {
             snapshot.forEach(childSnapshot => {
                 this.arrayNews.unshift(childSnapshot.val());
             });
-            this.arrayNews.splice(0,3)
+            this.arrayNews.splice(0,4)
             this.setState({
                 news: this.arrayNews,
             });
         });
     };
     render() {
-        console.log(this.state.topNews)
         return (
             <ProductContext.Provider value={{
                 ...this.state,

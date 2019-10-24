@@ -63,10 +63,4 @@ img:hover {
         font-size: 1.6rem;
     }
 }
-@media (max-width: 768px) {
-    .row > * {
-        margin-left:auto;
-        margin-right:auto;
-    }
-}
 `
