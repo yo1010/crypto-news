@@ -4,6 +4,7 @@ import img from '../public/img/top-news.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';
+import MostReadNews from './MostReadNews';
 export default class TopNews extends Component {
     constructor() {
         super(),
@@ -54,7 +55,7 @@ export default class TopNews extends Component {
                         <React.Fragment>
                             <NewsContainer>
                                 <div className="container big-container">
-                                    <div className="row mx-auto">
+                                    <div className="row mx-auto mb-3">
                                         <div className="img-column mx-auto col-10 col-md-8 col-lg-8"
                                         onClick={() => {value.handleTopDetail(id)}}>
                                             <Link className="article-link" to={`/newsarticle/${id}`}>
@@ -90,9 +91,10 @@ export default class TopNews extends Component {
                                                 onClick={()=>this.currentSlide(3)}></span>
                                             </div>
                                         </div>
-                                        <div className="img-column mx-auto col-10 col-md-4 col-lg-4">
+                                        <div className="img-column-two mx-auto col-10 col-md-4 col-lg-4">
                                             <div className="container small-container">
                                                 <EditorNews/>
+                                                <MostReadNews/>
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +125,7 @@ const NewsContainer = styled.div`
     .btn-slide {
         cursor: pointer;
         position: absolute;
-        top:50%;
+        top:47%;
         color: black;
         font-weight: bold;
         transition: 0.6s ease;
@@ -218,7 +220,7 @@ const NewsContainer = styled.div`
         margin-top: 1.2rem;
     }
     .second-image {
-        margin-top: 1.3rem;
+        margin-top:4.1rem;
     }
     .text-column {
         overflow: hidden;
@@ -306,6 +308,9 @@ const NewsContainer = styled.div`
             height: 295px;
         }
         .display-lg{
+            display: none;
+        }
+        .img-column-two {
             display: none;
         }
     }
