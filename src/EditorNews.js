@@ -3,12 +3,12 @@ import img from '../public/img/top-news.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
 
-export default function SecondaryNews() {
+export default function EditorNews() {
     return (
         <ProductConsumer>
-            {value => {
-                    if (value.topNews[1] !== undefined) {
-                        const {id, title} = value.topNews[1]
+            {value => {    
+                if (value.editorNews !== undefined) {
+                        const {id, title} = value.editorNews;
                 return (
                     <div className="img-sm-column mx-auto" onClick={() => {value.handleTopDetail(id)}}>
                         <Link className="article-link" to={`/newsarticle/${id}`}>
@@ -18,8 +18,11 @@ export default function SecondaryNews() {
                                 </div>
                                 <div className="text-column-sm">
                                         <h3 className="heading-sm text-capitalize">
-                                            {title}
+                                            editor's choice:
                                         </h3>
+                                </div>
+                                <div className="editor-title">
+                                    <h3>{title}</h3>
                                 </div>
                             </div>
                         </Link>

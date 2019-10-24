@@ -9,12 +9,14 @@ class ProductProvider extends Component {
     constructor() {
         super();
         this.database = Firebase.database().ref().child('News');
+        this.editorDatabase = Firebase.database().ref().child('EditorsChoice');
         this.arrayNews = [{}];
         this.arrayTopNews = [{}];
         this.state = {
             news: [{}],
             openNewsItem: {},
-            topNews: [{}]
+            topNews: [{}],
+            editorNews: {}
         };
     }
     handleDetail = (id) => {
@@ -30,6 +32,11 @@ class ProductProvider extends Component {
         })
     };
     componentDidMount() {
+        this.editorDatabase.on('value', snapshot => {
+            this.setState({
+                editorNews: snapshot.val(),
+            });
+        });
         this.database.limitToLast(4).on('value', snapshot => {
             this.arrayTopNews =[{}];
             snapshot.forEach(childSnapshot => {

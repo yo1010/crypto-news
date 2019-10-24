@@ -42,16 +42,15 @@ const NewsItemWrapper = styled.div`
         cursor: pointer;
     }
     .container {
-        box-shadow: 0px 0px 2px 2px darkgrey;
+        box-shadow: 0px 0px 3px 2px darkgrey;
         border-radius: 0.2rem;
         padding: 0.5rem;
         margin-right: 1rem;
         background: rgba(211,211,211, 0.2);
     }
     .container:hover {
-        background: lightgrey;
         transition: 1s;
-        box-shadow: 0px 0px 3px 3px darkgrey;
+        box-shadow: 0px 0px 3px 2px black;
     }
     .img-container {
         position: relative;

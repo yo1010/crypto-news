@@ -3,7 +3,7 @@ import styled from "styled-components";
 import img from '../public/img/top-news.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
-import SecondaryNews from './SecondaryNews';
+import EditorNews from './EditorNews';
 export default class TopNews extends Component {
     constructor() {
         super(),
@@ -92,7 +92,7 @@ export default class TopNews extends Component {
                                         </div>
                                         <div className="img-column mx-auto col-10 col-md-4 col-lg-4">
                                             <div className="container small-container">
-                                                <SecondaryNews/>
+                                                <EditorNews/>
                                             </div>
                                         </div>
                                     </div>
@@ -240,6 +240,16 @@ const NewsContainer = styled.div`
         height: 40%;
         margin-bottom: 0.5rem;
         background: rgba(0,0,0, 0.6);
+    }
+    .editor-title {
+        overflow: hidden;
+        width: 100%;
+        position: absolute;
+        bottom: 0%;
+        color: white;
+        padding: 1rem;
+        height: 40%;
+        margin-bottom: 0.5rem;
     }
     .img-column {
         position: relative;
