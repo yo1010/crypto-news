@@ -16,6 +16,7 @@ export default class Navbar extends Component {
         };
         this.handleScroll = this.handleScroll.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.scrollTop = this.scrollTop.bind(this);
     }
     handleScroll() {
         let topOfPage = window.pageYOffset;
@@ -47,6 +48,9 @@ export default class Navbar extends Component {
             })
             }
     }
+    scrollTop() {
+        window.scrollTo(0, 0);
+    }
     componentDidMount() {
         // Listen on scrolling event, call our function.
         window.addEventListener('scroll', this.handleScroll); 
@@ -64,7 +68,7 @@ export default class Navbar extends Component {
                     'navbar navbar-expand-sm navbar-dark' : 
                     'no-op navbar navbar-expand-sm navbar-dark'}>
                     <Link to="/">
-                        <div className="navbar-brand ml-2">
+                        <div className="navbar-brand ml-2" onClick={() => this.scrollTop()}>
                             <img src={logo} alt="logo" className="navbar-brand-img"/>
                         </div>
                     </Link>
@@ -77,7 +81,7 @@ export default class Navbar extends Component {
                         <ul className="navbar-nav mr-auto">
                             <li className="text-capitalize nav-item ml-1">
                                 <Link to="/">
-                                    <button className="button">
+                                    <button className="button" onClick={() => this.scrollTop()}>
                                         Новости</button>
                                 </Link>
                             </li>

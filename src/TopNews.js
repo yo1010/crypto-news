@@ -60,7 +60,7 @@ export default class TopNews extends Component {
                                         onClick={() => {value.handleTopDetail(id)}}>
                                             <Link className="article-link" to={`/newsarticle/${title}`}>
                                                 <div className="img-column-one mx-auto">
-                                                    <button className="btn-danger">Top News</button>
+                                                    <button className="btn-danger">Latest News</button>
                                                     <div className="img-container">
                                                         <img src={img} className="img-fluid" alt="top-news"/>
                                                     </div>

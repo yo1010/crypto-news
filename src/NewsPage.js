@@ -9,7 +9,6 @@ export default class NewsPage extends Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0);
-        console.log('it updated')
     }
     render() {
         return (
