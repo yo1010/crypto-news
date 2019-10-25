@@ -122,6 +122,12 @@ const NewsContainer = styled.div`
         width: 100%;
         margin-top: 1rem;
     }
+    .img-column-one:hover {
+        img {
+            transition: 1s;
+            transform: scale(1.3);
+        }
+    }
     .btn-slide {
         cursor: pointer;
         position: absolute;

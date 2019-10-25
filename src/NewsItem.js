@@ -56,6 +56,10 @@ const NewsItemWrapper = styled.div`
     .container:hover {
         transition: 1s;
         box-shadow: 0px 0px 3px 2px black;
+        .img-container {
+            border-bottom: solid 5px yellow;
+            transition: 1s;
+        }
     }
     .img-container {
         position: relative;

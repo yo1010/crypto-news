@@ -35,10 +35,6 @@ const NewsWrapper = styled.div`
 .container {
     width: 100%;
 }
-img:hover {
-    transition: 1s;
-    transform: scale(1.3);
-}
 .separator1{
     background: red;
     width: 10%;
