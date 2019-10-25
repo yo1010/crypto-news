@@ -7,22 +7,22 @@ export default function EditorNews() {
     return (
         <ProductConsumer>
             {value => {    
-                if (value.editorNews !== undefined) {
-                        const {id, title} = value.editorNews;
+                if (value.news[0] !== undefined) {
+                        const {id, title} = value.news[0];
                 return (
-                    <div className="img-sm-column mx-auto" onClick={() => {value.handleTopDetail(id)}}>
-                        <Link className="article-link" to={`/newsarticle/${id}`}>
+                    <div className="img-sm-column mx-auto" onClick={() => {value.handleDetail(id)}}>
+                        <Link className="article-link" to={`/newsarticle/${title}`}>
                             <div className="img-sm mx-auto">
                                 <div className="img-container">
                                     <img src={img} className="img-fluid" alt="top-news"/>
                                 </div>
                                 <div className="text-column-sm">
-                                        <h3 className="heading-sm text-capitalize">
+                                        <div className="heading-sm text-capitalize">
                                             editor's choice:
-                                        </h3>
+                                        </div>
                                 </div>
                                 <div className="editor-title">
-                                    <h3>{title}</h3>
+                                    <p>{title}</p>
                                 </div>
                             </div>
                         </Link>

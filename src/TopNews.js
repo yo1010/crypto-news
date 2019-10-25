@@ -58,7 +58,7 @@ export default class TopNews extends Component {
                                     <div className="row mx-auto mb-3">
                                         <div className="img-column mx-auto col-10 col-md-8 col-lg-8"
                                         onClick={() => {value.handleTopDetail(id)}}>
-                                            <Link className="article-link" to={`/newsarticle/${id}`}>
+                                            <Link className="article-link" to={`/newsarticle/${title}`}>
                                                 <div className="img-column-one mx-auto">
                                                     <button className="btn-danger">Top News</button>
                                                     <div className="img-container">
@@ -207,10 +207,12 @@ const NewsContainer = styled.div`
     }
     .heading {
         margin-top: 0.5rem;
+        font-size: 1.5rem;
     }
     .heading-sm {
         margin-top: 0.5rem;
         color: red;
+        font-size: 1rem;
     }
     .img-sm {
         position: relative;
@@ -252,6 +254,7 @@ const NewsContainer = styled.div`
         padding: 1rem;
         height: 40%;
         margin-bottom: 0.5rem;
+        font-size: 1.2rem;
     }
     .img-column {
         position: relative;
@@ -280,6 +283,12 @@ const NewsContainer = styled.div`
     }
     .img-sm-column {
         box-shadow: 0px 0px 2px 2px grey;
+    }
+    .img-sm-column:hover {
+        img {
+            transition: 1s;
+            transform: scale(1.3);
+        }
     }
     img:hover {
         transition: 1s;

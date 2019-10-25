@@ -56,7 +56,7 @@ export default class NewsPage extends Component {
 
 const NewsPageWrapper = styled.div`
     margin-top: 9rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     .container > * {
         margin-top: 2rem;
     }
@@ -70,7 +70,7 @@ const NewsPageWrapper = styled.div`
         box-shadow: 0px 0px 2px 2px grey;
     }
     .title {
-        font-size: 3rem;
+        font-size: 1.5rem;
         font-weight: bold;
     }
     .row {

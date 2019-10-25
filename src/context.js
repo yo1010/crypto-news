@@ -8,7 +8,8 @@ const ProductContext = React.createContext();
 class ProductProvider extends Component {
     constructor() {
         super();
-        this.database = Firebase.database().ref().child('News');
+        this.database = Firebase.database().ref("flamelink/environments/production/content/news/en-US");
+        this.hottestDatabase = Firebase.database().ref().child('HottestNews');
         this.editorDatabase = Firebase.database().ref().child('EditorsChoice');
         this.arrayNews = [{}];
         this.arrayTopNews = [{}];
@@ -16,7 +17,8 @@ class ProductProvider extends Component {
             news: [{}],
             openNewsItem: {},
             topNews: [{}],
-            editorNews: {}
+            editorNews: {},
+            hottestNews: {}
         };
     }
     handleDetail = (id) => {
@@ -25,13 +27,23 @@ class ProductProvider extends Component {
             return {openNewsItem:newsItem}
         })
     };
+    handleHotDetail = (id) => {
+        this.setState(()=>{
+            return {openNewsItem:this.state.hottestNews}
+        })
+    };
     handleTopDetail = (id) => {
         const newsItem = this.state.topNews.find((item => item.id === id));
         this.setState(()=>{
             return {openNewsItem:newsItem}
         })
     };
-    componentDidMount() {
+    UNSAFE_componentWillMount() {
+        this.hottestDatabase.on('value', snapshot => {
+            this.setState({
+                hottestNews: snapshot.val(),
+            });
+        });
         this.editorDatabase.on('value', snapshot => {
             this.setState({
                 editorNews: snapshot.val(),
@@ -62,7 +74,8 @@ class ProductProvider extends Component {
             <ProductContext.Provider value={{
                 ...this.state,
                 handleDetail: this.handleDetail,
-                handleTopDetail: this.handleTopDetail
+                handleTopDetail: this.handleTopDetail,
+                handleHotDetail: this.handleHotDetail
             }}>
                 {this.props.children}
             </ProductContext.Provider>

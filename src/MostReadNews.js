@@ -7,22 +7,22 @@ export default function MostReadNews() {
     return (
         <ProductConsumer>
             {value => {
-                if (value.news[4] !== undefined) {
-                    const {id, title} = value.news[4]
+                if (value.hottestNews !== undefined) {
+                    const {id, title} = value.hottestNews;
                     return(
-                        <div className="img-sm-column second-image mx-auto" onClick={() => {value.handleTopDetail(id)}}>
+                        <div className="img-sm-column second-image mx-auto" onClick={() => {value.handleHotDetail(id)}}>
                             <Link className="article-link" to={`/newsarticle/${id}`}>
                                 <div className="img-sm mx-auto">
                                     <div className="img-container">
                                         <img src={img} className="img-fluid" alt="top-news"/>
                                     </div>
                                     <div className="text-column-sm">
-                                            <h3 className="heading-sm text-capitalize">
-                                                most read:
-                                            </h3>
+                                            <div className="heading-sm text-capitalize">
+                                                hottest this week:
+                                            </div>
                                     </div>
                                     <div className="editor-title">
-                                        <h3>{title}</h3>
+                                        <p>{title}</p>
                                     </div>
                                 </div>
                             </Link>

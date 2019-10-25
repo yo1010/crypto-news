@@ -11,9 +11,9 @@ export default class NewsItem extends Component {
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <NewsItemWrapper className="col-6 col-md-4 col-lg-2 col-xl-2" 
+                            <NewsItemWrapper className="col-6 col-md-4 col-lg-3 col-xl-3" 
                             onClick={() => {value.handleDetail(id)}}>
-                                <Link className="article-link" to={`/newsarticle/${id}`}>
+                                <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="container">
                                         <div className="img-container">
                                             <img src={img} className="img-fluid"alt="news photo"/>
@@ -40,6 +40,11 @@ const NewsItemWrapper = styled.div`
     border-radius: 0.3rem;
     &:hover {
         cursor: pointer;
+    }
+    .title {
+        font-size: 0.75rem;
+        height: 50px;
+        overflow: hidden;
     }
     .container {
         box-shadow: 0px 0px 3px 2px darkgrey;

@@ -78,7 +78,7 @@ export default class Navbar extends Component {
                             <li className="text-capitalize nav-item ml-1">
                                 <Link to="/">
                                     <button className="button">
-                                        News</button>
+                                        Новости</button>
                                 </Link>
                             </li>
                         </ul>
@@ -88,7 +88,7 @@ export default class Navbar extends Component {
                                     <CurrentDate /></li>                                                                                    
                                 <li className="text-capitalize nav-item">
                                     <button className="button">
-                                        <i className="fab fa-facebook-f icon-sm" /></button></li>
+                                        <i className="fab fa-facebook-f icon-sm ml-1" /></button></li>
                                 <li className="text-capitalize nav-item">
                                     <button className="button">
                                         <i className="fab fa-telegram-plane icon-sm" /></button></li>
