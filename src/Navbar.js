@@ -133,6 +133,8 @@ const NavWrapper = styled.nav`
         height: 1.5rem;
         width: 10rem;
         text-transform: capitalize;
+        cursor: default;
+        font-family: 'Yeseva One', sans-serif;
     }
     .navbar-nav {
         vertical-align: top !important;
@@ -141,9 +143,9 @@ const NavWrapper = styled.nav`
         border-radius: 0.5rem;
         background: none;
         border: none;
-        font-weight: 900;
         outline: none;
         font-size: 1.2rem;
+        font-family: 'Yeseva One', sans-serif;
     }
     #navbarSupportedContent {
         float: left !important;
@@ -159,7 +161,7 @@ const NavWrapper = styled.nav`
     }
     .button:hover {
         animation: text-jump 0.2s;
-        text-shadow: 3px 3px 5px black;
+        text-shadow: 1px 1px 3px black;
         color: red;
         i {
             color: red;

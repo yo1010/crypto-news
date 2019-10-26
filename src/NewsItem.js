@@ -23,7 +23,8 @@ export default class NewsItem extends Component {
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="date ml-auto"><i className="far fa-calendar"></i>{publishedOn}</div>
+                                                <div className="metatag"><button className="keyword-btn">#news</button></div>
+                                                <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
                                     </div>
@@ -40,6 +41,19 @@ const NewsItemWrapper = styled.div`
     border-radius: 0.3rem;
     &:hover {
         cursor: pointer;
+    }
+    .keyword-btn {
+        border: solid 2px red;
+        border-radius: 0.2rem;
+        font-size: 0.75rem;
+        outline: none;
+    }
+    .metatag {
+        margin-bottom: 0.2rem;
+    }
+    .keyword-btn:hover {
+        border:solid 2px green;
+        transition: 1s;
     }
     .title {
         font-size: 0.75rem;
@@ -85,11 +99,15 @@ const NewsItemWrapper = styled.div`
         text-decoration: none !important;
         color: black;
     }
-    .date {
+    .date-btn {
         font-size: 0.75rem;
-        margin-top: 0.1rem;
-        margin-right: 0.5rem;
         color: red;
-        margin-bottom: 0.2rem;
+        border: none;
+        background: none;
+        outline: none;
+        cursor: default;
+    }
+    .date {
+        margin-right: 0.5rem;
     }
 `

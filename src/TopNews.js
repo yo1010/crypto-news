@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import img from '../public/img/top-news.jpg';
+import imgBg from '../public/img/black-and-white-buildings-city-2255.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';
@@ -53,7 +54,7 @@ export default class TopNews extends Component {
                     const {id, title, publishedOn} = value.topNews[this.state.slideIndex];
                     return (
                         <React.Fragment>
-                            <NewsContainer>
+                            <NewsContainer imgUrl={imgBg}>
                                 <div className="container big-container">
                                     <div className="row mx-auto mb-3">
                                         <div className="img-column mx-auto col-10 col-md-8 col-lg-8"
@@ -111,7 +112,10 @@ export default class TopNews extends Component {
 const NewsContainer = styled.div`
     width: 100%;
     border-top: solid 5px red;
-    background: rgba(211,211,211, 0.6);
+    background-color: lightgrey;
+    background-image: url(${props => props.imgUrl});
+    background-size: cover;
+    background-position: center;
     margin-right: 0.8rem;
     margin-top: 7rem;
     border-bottom-color: red;
@@ -282,7 +286,7 @@ const NewsContainer = styled.div`
         margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
-        box-shadow: 0px 0px 2px 2px grey;
+        box-shadow: 0px 0px 2px 2px black;
     }
     .img-column-two {
         position: relative;
@@ -293,7 +297,7 @@ const NewsContainer = styled.div`
         margin-bottom: 1rem;
     }
     .img-sm-column {
-        box-shadow: 0px 0px 2px 2px grey;
+        box-shadow: 0px 0px 2px 2px black;
     }
     .img-sm-column:hover {
         img {
@@ -332,6 +336,12 @@ const NewsContainer = styled.div`
         }
         .img-column-two {
             display: none;
+        }
+        .heading {
+            font-size: 1rem;
+        }
+        .text-column {
+            height: 60%
         }
     }
     @media (min-width: 768px) and (max-width: 992px) {

@@ -52,6 +52,7 @@ const NewsWrapper = styled.div`
     border: solid 0.5rem red;
     border-bottom: none;
     transform: translate(0px, -1.12rem);
+    outline: none;
 }
 
 @media (max-width: 499px) {
