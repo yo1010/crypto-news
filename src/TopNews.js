@@ -214,6 +214,11 @@ const NewsContainer = styled.div`
     .heading {
         margin-top: 0.5rem;
         font-size: 1.5rem;
+        font-weight: bold;
+        font-family: 'Arsenal', sans-serif;
+    }
+    .text {
+        font-family: 'Arsenal', sans-serif;
     }
     .heading-sm {
         margin-top: 0.5rem;

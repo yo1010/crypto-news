@@ -22,15 +22,26 @@ export default class NewsPage extends Component {
                                     <div className="row mx-auto">
                                         <div className="text-container col-5">
                                             <div className="date">
-                                                {publishedOn}
+                                                <span className="icon-container mr-1"><i className="far fa-calendar-alt"></i></span>{publishedOn}
                                             </div>
                                             <div className="title">
                                                 {title}
                                             </div>
-                                            <div className="social-media">
-                                                <button className="button">
+                                            <div className="keywords row">
+                                                <div className="first-keyword">
+                                                    <button className="keyword-btn">#bitcoin-news</button>
+                                                </div>
+                                                <div className="second-keyword">
+                                                    <button className="keyword-btn">#blockchain </button>
+                                                </div>
+                                                <div className="third-keyword">
+                                                    <button className="keyword-btn">#crime</button>
+                                                </div>
+                                            </div>
+                                            <div className="social-media mt-3">
+                                                <button className="button-sm">
                                                     <i className="fab fa-telegram" /></button>
-                                                <button className="button">
+                                                <button className="button-sm">
                                                     <i className="fab fa-facebook" /></button>
                                             </div>
                                         </div>
@@ -59,6 +70,24 @@ const NewsPageWrapper = styled.div`
     .container > * {
         margin-top: 2rem;
     }
+    .keywords {
+        margin-top:0.5rem;
+        margin-left: 0.1rem;
+    }
+    .keyword-btn {
+        margin-top: 0.5rem;
+        margin-right: 0.5rem;
+        border: solid 3px red;
+        border-radius: 0.2rem;
+        font-size: 1rem;
+        background: none;
+        outline: none;
+    }
+    .keyword-btn:hover {
+        font-size: 1.1rem;   
+        border: solid 3px green;
+        transition: 0.5s;
+    }
     .img-container {
         position: relative;
         overflow: hidden;
@@ -71,18 +100,25 @@ const NewsPageWrapper = styled.div`
     .title {
         font-size: 1.5rem;
         font-weight: bold;
+        font-family: 'Yeseva One', sans-serif;
+    }
+    .content {
+        font-family: 'Arsenal', serif;
     }
     .row {
         width: 100%;
     }
     .date {
         color: red;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        margin-top:1rem;
     }
-    button {
+    .button-sm {
         background: none;
         border: none;
     }
-    button: hover {
+    .button-sm: hover {
         color: red;
     }
     i {

@@ -23,7 +23,7 @@ export default class NewsItem extends Component {
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="date ml-auto"><i className="far fa-calendar-alt"></i>{publishedOn}</div>
+                                                <div className="date ml-auto"><i className="far fa-calendar"></i>{publishedOn}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -45,6 +45,7 @@ const NewsItemWrapper = styled.div`
         font-size: 0.75rem;
         height: 50px;
         overflow: hidden;
+        font-family: 'Yeseva One', sans-serif;
     }
     .container {
         box-shadow: 0px 0px 3px 2px darkgrey;
@@ -57,7 +58,7 @@ const NewsItemWrapper = styled.div`
         transition: 1s;
         box-shadow: 0px 0px 3px 2px black;
         .img-container {
-            border-bottom: solid 5px yellow;
+            border-bottom: solid 5px green;
             transition: 1s;
         }
     }

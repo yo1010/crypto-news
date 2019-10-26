@@ -107,7 +107,7 @@ export default class Navbar extends Component {
                             <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
                             </Helmet>
                             <div className="coinlore-priceticker-widget" 
-                            data-mcurrency="usd" data-bcolor="#fff" 
+                            data-mcurrency="rub" data-bcolor="#fff" 
                             data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
                         </div>
                     </div>
