@@ -92,7 +92,7 @@ export default class Navbar extends Component {
                                     <CurrentDate /></li>                                                                                    
                                 <li className="text-capitalize nav-item">
                                     <button className="button">
-                                        <i className="fab fa-facebook-f icon-sm ml-1" /></button></li>
+                                        <i className="fab fa-facebook-f icon-sm" /></button></li>
                                 <li className="text-capitalize nav-item">
                                     <button className="button">
                                         <i className="fab fa-telegram-plane icon-sm" /></button></li>
@@ -127,12 +127,12 @@ const NavWrapper = styled.nav`
         border: none;
         font-weight: 900;
         outline: none;
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: red;
         transform: translate(0px, 5px);
         height: 1.5rem;
-        width: 8rem;
-        border-bottom: 2px solid red;
+        width: 10rem;
+        text-transform: capitalize;
     }
     .navbar-nav {
         vertical-align: top !important;
