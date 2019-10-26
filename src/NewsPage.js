@@ -114,6 +114,9 @@ const NewsPageWrapper = styled.div`
         margin-bottom: 0.5rem;
         margin-top:1rem;
     }
+    .far {
+        font-size: 1.2rem;
+    }
     .button-sm {
         background: none;
         border: none;
@@ -121,7 +124,7 @@ const NewsPageWrapper = styled.div`
     .button-sm: hover {
         color: red;
     }
-    i {
+    .fab {
         font-size: 1.5rem;
     }
     @media (max-width: 502px) {

@@ -110,6 +110,7 @@ export default class TopNews extends Component {
 }
 
 const NewsContainer = styled.div`
+    padding: 1rem;
     width: 100%;
     border-top: solid 5px red;
     background-color: lightgrey;

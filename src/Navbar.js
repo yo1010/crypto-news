@@ -82,6 +82,7 @@ export default class Navbar extends Component {
                             <li className="text-capitalize nav-item ml-1">
                                 <Link to="/">
                                     <button className="button" onClick={() => this.scrollTop()}>
+                                        <div className="slider mx-auto"/>
                                         Новости</button>
                                 </Link>
                             </li>
@@ -139,14 +140,6 @@ const NavWrapper = styled.nav`
     .navbar-nav {
         vertical-align: top !important;
     }
-    .button {
-        border-radius: 0.5rem;
-        background: none;
-        border: none;
-        outline: none;
-        font-size: 1.2rem;
-        font-family: 'Yeseva One', sans-serif;
-    }
     #navbarSupportedContent {
         float: left !important;
     }
@@ -159,12 +152,23 @@ const NavWrapper = styled.nav`
         font-family: 'Staatliches', sans-serif;
         font-size: 1.2rem;
     }
+    .button {
+        background: none;
+        border: none;
+        outline: none;
+        font-size: 1.1rem;
+        font-family: 'Yeseva One', sans-serif;
+    }
     .button:hover {
-        animation: text-jump 0.2s;
-        text-shadow: 1px 1px 3px black;
         color: red;
         i {
             color: red;
+        }
+        .slider {
+            animation: widen 0.5s;
+            width: 100%;
+            backgroun: red;
+            border-top: solid 3px red;
         }
     }
     .navbar-brand-img{
@@ -233,5 +237,11 @@ const NavWrapper = styled.nav`
     @keyframes text-jump {
         from { transform: translate(0px, 0px); }
         to { transform: translate(0px, -3px); }
+    }
+    @keyframes widen {
+        from {width: 0%} to {width: 100%}
+    }
+    @keyframes shorten {
+        from {width: 100%} to {width: 0%}
     }
 `

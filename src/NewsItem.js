@@ -107,6 +107,9 @@ const NewsItemWrapper = styled.div`
         outline: none;
         cursor: default;
     }
+    i {
+        font-size: 0.75rem;
+    }
     .date {
         margin-right: 0.5rem;
     }
