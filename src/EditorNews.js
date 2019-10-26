@@ -17,9 +17,9 @@ export default function EditorNews() {
                                     <img src={img} className="img-fluid" alt="top-news"/>
                                 </div>
                                 <div className="text-column-sm">
-                                        <div className="heading-sm text-capitalize">
-                                            editor's choice:
-                                        </div>
+                                        <button className="btn-danger-sm">
+                                            editor's choice
+                                        </button>
                                 </div>
                                 <div className="editor-title">
                                     <p>{title}</p>

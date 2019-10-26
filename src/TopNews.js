@@ -202,11 +202,13 @@ const NewsContainer = styled.div`
     .btn-danger-sm {
         position: absolute;
         z-index: 1;
-        bottom: 70%;
-        font-size: 1.5rem;
-        background: red !important;
+        bottom: 73%;
+        font-size: 1.4rem;
+        background: green !important;
         color: white;
         outline: none;
+        border: none;
+        text-transform: capitalize;
     }
     .text-container {
         margin-bottom: 1rem;
@@ -248,17 +250,6 @@ const NewsContainer = styled.div`
         padding: 1rem;
         height: 40%;
         margin-bottom: 0.5rem;
-    }
-    .text-column-sm {
-        overflow: hidden;
-        width: 100%;
-        position: absolute;
-        bottom: 56%;
-        color: white;
-        padding: 1rem;
-        height: 40%;
-        margin-bottom: 0.5rem;
-        background: rgba(0,0,0, 0.6);
     }
     .editor-title {
         overflow: hidden;
@@ -347,6 +338,9 @@ const NewsContainer = styled.div`
     @media (min-width: 768px) and (max-width: 992px) {
         .text-container {
             height: 236px;
+        }
+        .btn-danger-sm {
+            font-size: 1.1rem;
         }
     }
     @media (min-width: 992px) and (max-width: 1200px) {

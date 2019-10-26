@@ -53,7 +53,7 @@ const NewsItemWrapper = styled.div`
     }
     .keyword-btn:hover {
         border:solid 2px green;
-        transition: 1s;
+        transition: 0.5s;
     }
     .title {
         font-size: 0.75rem;
