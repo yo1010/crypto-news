@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import logo from '../public/img/Cryptocurrency_Logo.svg';
+import logo from '../public/img/Bitcoinia3.png';
 import CurrentDate from './CurrentDate';
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
@@ -68,7 +68,7 @@ export default class Navbar extends Component {
                     'navbar navbar-expand-sm navbar-dark' : 
                     'no-op navbar navbar-expand-sm navbar-dark'}>
                     <Link to="/">
-                        <div className="navbar-brand ml-2" onClick={() => this.scrollTop()}>
+                        <div className="navbar-brand" onClick={() => this.scrollTop()}>
                             <img src={logo} alt="logo" className="navbar-brand-img"/>
                         </div>
                     </Link>
@@ -77,8 +77,8 @@ export default class Navbar extends Component {
                         <i className="fas fa-bars"></i>
                     </button>
                     <div className={this.state.toggle ? "navbar-collapse" :
-                        "navbar-collapse collapse ml-auto"}  id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
+                        "navbar-collapse collapse"}  id="navbarSupportedContent">
+                        <ul className="navbar-nav">
                             <li className="text-capitalize nav-item ml-1">
                                 <Link to="/">
                                     <button className="button" onClick={() => this.scrollTop()}>
@@ -87,7 +87,7 @@ export default class Navbar extends Component {
                                 </Link>
                             </li>
                         </ul>
-                        <div>
+                        <div className="ml-auto">
                             <ul className="navbar-nav icon-nav">
                                 <li className="text-capitalize nav-item ml-1">
                                     <CurrentDate /></li>                                                                                    
@@ -120,6 +120,9 @@ export default class Navbar extends Component {
 
 const NavWrapper = styled.nav`
     background:white;
+    .coinlore-priceticker-widget {
+        border-none;
+    }
     .header {
         margin-top: 7rem;
     }
@@ -129,7 +132,7 @@ const NavWrapper = styled.nav`
         font-weight: 900;
         outline: none;
         font-size: 0.9rem;
-        color: red;
+        color: var(--mainOrange);
         transform: translate(0px, 5px);
         height: 1.5rem;
         width: 10rem;
@@ -147,33 +150,29 @@ const NavWrapper = styled.nav`
         font-size: 2rem;
         color: black;
     }
-    .btn-about{
-        text-transfom: lowercase !important;
-        font-family: 'Staatliches', sans-serif;
-        font-size: 1.2rem;
-    }
     .button {
         background: none;
         border: none;
         outline: none;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-family: 'Yeseva One', sans-serif;
     }
     .button:hover {
-        color: red;
+        color: var(--mainOrange);
         i {
-            color: red;
+            color: var(--mainOrange);
         }
         .slider {
             animation: widen 0.5s;
             width: 100%;
-            backgroun: red;
-            border-top: solid 3px red;
+            backgroun: var(--mainOrange);
+            border-top: solid 3px var(--mainOrange);
         }
     }
     .navbar-brand-img{
-        width: 3rem;
-        height: 3rem;
+        width: 6rem;
+        height: 2.6rem;
+        padding: 0.4rem;
     }
     &.no-op{
         background: white;
@@ -193,7 +192,7 @@ const NavWrapper = styled.nav`
     }
     .navbar-toggler:hover{
         .fa-bars{
-            color: red;
+            color: var(--mainOrange);
             text-shadow: 2px 2px 1px black;
         }
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import { ProductConsumer } from './context';
-import img from '../public/img/top-news.jpg';
+import img from '../public/img/news-item.jpg';
 
 export default class NewsPage extends Component {
     componentDidUpdate() {
@@ -29,13 +29,13 @@ export default class NewsPage extends Component {
                                             </div>
                                             <div className="keywords row">
                                                 <div className="first-keyword">
-                                                    <button className="keyword-btn">#bitcoin-news</button>
+                                                    <button className="keyword-btn">#биткойн-новости</button>
                                                 </div>
                                                 <div className="second-keyword">
-                                                    <button className="keyword-btn">#blockchain </button>
+                                                    <button className="keyword-btn">#блокчейн</button>
                                                 </div>
                                                 <div className="third-keyword">
-                                                    <button className="keyword-btn">#crime</button>
+                                                    <button className="keyword-btn">#крипто</button>
                                                 </div>
                                             </div>
                                             <div className="social-media mt-3">
@@ -79,25 +79,32 @@ const NewsPageWrapper = styled.div`
     .keyword-btn {
         margin-top: 0.5rem;
         margin-right: 0.5rem;
-        border: solid 3px red;
+        border: solid 3px var(--mainOrange);
         border-radius: 0.2rem;
         font-size: 1rem;
         background: none;
         outline: none;
+        font-weight: bold;
     }
-    .keyword-btn:hover {
-        font-size: 1.1rem;   
-        border: solid 3px green;
-        transition: 0.5s;
+    @media (min-width: 600px) {
+        .keyword-btn:hover {
+            font-size: 1.1rem;   
+            border: solid 3px var(--blueGreen);
+            transition: 0.5s;
+        }
     }
     .img-container {
         position: relative;
         overflow: hidden;
         width: 100%;
         margin-top: 1rem;
-        border-bottom: solid 5px red;
+        border-bottom: solid 5px var(--mainOrange);
         border-radius: 0.2rem;
         box-shadow: 0px 0px 2px 2px grey;
+    }
+    img {
+        filter: grayscale(40%) brightness(80%);
+        border-radius: 0;
     }
     .title {
         font-size: 1.5rem;
@@ -112,7 +119,7 @@ const NewsPageWrapper = styled.div`
         width: 100%;
     }
     .date {
-        color: red;
+        color: var(--mainOrange);
         font-size: 1rem;
         margin-bottom: 0.5rem;
         margin-top:1rem;
@@ -125,7 +132,7 @@ const NewsPageWrapper = styled.div`
         border: none;
     }
     .button-sm: hover {
-        color: red;
+        color: var(--mainOrange);
     }
     .fab {
         font-size: 1.5rem;

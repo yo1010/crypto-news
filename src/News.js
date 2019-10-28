@@ -36,12 +36,12 @@ const NewsWrapper = styled.div`
     width: 100%;
 }
 .separator1{
-    background: red;
+    background: var(--mainOrange);
     width: 10%;
     height: 1.8rem;
 }
 .separator2{
-    background:red;
+    background:var(--mainOrange);
     width: 90%;
     height: 1.8rem;
 }
@@ -49,10 +49,11 @@ const NewsWrapper = styled.div`
     font-weight: bold;
     font-size: 1.5rem;
     background: white;
-    border: solid 0.5rem red;
+    border: solid 0.5rem var(--mainOrange);
     border-bottom: none;
-    transform: translate(0px, -1.12rem);
+    transform: translate(0px, -1.06rem);
     outline: none;
+    padding-bottom: 1px;
 }
 
 @media (max-width: 499px) {

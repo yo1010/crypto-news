@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/top-news.jpg';
+import img from '../public/img/top-news2.jpg';
 import imgBg from '../public/img/black-and-white-buildings-city-2255.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
@@ -112,14 +112,14 @@ export default class TopNews extends Component {
 const NewsContainer = styled.div`
     padding: 1rem;
     width: 100%;
-    border-top: solid 5px red;
+    border-top: solid 5px var(--mainOrange);
     background-color: lightgrey;
     background-image: url(${props => props.imgUrl});
     background-size: cover;
     background-position: center;
     margin-right: 0.8rem;
-    margin-top: 7rem;
-    border-bottom-color: red;
+    margin-top: 6.5rem;
+    border-bottom-color: var(--mainOrange);
     border-bottom-width: 1rem;
     .img-container {
         position: relative;
@@ -155,7 +155,7 @@ const NewsContainer = styled.div`
         padding-right: 0;
     }
     .btn-slide:hover {
-        color: red;
+        color: var(--mainOrange);
         text-shadow: 2px 2px 2px black;
         animation: text-jump 0.2s;
         animation-iteration-count: 3;
@@ -186,15 +186,16 @@ const NewsContainer = styled.div`
         z-index: 4;
     }
     .active, .dot: hover {
-        background-color: red;
+        background-color: var(--mainOrange);
     }
     .btn-danger {
         position: absolute;
         z-index: 1;
         bottom: 70%;
         font-size: 2rem;
-        background: red !important;
+        background: var(--mainOrange) !important;
         outline: none;
+        border: var(--mainOrange) !important;
     }
     .editors-choice {
         margin-top: 1rem;
@@ -205,10 +206,10 @@ const NewsContainer = styled.div`
         z-index: 1;
         bottom: 73%;
         font-size: 1.4rem;
-        background: green !important;
+        background: var(--blueGreen) !important;
         color: white;
         outline: none;
-        border: none;
+        border: var(--blueGreen) !important;
         text-transform: capitalize;
     }
     .text-container {
@@ -229,7 +230,7 @@ const NewsContainer = styled.div`
     }
     .heading-sm {
         margin-top: 0.5rem;
-        color: red;
+        color: var(--mainOrange);
         font-size: 1rem;
     }
     .img-sm {
@@ -240,7 +241,7 @@ const NewsContainer = styled.div`
         margin-top: 1.2rem;
     }
     .second-image {
-        margin-top:4.1rem;
+        margin-top:3.35rem;
     }
     .text-column {
         overflow: hidden;
@@ -266,7 +267,7 @@ const NewsContainer = styled.div`
     .img-column {
         position: relative;
         border-width: 5px;
-        border-color: red;
+        border-color: var(--mainOrange);
         margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -274,7 +275,7 @@ const NewsContainer = styled.div`
     .img-column-one {
         position: relative;
         border-width: 5px;
-        border-color: red;
+        border-color: var(--mainOrange);
         margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -283,7 +284,7 @@ const NewsContainer = styled.div`
     .img-column-two {
         position: relative;
         border-width: 5px;
-        border-color: red;
+        border-color: var(--mainOrange);
         margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;

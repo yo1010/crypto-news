@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/top-news.jpg';
+import img from '../public/img/news-item.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
 
@@ -43,7 +43,7 @@ const NewsItemWrapper = styled.div`
         cursor: pointer;
     }
     .keyword-btn {
-        border: solid 2px red;
+        border: solid 2px var(--mainOrange);
         border-radius: 0.2rem;
         font-size: 0.75rem;
         outline: none;
@@ -52,7 +52,7 @@ const NewsItemWrapper = styled.div`
         margin-bottom: 0.2rem;
     }
     .keyword-btn:hover {
-        border:solid 2px green;
+        border:solid 2px var(--blueGreen);
         transition: 0.5s;
     }
     .title {
@@ -72,8 +72,8 @@ const NewsItemWrapper = styled.div`
         transition: 1s;
         box-shadow: 0px 0px 3px 2px black;
         .img-container {
-            border-bottom: solid 5px green;
-            transition: 1s;
+            border-bottom: solid 5px var(--blueGreen);
+            transition: 0.5s;
         }
     }
     .img-container {
@@ -81,9 +81,12 @@ const NewsItemWrapper = styled.div`
         overflow: hidden;
         width: 100%;
         margin-top: 1rem;
-        border-bottom: solid 5px red;
+        border-bottom: solid 5px var(--mainOrange);
         border-radius: 0.2rem;
         box-shadow: 0px 0px 1px 1px grey;
+    }
+    img {
+        filter: grayscale(40%) brightness(80%);
     }
     .text {
         overflow: hidden;
@@ -101,7 +104,7 @@ const NewsItemWrapper = styled.div`
     }
     .date-btn {
         font-size: 0.75rem;
-        color: red;
+        color: var(--mainOrange);
         border: none;
         background: none;
         outline: none;
