@@ -51,10 +51,6 @@ const NewsItemWrapper = styled.div`
     .metatag {
         margin-bottom: 0.2rem;
     }
-    .keyword-btn:hover {
-        border:solid 2px var(--blueGreen);
-        transition: 0.5s;
-    }
     .title {
         font-size: 0.75rem;
         height: 50px;
@@ -74,6 +70,9 @@ const NewsItemWrapper = styled.div`
         .img-container {
             border-bottom: solid 5px var(--blueGreen);
             transition: 0.5s;
+        }
+        .date-btn {
+            color: var(--blueGreen);
         }
     }
     .img-container {

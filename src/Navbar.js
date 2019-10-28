@@ -198,6 +198,10 @@ const NavWrapper = styled.nav`
         height: 2.6rem;
         padding: 0.4rem;
     }
+    .navbar-brand-img:hover {
+        transition:0.5s;
+        padding: 0;
+    }
     &.no-op{
         background: white;
         transition: 1s !important;
