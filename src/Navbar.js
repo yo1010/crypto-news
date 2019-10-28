@@ -64,8 +64,20 @@ export default class Navbar extends Component {
     render() {
         return (
             <div className="nav-container fixed-top">
+                <div className="header">
+                    <div className="row">
+                        <div className="col-sm-12 data">
+                            <Helmet>
+                            <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
+                            </Helmet>
+                            <div className="coinlore-priceticker-widget" 
+                            data-mcurrency="rub" data-bcolor="#fff" 
+                            data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
+                        </div>
+                    </div>
+                </div>
                 <NavWrapper className={this.state.hasScrolled ? 
-                    'navbar navbar-expand-sm navbar-dark' : 
+                    'navbar op navbar-expand-sm navbar-dark' : 
                     'no-op navbar navbar-expand-sm navbar-dark'}>
                     <Link to="/">
                         <div className="navbar-brand" onClick={() => this.scrollTop()}>
@@ -85,6 +97,21 @@ export default class Navbar extends Component {
                                         <div className="slider mx-auto"/>
                                         Новости</button>
                                 </Link>
+                                <Link to="/">
+                                    <button className="button" onClick={() => this.scrollTop()}>
+                                        <div className="slider mx-auto"/>
+                                        Биткойн</button>
+                                </Link>
+                                <Link to="/">
+                                    <button className="button" onClick={() => this.scrollTop()}>
+                                        <div className="slider mx-auto"/>
+                                        Алткойн</button>
+                                </Link>
+                                <Link to="/">
+                                    <button className="button" onClick={() => this.scrollTop()}>
+                                        <div className="slider mx-auto"/>
+                                        Блокчейн</button>
+                                </Link>
                             </li>
                         </ul>
                         <div className="ml-auto">
@@ -92,8 +119,12 @@ export default class Navbar extends Component {
                                 <li className="text-capitalize nav-item ml-1">
                                     <CurrentDate /></li>                                                                                    
                                 <li className="text-capitalize nav-item">
-                                    <button className="button">
-                                        <i className="fab fa-facebook-f icon-sm" /></button></li>
+                                    <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                        <button className="button">
+                                        <i className="fab fa-facebook-f icon-sm" />
+                                        </button>
+                                    </a>
+                                </li>
                                 <li className="text-capitalize nav-item">
                                     <button className="button">
                                         <i className="fab fa-telegram-plane icon-sm" /></button></li>
@@ -101,18 +132,6 @@ export default class Navbar extends Component {
                         </div>
                     </div>
                 </NavWrapper>
-                <div className="header">
-                    <div className="row">
-                        <div className="col-sm-12 data">
-                            <Helmet>
-                            <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
-                            </Helmet>
-                            <div className="coinlore-priceticker-widget" 
-                            data-mcurrency="rub" data-bcolor="#fff" 
-                            data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
-                        </div>
-                    </div>
-                </div>
             </div>
         )
     }
@@ -142,6 +161,7 @@ const NavWrapper = styled.nav`
     }
     .navbar-nav {
         vertical-align: top !important;
+        flex-direction: row !important;
     }
     #navbarSupportedContent {
         float: left !important;
@@ -156,6 +176,10 @@ const NavWrapper = styled.nav`
         outline: none;
         font-size: 1rem;
         font-family: 'Yeseva One', sans-serif;
+    }
+    .slider {
+        width: 100%;
+        border-top: solid 3px white;
     }
     .button:hover {
         color: var(--mainOrange);
@@ -177,6 +201,11 @@ const NavWrapper = styled.nav`
     &.no-op{
         background: white;
         transition: 1s !important;
+    }
+    &.op{
+        box-shadow: 0px 4px 2px -2px darkgrey;
+        padding-bottom: 1rem;
+        transition: 0.5s;
     }
     .navbar-collapse{
         margin-left: auto !important;
@@ -201,9 +230,6 @@ const NavWrapper = styled.nav`
         padding-left: 2px;
     }
     @media (min-width: 768px) {
-        .navbar-toggler {
-            display: none !important;
-        }
         .navbar-nav {
             width: 100%;
         }

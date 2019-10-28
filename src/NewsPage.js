@@ -15,7 +15,8 @@ export default class NewsPage extends Component {
             <React.Fragment>
                 <ProductConsumer>
                     {(value) => {
-                        const {title, content, publishedOn} = value.openNewsItem;
+                        const {title, content, paragraph1, paragraph2, paragraph3, publishedOn, 
+                            keyword1, keyword2, keyword3, subtitle1, subtitle2, subtitle3} = value.openNewsItem;
                         return (
                             <NewsPageWrapper>
                                 <div className="container mx-auto">
@@ -29,30 +30,38 @@ export default class NewsPage extends Component {
                                             </div>
                                             <div className="keywords row">
                                                 <div className="first-keyword">
-                                                    <button className="keyword-btn">#биткойн-новости</button>
+                                                    <button className="keyword-btn">#{keyword1}</button>
                                                 </div>
                                                 <div className="second-keyword">
-                                                    <button className="keyword-btn">#блокчейн</button>
+                                                    <button className="keyword-btn">#{keyword2}</button>
                                                 </div>
                                                 <div className="third-keyword">
-                                                    <button className="keyword-btn">#крипто</button>
+                                                    <button className="keyword-btn">#{keyword3}</button>
                                                 </div>
                                             </div>
                                             <div className="social-media mt-3">
+                                                <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                                    <button className="button-sm">
+                                                        <i className="fab fa-facebook" /></button>
+                                                </a>
                                                 <button className="button-sm">
                                                     <i className="fab fa-telegram" /></button>
-                                                <button className="button-sm">
-                                                    <i className="fab fa-facebook" /></button>
                                             </div>
                                         </div>
                                         <div className="col-7">
                                             <div className="img-container">
-                                                <img src={img} className="img-fluid img-thumbnail"alt="news photo"/>
+                                                <img src={img} className="img-fluid img-thumbnail" alt="news photo"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="content">
-                                        {content}
+                                    <div className="content mt-5">
+                                        <div className="mb-5">{content}</div>
+                                        <div className="mb-5 sub-title">{subtitle1}</div>
+                                        <div className="mb-5">{paragraph1}</div>
+                                        <div className="mb-5 sub-title">{subtitle2}</div>
+                                        <div className="mb-5">{paragraph2}</div>
+                                        <div className="mb-5 sub-title">{subtitle3}</div>
+                                        <div className="mb-5">{paragraph3}</div>
                                     </div>
                                 </div>
                             </NewsPageWrapper>
@@ -86,9 +95,13 @@ const NewsPageWrapper = styled.div`
         outline: none;
         font-weight: bold;
     }
+    .sub-title {
+        font-weight: bold;
+        font-family: 'Yeseva One', sans-serif;
+        color: var(--mainOrange);
+    }
     @media (min-width: 600px) {
-        .keyword-btn:hover {
-            font-size: 1.1rem;   
+        .keyword-btn:hover {  
             border: solid 3px var(--blueGreen);
             transition: 0.5s;
         }
@@ -130,6 +143,7 @@ const NewsPageWrapper = styled.div`
     .button-sm {
         background: none;
         border: none;
+        outline: none;
     }
     .button-sm: hover {
         color: var(--mainOrange);
@@ -139,7 +153,10 @@ const NewsPageWrapper = styled.div`
     }
     @media (max-width: 502px) {
         .title {
-            font-size: 2rem;
+            font-size: 1rem;
+        }
+        .keyword-btn {
+            font-size: 0.75rem;
         }
     }
 `

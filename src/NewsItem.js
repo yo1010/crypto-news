@@ -66,11 +66,11 @@ const NewsItemWrapper = styled.div`
         border-radius: 0.2rem;
         padding: 0.5rem;
         margin-right: 1rem;
-        background: rgba(211,211,211, 0.2);
+        background: white;
     }
     .container:hover {
         transition: 1s;
-        box-shadow: 0px 0px 3px 2px black;
+        box-shadow: 0px 0px 4px 3px darkgrey;
         .img-container {
             border-bottom: solid 5px var(--blueGreen);
             transition: 0.5s;

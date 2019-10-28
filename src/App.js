@@ -7,6 +7,7 @@ import './App.css';
 import News from './News';
 import NewsPage from './NewsPage';
 import Default from './Default';
+import Footer from './Footer';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route component={Default}/>
         </Switch>
         <News/>
+        <Footer/>
       </React.Fragment>
     );
   }

@@ -196,6 +196,7 @@ const NewsContainer = styled.div`
         background: var(--mainOrange) !important;
         outline: none;
         border: var(--mainOrange) !important;
+        font-family: 'Yeseva One', sans-serif;
     }
     .editors-choice {
         margin-top: 1rem;
@@ -211,6 +212,7 @@ const NewsContainer = styled.div`
         outline: none;
         border: var(--blueGreen) !important;
         text-transform: capitalize;
+        font-family: 'Yeseva One', sans-serif;
     }
     .text-container {
         margin-bottom: 1rem;
@@ -347,7 +349,8 @@ const NewsContainer = styled.div`
     }
     @media (min-width: 992px) and (max-width: 1200px) {
         .text-container {
-            height: 326px;
+            height: 326px
+            font-size: 1rem;
         }
     }
     @media (min-width: 1200px) {
