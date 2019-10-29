@@ -57,7 +57,7 @@ export default class TopNews extends Component {
                             <NewsContainer imgUrl={imgBg}>
                                 <div className="container big-container">
                                     <div className="row mx-auto mb-3">
-                                        <div className="img-column mx-auto col-10 col-md-8 col-lg-8"
+                                        <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
                                         onClick={() => {value.handleTopDetail(id)}}>
                                             <Link className="article-link" to={`/newsarticle/${title}`}>
                                                 <div className="img-column-one mx-auto">
@@ -229,6 +229,7 @@ const NewsContainer = styled.div`
     }
     .text {
         font-family: 'Arsenal', sans-serif;
+        font-size: 1rem;
     }
     .heading-sm {
         margin-top: 0.5rem;
@@ -243,7 +244,7 @@ const NewsContainer = styled.div`
         margin-top: 1.2rem;
     }
     .second-image {
-        margin-top:3.35rem;
+        margin-top:3.30rem;
     }
     .text-column {
         overflow: hidden;
@@ -262,9 +263,9 @@ const NewsContainer = styled.div`
         bottom: 0%;
         color: white;
         padding: 1rem;
-        height: 40%;
+        height: 70%;
         margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     .img-column {
         position: relative;
@@ -312,12 +313,7 @@ const NewsContainer = styled.div`
     @keyframes fade {
         from {opacity: 0.4} to {opacity: 1}
     }
-    @media (max-width: 767px) {
-        .title {
-            margin: 3rem;
-        }
-    }
-    @meida (min-width: 767px) {
+    @media (min-width: 767px) {
         .title {
             margin: 2rem;
         }
@@ -325,6 +321,7 @@ const NewsContainer = styled.div`
     @media (max-width: 768px) {
         .text-container {
             height: 295px;
+            font-size: 1rem;
         }
         .display-lg{
             display: none;
@@ -335,16 +332,26 @@ const NewsContainer = styled.div`
         .heading {
             font-size: 1rem;
         }
-        .text-column {
-            height: 60%
+        .title {
+            margin: 3rem;
+        }
+        .btn-danger {
+            font-size: 1.2rem;
         }
     }
     @media (min-width: 768px) and (max-width: 992px) {
         .text-container {
             height: 236px;
+            font-size: 1rem;
         }
         .btn-danger-sm {
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+        .editor-title {
+            font-size: 0.70rem;
+        }
+        .heading {
+            font-size: 1rem;
         }
     }
     @media (min-width: 992px) and (max-width: 1200px) {
@@ -356,6 +363,11 @@ const NewsContainer = styled.div`
     @media (min-width: 1200px) {
         .text-container {
             height: 393px;
+        }
+    }
+    @media (max-width: 499px) {
+        .text-column {
+            height: 75%;
         }
     }
 `

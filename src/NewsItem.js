@@ -71,9 +71,6 @@ const NewsItemWrapper = styled.div`
             border-bottom: solid 5px var(--blueGreen);
             transition: 0.5s;
         }
-        .date-btn {
-            color: var(--blueGreen);
-        }
     }
     .img-container {
         position: relative;
@@ -114,5 +111,12 @@ const NewsItemWrapper = styled.div`
     }
     .date {
         margin-right: 0.5rem;
+    }
+    @media (max-width: 499px) {
+        .keyword-btn {font-size:0.5rem;}
+        .date-btn {
+            font-size:0.5rem;
+            font-weight: bold;
+        }
     }
 `

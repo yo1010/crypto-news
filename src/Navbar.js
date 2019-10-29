@@ -76,9 +76,29 @@ export default class Navbar extends Component {
                         </div>
                     </div>
                 </div>
+                <NavWrapper className="top-nav">
+                    <ul className="navbar-nav icon-nav">
+                        <li className="nav-item mr-auto">
+                            <form class="form-inline my-lg-0">
+                                <button class="btn button my-sm-0" type="submit"><i className="fas fa-search search-icon pt-1"></i></button>
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search"/>
+                            </form>
+                        </li>                                                                                   
+                        <li className="text-capitalize nav-item">
+                            <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                <button className="button">
+                                <i className="fab fa-facebook-f icon-sm pt-1" />
+                                </button>
+                            </a>
+                        </li>
+                        <li className="text-capitalize nav-item mr-1">
+                            <button className="button">
+                                <i className="fab fa-telegram-plane icon-sm pt-1" /></button></li>
+                    </ul>
+                </NavWrapper>
                 <NavWrapper className={this.state.hasScrolled ? 
-                    'navbar op navbar-expand-sm navbar-dark' : 
-                    'no-op navbar navbar-expand-sm navbar-dark'}>
+                    'navbar op navbar-expand-md navbar-dark' : 
+                    'no-op navbar navbar-expand-md navbar-dark'}>
                     <Link to="/">
                         <div className="navbar-brand" onClick={() => this.scrollTop()}>
                             <img src={logo} alt="logo" className="navbar-brand-img"/>
@@ -97,37 +117,12 @@ export default class Navbar extends Component {
                                         <div className="slider mx-auto"/>
                                         Новости</button>
                                 </Link>
-                                <Link to="/">
-                                    <button className="button" onClick={() => this.scrollTop()}>
-                                        <div className="slider mx-auto"/>
-                                        Биткойн</button>
-                                </Link>
-                                <Link to="/">
-                                    <button className="button" onClick={() => this.scrollTop()}>
-                                        <div className="slider mx-auto"/>
-                                        Алткойн</button>
-                                </Link>
-                                <Link to="/">
-                                    <button className="button" onClick={() => this.scrollTop()}>
-                                        <div className="slider mx-auto"/>
-                                        Блокчейн</button>
-                                </Link>
                             </li>
                         </ul>
                         <div className="ml-auto">
                             <ul className="navbar-nav icon-nav">
-                                <li className="text-capitalize nav-item ml-1">
-                                    <CurrentDate /></li>                                                                                    
                                 <li className="text-capitalize nav-item">
-                                    <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
-                                        <button className="button">
-                                        <i className="fab fa-facebook-f icon-sm" />
-                                        </button>
-                                    </a>
-                                </li>
-                                <li className="text-capitalize nav-item">
-                                    <button className="button">
-                                        <i className="fab fa-telegram-plane icon-sm" /></button></li>
+                                    <CurrentDate /></li>                                                                               
                             </ul>
                         </div>
                     </div>
@@ -139,6 +134,22 @@ export default class Navbar extends Component {
 
 const NavWrapper = styled.nav`
     background:white;
+    &.top-nav {
+        background: var(--blueGreen);
+    }
+    .form-control {
+        width: 8rem;
+        height: 1.5rem;
+        box-shadow: inset 0 0 3px #000000;
+        border: none;
+    }
+    .search-icon {
+        font-size: 1.2rem;
+    }
+    .search-container {
+        flex-direction: row !important;
+        padding: 0px;
+    }
     .coinlore-priceticker-widget {
         border-none;
     }
@@ -167,7 +178,7 @@ const NavWrapper = styled.nav`
         float: left !important;
     }
     i {
-        font-size: 2rem;
+        font-size: 1.2rem;
         color: black;
     }
     .button {
@@ -176,6 +187,7 @@ const NavWrapper = styled.nav`
         outline: none;
         font-size: 1rem;
         font-family: 'Yeseva One', sans-serif;
+        height: 2.5rem;
     }
     .slider {
         width: 100%;
@@ -238,12 +250,14 @@ const NavWrapper = styled.nav`
             width: 100%;
         }
     }
+    @media (max-width: 900px) {
+        navbar-toggler {
+            margin-left: auto;
+        }
+    }
     @media (max-width: 576px) {
         li {
             margin-left: 0;
-        }
-        .navbar-toggler{
-            margin-left: auto;
         }
         .navbar-collapse {
             width: 100%;

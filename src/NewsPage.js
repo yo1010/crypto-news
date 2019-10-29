@@ -21,47 +21,51 @@ export default class NewsPage extends Component {
                             <NewsPageWrapper>
                                 <div className="container mx-auto">
                                     <div className="row mx-auto">
-                                        <div className="text-container col-5">
-                                            <div className="date">
-                                                <span className="icon-container mr-1"><i className="far fa-calendar-alt"></i></span>{publishedOn}
-                                            </div>
-                                            <div className="title">
-                                                {title}
-                                            </div>
-                                            <div className="keywords row">
-                                                <div className="first-keyword">
-                                                    <button className="keyword-btn">#{keyword1}</button>
+                                        <div className="col-12">
+                                            <div className="row header">
+                                                <div className="date">
+                                                    <span className="icon-container mr-1"><i className="far fa-calendar-alt"></i></span>{publishedOn}
                                                 </div>
-                                                <div className="second-keyword">
-                                                    <button className="keyword-btn">#{keyword2}</button>
-                                                </div>
-                                                <div className="third-keyword">
-                                                    <button className="keyword-btn">#{keyword3}</button>
-                                                </div>
-                                            </div>
-                                            <div className="social-media mt-3">
-                                                <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                                <div className="social-media mt-3 ml-auto">
+                                                    <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                                        <button className="button-sm">
+                                                            <i className="fab fa-facebook" /></button>
+                                                    </a>
                                                     <button className="button-sm">
-                                                        <i className="fab fa-facebook" /></button>
-                                                </a>
-                                                <button className="button-sm">
-                                                    <i className="fab fa-telegram" /></button>
+                                                        <i className="fab fa-telegram" /></button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="col-7">
+                                        <div className="text-container col-12 mt-1 border-container">
+                                            <div className="title mt-1">
+                                                {title}
+                                            </div>
+                                        </div>
+                                        <div className="col-12 mt-1">
                                             <div className="img-container">
-                                                <img src={img} className="img-fluid img-thumbnail" alt="news photo"/>
+                                                <img src={img} className="img-fluid" alt="news photo"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="content mt-5">
-                                        <div className="mb-5">{content}</div>
-                                        <div className="mb-5 sub-title">{subtitle1}</div>
-                                        <div className="mb-5">{paragraph1}</div>
-                                        <div className="mb-5 sub-title">{subtitle2}</div>
-                                        <div className="mb-5">{paragraph2}</div>
-                                        <div className="mb-5 sub-title">{subtitle3}</div>
-                                        <div className="mb-5">{paragraph3}</div>
+                                    <div className="container content">
+                                        <div className="mb-3">{content}</div>
+                                        <div className="mb-3 sub-title">{subtitle1}</div>
+                                        <div className="mb-3">{paragraph1}</div>
+                                        <div className="mb-3 sub-title">{subtitle2}</div>
+                                        <div className="mb-3">{paragraph2}</div>
+                                        <div className="mb-3 sub-title">{subtitle3}</div>
+                                        <div className="mb-3">{paragraph3}</div>
+                                        <div className="keywords row mb-2">
+                                            <div className="first-keyword">
+                                                <button className="keyword-btn">#{keyword1}</button>
+                                            </div>
+                                            <div className="second-keyword">
+                                                <button className="keyword-btn">#{keyword2}</button>
+                                            </div>
+                                            <div className="third-keyword">
+                                                <button className="keyword-btn">#{keyword3}</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </NewsPageWrapper>
@@ -78,12 +82,17 @@ const NewsPageWrapper = styled.div`
     .container {
         padding:1rem;
     }
-    .container > * {
-        margin-top: 2rem;
+    .border-container {
+        border-top: solid 5px var(--mainOrange);
+        border-radius: 0.2rem;
+    }
+    .header {
+        margin-left: 0.1rem;
     }
     .keywords {
         margin-top:0.5rem;
         margin-left: 0.1rem;
+        font-family: "Yeseva One", sans-serif;
     }
     .keyword-btn {
         margin-top: 0.5rem;
@@ -94,17 +103,12 @@ const NewsPageWrapper = styled.div`
         background: none;
         outline: none;
         font-weight: bold;
+        cursor: default;
     }
     .sub-title {
         font-weight: bold;
         font-family: 'Yeseva One', sans-serif;
         color: var(--mainOrange);
-    }
-    @media (min-width: 600px) {
-        .keyword-btn:hover {  
-            border: solid 3px var(--blueGreen);
-            transition: 0.5s;
-        }
     }
     .img-container {
         position: relative;
@@ -114,6 +118,7 @@ const NewsPageWrapper = styled.div`
         border-bottom: solid 5px var(--mainOrange);
         border-radius: 0.2rem;
         box-shadow: 0px 0px 2px 2px grey;
+        height: 200px;
     }
     img {
         filter: grayscale(40%) brightness(80%);
@@ -123,10 +128,11 @@ const NewsPageWrapper = styled.div`
         font-size: 1.5rem;
         font-weight: bold;
         font-family: 'Yeseva One', sans-serif;
+        text-align: center;
     }
     .content {
         font-family: 'Arsenal', serif;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
     .row {
         width: 100%;

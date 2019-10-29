@@ -7,8 +7,8 @@ export default function MostReadNews() {
     return (
         <ProductConsumer>
             {value => {
-                if (value.hottestNews !== undefined) {
-                    const {id, title} = value.hottestNews;
+                if (value.news[6] !== undefined) {
+                    const {id, title} = value.news[6];
                     return(
                         <div className="img-sm-column second-image mx-auto" onClick={() => {value.handleHotDetail(id)}}>
                             <Link className="article-link" to={`/newsarticle/${id}`}>
