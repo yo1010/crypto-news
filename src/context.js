@@ -31,11 +31,13 @@ class ProductProvider extends Component {
         })
     };
     handleSearch = (input) => {
-        let newState = [];
-        newState = this.state.news.filter(article => article.content ? article.content.includes(input) : null);
-        this.setState({
-            searchList: newState
-        });
+        if (input !== "") {
+            let newState = [];
+            newState = this.state.news.filter(article => article.content ? article.content.includes(input) : null);
+            this.setState({
+                searchList: newState
+            });
+        }
     };
     handleTopDetail = (id) => {
         const newsItem = this.state.topNews.find((item => item.id === id));

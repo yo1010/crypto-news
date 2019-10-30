@@ -23,15 +23,18 @@ export default class Navbar extends Component {
         this.updateInputValue = this.updateInputValue.bind(this);
         this.clearInputValue = this.clearInputValue.bind(this);
         this.hasClicked = this.hasClicked.bind(this);
+        this.hasntClicked = this.hasntClicked.bind(this);
     }
     hasClicked() {
         if (this.state.hideSearch === false) {
             this.setState({hideSearch: true})
         }
+        console.log(this.state.hideSearch);
+    }
+    hasntClicked() {
         if (this.state.hideSearch === true) {
             this.setState({hideSearch: false})
         }
-        console.log(this.state.hideSearch);
     }
     updateInputValue(e) {
         this.setState({
@@ -141,24 +144,28 @@ export default class Navbar extends Component {
                                                     Новости</button>
                                             </Link>
                                         </li>
-                                        <li className="nav-item ml-auto">
-                                            <form className="form-inline my-lg-0">
-                                                <div className="search-bar row">
-                                                    <Link to="/search-results">
-                                                        <button className="btn-search button" type="submit" onClick={()=>{
-                                                            value.handleSearch(this.state.inputValue);
-                                                            this.clearInputValue();
-                                                            this.hasClicked();
-                                                            }}>
-                                                            <i className="fas fa-search search-icon pt-1"></i></button>
-                                                    </Link>
-                                                    <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
-                                                    onChange={this.updateInputValue} type="search" placeholder="Search" aria-label="Search"/>
-                                                </div>
-                                            </form>
-                                        </li> 
-                                        <li className="text-capitalize nav-item ml-1 py-1">
+                                        <li className="text-capitalize nav-item ml-auto py-1">
                                             <CurrentDate /></li> 
+                                        <li className="nav-item mr-1">
+                                            <div className="search-bar row">
+                                                <button className={this.state.hideSearch ? "btn-search button hiddenInput" : "btn-search button"} onClick={()=>{
+                                                    this.hasClicked();
+                                                    }}>
+                                                    <i className="fas fa-search search-icon pt-1"></i></button>
+                                                <form className="form-inline my-lg-0">
+                                                        <Link to="/search-results" className={!this.state.inputValue ? "disabled-link" : ""}>
+                                                            <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} type="submit" onClick={()=>{
+                                                                value.handleSearch(this.state.inputValue);
+                                                                this.clearInputValue();
+                                                                this.hasntClicked();
+                                                                }} disabled={!this.state.inputValue}>
+                                                                <i className="fas fa-search search-icon pt-1"></i></button>
+                                                        </Link>
+                                                        <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
+                                                        onChange={this.updateInputValue} type="search" placeholder="Search" aria-label="Search"/>
+                                                </form>
+                                            </div>
+                                        </li> 
                                     </ul>
                                 </div>
                             </NavWrapper>
@@ -172,6 +179,9 @@ export default class Navbar extends Component {
 
 const NavWrapper = styled.nav`
     background:white;
+    .disabled-link {
+        pointer-events: none;
+    }
     .btn-search {
         padding-left: 0.7rem;
         padding-right: 0.7rem;
