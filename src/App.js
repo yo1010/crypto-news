@@ -8,6 +8,7 @@ import News from './News';
 import NewsPage from './NewsPage';
 import Default from './Default';
 import Footer from './Footer';
+import SearchResults from './SearchResults';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={TopNews}/>
           <Route path="/newsarticle" component={NewsPage}/>
+          <Route path="/search-results" component={SearchResults}/>
           <Route component={Default}/>
         </Switch>
         <News/>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import logo from '../public/img/Bitcoinia3.png';
 import CurrentDate from './CurrentDate';
+import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 
@@ -12,11 +13,35 @@ export default class Navbar extends Component {
             hasScrolled: false,
             modalOpen: false,
             modalOpenPhone: false,
-            toggle: false
+            toggle: false,
+            inputValue: "",
+            hideSearch: false
         };
         this.handleScroll = this.handleScroll.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.scrollTop = this.scrollTop.bind(this);
+        this.updateInputValue = this.updateInputValue.bind(this);
+        this.clearInputValue = this.clearInputValue.bind(this);
+        this.hasClicked = this.hasClicked.bind(this);
+    }
+    hasClicked() {
+        if (this.state.hideSearch === false) {
+            this.setState({hideSearch: true})
+        }
+        if (this.state.hideSearch === true) {
+            this.setState({hideSearch: false})
+        }
+        console.log(this.state.hideSearch);
+    }
+    updateInputValue(e) {
+        this.setState({
+            inputValue: e.target.value
+        })
+    }
+    clearInputValue() {
+        this.setState({
+            inputValue: ""
+        })
     }
     handleScroll() {
         let topOfPage = window.pageYOffset;
@@ -62,93 +87,121 @@ export default class Navbar extends Component {
         window.addEventListener('click', this.handleClick);
     }
     render() {
+        console.log(this.state.inputValue);
         return (
-            <div className="nav-container fixed-top">
-                <div className="header">
-                    <div className="row">
-                        <div className="col-sm-12 data">
-                            <Helmet>
-                            <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
-                            </Helmet>
-                            <div className="coinlore-priceticker-widget" 
-                            data-mcurrency="rub" data-bcolor="#fff" 
-                            data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
-                        </div>
-                    </div>
-                </div>
-                <NavWrapper className="top-nav">
-                    <ul className="navbar-nav icon-nav">
-                        <li className="nav-item mr-auto">
-                            <form class="form-inline my-lg-0">
-                                <button class="btn button my-sm-0" type="submit"><i className="fas fa-search search-icon pt-1"></i></button>
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search"/>
-                            </form>
-                        </li>                                                                                   
-                        <li className="text-capitalize nav-item">
-                            <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
-                                <button className="button">
-                                <i className="fab fa-facebook-f icon-sm pt-1" />
-                                </button>
-                            </a>
-                        </li>
-                        <li className="text-capitalize nav-item mr-1">
-                            <button className="button">
-                                <i className="fab fa-telegram-plane icon-sm pt-1" /></button></li>
-                    </ul>
-                </NavWrapper>
-                <NavWrapper className={this.state.hasScrolled ? 
-                    'navbar op navbar-expand-md navbar-dark' : 
-                    'no-op navbar navbar-expand-md navbar-dark'}>
-                    <Link to="/">
-                        <div className="navbar-brand" onClick={() => this.scrollTop()}>
-                            <img src={logo} alt="logo" className="navbar-brand-img"/>
-                        </div>
-                    </Link>
-                    <button className="navbar-toggler" type="button" data-target="#navbarSupportedContent" 
-                    aria-controls="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i className="fas fa-bars"></i>
-                    </button>
-                    <div className={this.state.toggle ? "navbar-collapse" :
-                        "navbar-collapse collapse"}  id="navbarSupportedContent">
-                        <ul className="navbar-nav">
-                            <li className="text-capitalize nav-item ml-1">
+            <ProductConsumer>
+                {value => {
+                    return (
+                        <div className="nav-container fixed-top">
+                            <div className="header">
+                                <div className="row">
+                                    <div className="col-sm-12 data">
+                                        <Helmet>
+                                        <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
+                                        </Helmet>
+                                        <div className="coinlore-priceticker-widget" 
+                                        data-mcurrency="rub" data-bcolor="#fff" 
+                                        data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <NavWrapper className="top-nav">
+                                <ul className="navbar-nav icon-nav">                                                                                 
+                                    <li className="text-capitalize nav-item ml-auto">
+                                        <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                            <button className="button">
+                                            <i className="fab fa-facebook icon-sm" />
+                                            </button>
+                                        </a>
+                                    </li>
+                                    <li className="text-capitalize nav-item mr-1">
+                                        <button className="button">
+                                            <i className="fab fa-telegram icon-sm" /></button></li>
+                                </ul>
+                            </NavWrapper>
+                            <NavWrapper className={this.state.hasScrolled ? 
+                                'navbar op navbar-expand-md navbar-dark' : 
+                                'no-op navbar navbar-expand-md navbar-dark'}>
                                 <Link to="/">
-                                    <button className="button" onClick={() => this.scrollTop()}>
-                                        <div className="slider mx-auto"/>
-                                        Новости</button>
+                                    <div className="navbar-brand" onClick={() => this.scrollTop()}>
+                                        <img src={logo} alt="logo" className="navbar-brand-img"/>
+                                    </div>
                                 </Link>
-                            </li>
-                        </ul>
-                        <div className="ml-auto">
-                            <ul className="navbar-nav icon-nav">
-                                <li className="text-capitalize nav-item">
-                                    <CurrentDate /></li>                                                                               
-                            </ul>
+                                <button className="navbar-toggler" type="button" data-target="#navbarSupportedContent" 
+                                aria-controls="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <i className="fas fa-bars"></i>
+                                </button>
+                                <div className={this.state.toggle ? "navbar-collapse" :
+                                    "navbar-collapse collapse"}  id="navbarSupportedContent">
+                                    <ul className="navbar-nav">
+                                        <li className="text-capitalize nav-item ml-1 py-1">
+                                            <Link to="/">
+                                                <button className="button" onClick={() => this.scrollTop()}>
+                                                    <div className="slider mx-auto"/>
+                                                    Новости</button>
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item ml-auto">
+                                            <form className="form-inline my-lg-0">
+                                                <div className="search-bar row">
+                                                    <Link to="/search-results">
+                                                        <button className="btn-search button" type="submit" onClick={()=>{
+                                                            value.handleSearch(this.state.inputValue);
+                                                            this.clearInputValue();
+                                                            this.hasClicked();
+                                                            }}>
+                                                            <i className="fas fa-search search-icon pt-1"></i></button>
+                                                    </Link>
+                                                    <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
+                                                    onChange={this.updateInputValue} type="search" placeholder="Search" aria-label="Search"/>
+                                                </div>
+                                            </form>
+                                        </li> 
+                                        <li className="text-capitalize nav-item ml-1 py-1">
+                                            <CurrentDate /></li> 
+                                    </ul>
+                                </div>
+                            </NavWrapper>
                         </div>
-                    </div>
-                </NavWrapper>
-            </div>
+                    )
+                }}
+            </ProductConsumer>
         )
     }
 }
 
 const NavWrapper = styled.nav`
     background:white;
-    &.top-nav {
-        background: var(--blueGreen);
+    .btn-search {
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
     }
-    .form-control {
-        width: 8rem;
-        height: 1.5rem;
-        box-shadow: inset 0 0 3px #000000;
+    .hiddenInput {
+        display: none;
+    }
+    input, input:focus {
+        background: none;
+        color: black;
         border: none;
+        outline: none;
+        background: none;
+        box-shadow: none;
+        ::placeholder {
+            color: black;
+        }
+    }
+    .search-bar {
+        margin-left: 1rem;
+        padding: 0;
+        border-radius: 1.5rem;
+        flex-direction: row !important;
+        border: solid 2px var(--mainOrange);
+    }
+    .form-control:focus {
+        outline: none;
     }
     .search-icon {
         font-size: 1.2rem;
-    }
-    .search-container {
-        flex-direction: row !important;
-        padding: 0px;
     }
     .coinlore-priceticker-widget {
         border-none;
@@ -173,6 +226,12 @@ const NavWrapper = styled.nav`
     .navbar-nav {
         vertical-align: top !important;
         flex-direction: row !important;
+    }
+    .navbar-last {
+        vertical-align: top !important;
+        flex-direction: row !important;
+        background: yellow;
+        width: 5rem;
     }
     #navbarSupportedContent {
         float: left !important;

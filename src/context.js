@@ -12,11 +12,14 @@ class ProductProvider extends Component {
         this.hottestDatabase = Firebase.database().ref().child('HottestNews');
         this.editorDatabase = Firebase.database().ref().child('EditorsChoice');
         this.arrayNews = [{}];
+        this.searchArray = [{}];
         this.arrayTopNews = [{}];
         this.state = {
+            search: "",
             news: [{}],
             openNewsItem: {},
             topNews: [{}],
+            searchList: [{}],
             editorNews: {},
             hottestNews: {}
         };
@@ -27,10 +30,12 @@ class ProductProvider extends Component {
             return {openNewsItem:newsItem}
         })
     };
-    handleHotDetail = (id) => {
-        this.setState(()=>{
-            return {openNewsItem:this.state.hottestNews}
-        })
+    handleSearch = (input) => {
+        let newState = [];
+        newState = this.state.news.filter(article => article.content ? article.content.includes(input) : null);
+        this.setState({
+            searchList: newState
+        });
     };
     handleTopDetail = (id) => {
         const newsItem = this.state.topNews.find((item => item.id === id));
@@ -75,7 +80,8 @@ class ProductProvider extends Component {
                 ...this.state,
                 handleDetail: this.handleDetail,
                 handleTopDetail: this.handleTopDetail,
-                handleHotDetail: this.handleHotDetail
+                handleSearch: this.handleSearch
+                
             }}>
                 {this.props.children}
             </ProductContext.Provider>
