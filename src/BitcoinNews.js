@@ -7,7 +7,7 @@ export default class BitcoinNews extends Component {
     render() {
         return (
             <BitcoinWrapper>
-                <div className="title-search">Bitcoin <span className="orange">News:</span></div>
+                <div className="title-search">Биткойн <span className="orange">Новости:</span></div>
                 <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
@@ -31,11 +31,13 @@ export default class BitcoinNews extends Component {
 }
 
 const BitcoinWrapper = styled.div`
+    background: rgb(248,248,248);
     margin-top: 7rem;
     padding: 4rem; 
     .title-search {
         font-family: "Yeseva One", sans-serif;
         font-size: 1.5rem;
+        border-bottom: solid 5px var(--mainOrange);
     }
     .orange {
         color: var(--mainOrange);

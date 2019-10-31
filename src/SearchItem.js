@@ -14,11 +14,11 @@ export default class SearchItem extends Component {
                             <SearchItemWrapper className="container" 
                             onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
-                                    <div className="row">
+                                    <div className="row mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
                                             <img src={img} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
-                                        <div className="text-container col-8 col-md-2 col-lg-2">
+                                        <div className="text-container col-8 col-md-10 col-lg-10">
                                             <div className="text my-3">
                                                 <div className="title">{title}</div>
                                             </div>
@@ -37,6 +37,12 @@ export default class SearchItem extends Component {
 }
 
 const SearchItemWrapper = styled.div`
+    &:hover {
+        box-shadow: 0px 0px 4px 3px darkgrey;
+    }
+    background: white;
+    padding-bottom: 1rem;
+    box-shadow: 0px 0px 3px 2px darkgrey;
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {

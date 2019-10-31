@@ -32,7 +32,7 @@ export default class News extends Component {
 }
 
 const NewsWrapper = styled.div`
-background: rgb(240,240,240);
+background: rgb(248,248,248);
 padding-bottom: 3rem;
 .container {
     width: 100%;
@@ -52,7 +52,7 @@ padding-bottom: 3rem;
     font-size: 1.5rem;
     border: none;
     transform: translate(0px, 0px);
-    background: rgb(240,240,240);
+    background: rgb(248,248,248);
     outline: none;
     padding-bottom: 10px;
     font-family: 'Yeseva One', sans-serif;

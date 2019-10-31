@@ -14,11 +14,11 @@ export default class BitcoinItem extends Component {
                             <BitcoinItemWrapper className="container" 
                             onClick={() => {value.handleBitcoinDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
-                                    <div className="row">
-                                        <div className="img-container col-4 col-md-2 col-lg-2">
+                                    <div className="row mx-auto">
+                                        <div className="img-container col-sm-4 col-md-2 col-lg-2">
                                             <img src={img} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
-                                        <div className="text-container col-8 col-md-10 col-lg-10">
+                                        <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
                                             <div className="text my-3">
                                                 <div className="title">{title}</div>
                                             </div>
@@ -37,6 +37,12 @@ export default class BitcoinItem extends Component {
 }
 
 const BitcoinItemWrapper = styled.div`
+    &:hover {
+        box-shadow: 0px 0px 4px 3px darkgrey;
+    }
+    background: white;
+    padding-bottom: 1rem;
+    box-shadow: 0px 0px 3px 2px darkgrey;
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
@@ -52,7 +58,7 @@ const BitcoinItemWrapper = styled.div`
         margin-bottom: 0.2rem;
     }
     .title {
-        font-size: 0.75rem;
+        font-size: 1rem;
         height: 50px;
         overflow: hidden;
         font-family: 'Yeseva One', sans-serif;
@@ -121,11 +127,17 @@ const BitcoinItemWrapper = styled.div`
     .date {
         margin-right: 0.5rem;
     }
+    @media (max-width: 800px) {
+        .title {
+            font-size: 0.75rem;
+        }
+    }
     @media (max-width: 499px) {
-        .keyword-btn {font-size:0.5rem;}
-        .date-btn {
-            font-size:0.5rem;
-            font-weight: bold;
+        .text-container {
+            width: 100%;
+        }
+        .img {
+            display: none;
         }
     }
 `

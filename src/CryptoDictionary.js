@@ -58,6 +58,46 @@ export default function CryptoDictionary() {
                         whereas Ethereum is a ledger technology that companies are using to build new 
                         programs.</p>
                 </div>
+                <div className="title text-capitalize my-3">what is ICO?</div>
+                <div className="content">
+                    <p>An <span className="orange">Initial Coin Offering</span> (ICO) is the 
+                        cryptocurrency space's rough equivalent to an IPO in the mainstream investment 
+                        world. ICOs act as fundraisers of sorts; a company looking to create a new coin, 
+                        app, or service launches an ICO.</p>
+                    <p> In an ICO, a quantity of cryptocurrency is sold in the form of "tokens" ("coins") to 
+                        speculators or investors, in exchange for legal tender or other cryptocurrencies such 
+                        as Bitcoin or Ethereum. The tokens sold are promoted as future functional units of 
+                        currency if or when the ICO's funding goal is met and the project launches. 
+                        In some cases like Ethereum the tokens are required to use the system for its purposes.</p>
+                    <p>An ICO can be a source of capital for startup companies. ICOs can allow startups to avoid regulatory 
+                        compliance and intermediaries such as venture capitalists, banks and stock exchanges.</p>
+                </div>
+                <div className="title text-capitalize my-3">what is IEO?</div>
+                <div className="content">
+                    <p>An <span className="orange">Initial Exchange Offering</span> (IEO) is a token sale hold on an exchange. 
+                    IEO works on different cryptocurrency exchanges depending on how it gets planned. 
+                    The exchanges create a platform where the pool of developers can mint and sell the projects 
+                    to crypto enthusiasts and investors!</p>
+                    <p>Before the token sale gets conducted on the IEO exchange platform, both the exchange team 
+                        and the project team will deal with an agreement. The exchange platform will do a thorough 
+                        review of the project using certain conditions to make sure the project is worthy authentic.</p>
+                    <p>Once the exchange platform is comfortable with the project, it will unveil the date for token sale 
+                        along with the fixed price per token. If in case the exchange has its own token, then the contributors 
+                        have to purchase the units of tokens before they can participate in Initial Exchange Offering.</p>
+                </div>
+                <div className="title text-capitalize my-3">what is mining?</div>
+                <div className="content">
+                    <p><span className="orange">Cryptocurrency Mining</span> or cryptomining, is a process in which 
+                    transactions for various forms of cryptocurrency are verified and added to the blockchain digital ledger.</p>
+                    <p>Each time a cryptocurrency transaction is made, a cryptocurrency miner is responsible for ensuring 
+                        the authenticity of information and updating the blockchain with the transaction. The mining process 
+                        itself involves competing with other cryptominers to solve complicated mathematical problems with 
+                        cryptographic hash functions that are associated with a block containing the transaction data.</p>
+                    <p>The first cryptocurrency miner to crack the code is rewarded by being able to authorize the transaction, 
+                        and in return for the service provided, cryptominers earn small amounts of cryptocurrency of their own. 
+                        In order to be competitive with other cryptominers, though, a cryptocurrency miner needs a computer with 
+                        specialized hardware.</p>
+                </div>
             </div>
         </CryptoDictionaryWrapper>
     )

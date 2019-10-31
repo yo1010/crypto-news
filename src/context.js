@@ -117,7 +117,6 @@ class ProductProvider extends Component {
                 bitcoinNews: this.arrayBitcoinNews,
                 blockchainNews: this.arrayBlockchainNews
             });
-            console.log(this.state.bitcoinNews)
         });
     };
     render() {

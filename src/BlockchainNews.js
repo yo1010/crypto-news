@@ -7,7 +7,7 @@ export default class BlockchainNews extends Component {
     render() {
         return (
             <BlockchainWrapper>
-                <div className="title-search">Blockchain <span className="orange">News:</span></div>
+                <div className="title-search">Блокчейн <span className="orange">Новости:</span></div>
                 <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
@@ -31,12 +31,13 @@ export default class BlockchainNews extends Component {
 }
 
 const BlockchainWrapper = styled.div`
-    background: rgba(420,420,420)
+    background: rgb(248,248,248);
     margin-top: 7rem;
     padding: 4rem; 
     .title-search {
         font-family: "Yeseva One", sans-serif;
         font-size: 1.5rem;
+        border-bottom: solid 5px var(--mainOrange);
     }
     .orange {
         color: var(--mainOrange);

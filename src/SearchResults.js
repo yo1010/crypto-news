@@ -31,6 +31,7 @@ export default class SearchResults extends Component {
 }
 
 const SearchWrapper = styled.div`
+    background: rgb(248,248,248);
     margin-top: 7rem;
     padding: 4rem; 
     .title-search {

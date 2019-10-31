@@ -94,7 +94,6 @@ export default class Navbar extends Component {
         window.addEventListener('click', this.handleClick);
     }
     render() {
-        console.log(this.state.inputValue);
         return (
             <ProductConsumer>
                 {value => {
@@ -114,34 +113,48 @@ export default class Navbar extends Component {
                             </div>
                             <NavWrapper className="top-nav">
                                 <ul className="navbar-nav icon-nav">                                                                                 
-                                    <li className="text-capitalize nav-item ml-auto">
-                                        <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
-                                            <button className="button p-1">
-                                            <i className="fab fa-facebook icon-sm" />
-                                            </button>
-                                        </a>
-                                    </li>
-                                    <li className="text-capitalize nav-item mr-2">
-                                        <button className="button p-1">
-                                            <i className="fab fa-telegram icon-sm" /></button></li>
+                                    <li className="text-capitalize nav-item ml-auto mr-3 nav-date">
+                                        <CurrentDate /></li> 
                                 </ul>
                             </NavWrapper>
                             <NavWrapper className={this.state.hasScrolled ? 
-                                'navbar op navbar-expand-lg navbar-dark' : 
-                                'no-op navbar navbar-expand-lg navbar-dark'}>
+                                'navbar op navbar-expand-lg navbar-dark px-3' : 
+                                'no-op navbar navbar-expand-lg navbar-dark px-3'}>
                                 <Link to="/">
                                     <div className="navbar-brand" onClick={() => this.scrollTop()}>
                                         <img src={logo} alt="logo" className="navbar-brand-img"/>
                                     </div>
                                 </Link>
-                                <button className="navbar-toggler" type="button" data-target="#navbarSupportedContent" 
-                                aria-controls="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <div className="search-bar row ml-auto">
+                                    <button className={this.state.hideSearch ? "btn-search button hiddenInput" : "btn-search button"} onClick={()=>{
+                                        this.hasClicked();
+                                        }}>
+                                        <i className="fas fa-search search-icon pt-1"></i></button>
+                                    <form className="form-inline my-lg-0">
+                                            <Link to="/search-results" className={!this.state.inputValue ? "disabled-link" : ""}>
+                                                <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} type="submit" onClick={()=>{
+                                                    value.handleSearch(this.state.inputValue);
+                                                    this.clearInputValue();
+                                                    this.hasntClicked();
+                                                    }}>
+                                                    <i className="fas fa-search search-icon pt-1"></i></button>
+                                            </Link>
+                                            <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
+                                            onChange={this.updateInputValue} type="search" placeholder="Search News" aria-label="Search"/>
+                                    </form>
+                                    <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} onClick={()=>{
+                                        this.hasntClicked();
+                                        }}>
+                                        <i className="fas fa-arrow-left search-icon pt-1"></i></button>
+                                </div>
+                                <button className="navbar-toggler" type="button" data-target="#SupportedContent" 
+                                aria-controls="#SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <i className={this.state.toggle ? "fas fa-times":"fas fa-bars"}></i>
                                 </button>
                                 <div className={this.state.toggle ? "navbar-collapse" :
-                                    "navbar-collapse collapse"}  id="navbarSupportedContent">
+                                    "navbar-collapse collapse"}  id="SupportedContent">
                                     <ul className="navbar-nav">
-                                        <li className="text-capitalize nav-item ml-1 py-1">
+                                        <li className="text-capitalize nav-item first-item py-1">
                                             <Link to="/">
                                                 <button className="button" onClick={() => this.scrollTop()}>
                                                     <div className="slider mx-auto"/>
@@ -169,32 +182,14 @@ export default class Navbar extends Component {
                                                     <span className="orange">Dictionary</span></button>
                                             </Link>
                                         </li>
-                                        <li className="text-capitalize nav-item ml-auto py-1">
-                                            <CurrentDate /></li> 
-                                        <li className="nav-item search-item mr-3">
-                                            <div className="search-bar row">
-                                                <button className={this.state.hideSearch ? "btn-search button hiddenInput" : "btn-search button"} onClick={()=>{
-                                                    this.hasClicked();
-                                                    }}>
-                                                    <i className="fas fa-search search-icon pt-1"></i></button>
-                                                <form className="form-inline my-lg-0">
-                                                        <Link to="/search-results" className={!this.state.inputValue ? "disabled-link" : ""}>
-                                                            <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} type="submit" onClick={()=>{
-                                                                value.handleSearch(this.state.inputValue);
-                                                                this.clearInputValue();
-                                                                this.hasntClicked();
-                                                                }}>
-                                                                <i className="fas fa-search search-icon pt-1"></i></button>
-                                                        </Link>
-                                                        <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
-                                                        onChange={this.updateInputValue} type="search" placeholder="Search News" aria-label="Search"/>
-                                                </form>
-                                                <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} onClick={()=>{
-                                                    this.hasntClicked();
-                                                    }}>
-                                                    <i className="fas fa-times search-icon pt-1"></i></button>
-                                            </div>
-                                        </li> 
+                                        <li className="text-capitalize nav-item row ml-1 mr-2">
+                                            <button className="button py-1 mt-1">
+                                                <i className="fab fa-telegram-plane" /></button>
+                                                <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                                    <button className="button py-1 mt-1">
+                                                        <i className="fab fa-facebook-f" /></button>
+                                                </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </NavWrapper>
@@ -207,7 +202,18 @@ export default class Navbar extends Component {
 }
 
 const NavWrapper = styled.nav`
+    &.top-nav {
+        padding-top: 0.1rem;
+        height: 1.9rem;
+    }
+    padding: 0;
     background:white;
+    .fab {
+        font-size: 1.6rem;
+    }
+    .fab:hover {
+        color: var(--mainOrange);
+    }
     .orange {
         color: var(--mainOrange);
     }
@@ -235,31 +241,30 @@ const NavWrapper = styled.nav`
     .search-bar {
         margin-left: 1rem;
         padding: 0;
-        border-radius: 1.5rem;
+        border-radius: 2.5rem;
+        height: 2rem;
         flex-direction: row !important;
         border: solid 2px var(--mainOrange);
+        transition: 1s;
     }
     .form-control {
+        margin-bottom: 0.8rem;
+        height: 1.3rem;
         transition: 1s;
     }
     .search-icon {
-        font-size: 1.2rem;
-    }
-    .coinlore-priceticker-widget {
-        border-none;
-    }
-    .header {
-        margin-top: 7rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
     }
     .dateholder {
         background: none;
+        margin-bottom: 0.5rem;
         border: none;
         font-weight: 900;
         outline: none;
         font-size: 0.9rem;
         color: var(--mainOrange);
         transform: translate(0px, 5px);
-        height: 1.5rem;
         width: 9rem;
         text-transform: capitalize;
         cursor: default;
@@ -324,9 +329,6 @@ const NavWrapper = styled.nav`
         padding-bottom: 1rem;
         transition: 0.5s;
     }
-    .navbar-collapse{
-        margin-left: auto !important;
-    }
     &.fixed-top{
         background: white;
         transition: 1s !important;
@@ -334,7 +336,8 @@ const NavWrapper = styled.nav`
     .navbar-toggler{
         outline: none;
         border: none;
-        margin-right: 4px;
+        margin-right: 0;
+        margin-left: 0.5rem !important;
     }
     .navbar-toggler:hover{
         .fa-bars{
@@ -351,17 +354,29 @@ const NavWrapper = styled.nav`
         padding-left: 2px;
         font-size: 1.5rem;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 866px) {
+        .first-item {
+            margin-left: auto;
+        }
         .navbar-nav {
             width: 100%;
         }
     }
-    @media (max-width: 900px) {
-        navbar-toggler {
-            margin-left: auto;
+    @media (max-width: 866px) {
+        .navbar-nav {
+            margin-right: 1rem;
+        }
+        .first-item {
+            margin-left: 0.2rem;
         }
     }
     @media (max-width: 576px) {
+        &.top-nav {
+            display: none;
+        }
+        .search-bar {
+            display: none;
+        }
         li {
             margin-left: 0;
         }
@@ -375,12 +390,6 @@ const NavWrapper = styled.nav`
         }
         .icon-sm {
             font-size: 1.5rem !important;
-        }
-        .navbar-nav > * {
-            margin-top: 0.5rem;
-        }
-        .dateholder {
-            display: none;
         }
         .search-item {
             display: none;
