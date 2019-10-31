@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import {ProductConsumer} from './context';
 import styled from 'styled-components';
-import SearchItem from './SearchItem';
+import BitcoinItem from './BitcoinItem';
 
-export default class SearchResults extends Component {
+export default class BitcoinNews extends Component {
     render() {
         return (
-            <SearchWrapper>
-                <div className="title-search">Search <span className="orange">Results:</span></div>
+            <BitcoinWrapper>
+                <div className="title-search">Bitcoin <span className="orange">News:</span></div>
                 <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
-                            return value.searchList.map(
+                            return value.bitcoinNews.map(
                                 article => {
                                     if (article !== undefined) {
-                                        return <SearchItem key={article.id}
+                                        return <BitcoinItem key={article.id}
                                             article={article} />
                                     }
-                                    if (value.searchList < 1) {
+                                    if (value.bitcoinNews < 1) {
                                         return <div className="no-results">No articles <span className="orange"> found</span></div>
                                     }
                                 }
@@ -25,12 +25,12 @@ export default class SearchResults extends Component {
                         }}
                     </ProductConsumer>
                 </div>
-            </SearchWrapper>
+            </BitcoinWrapper>
         )
     }
 }
 
-const SearchWrapper = styled.div`
+const BitcoinWrapper = styled.div`
     margin-top: 7rem;
     padding: 4rem; 
     .title-search {

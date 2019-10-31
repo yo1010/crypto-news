@@ -1,42 +1,42 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/crypto-img.jpg';
+import img from '../public/img/blockchain-img.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
 
-export default class SearchItem extends Component {
+export default class BlockchainItem extends Component {
     render() {
         const {id, title, publishedOn} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <SearchItemWrapper className="container" 
-                            onClick={() => {value.handleDetail(id)}}>
+                            <BlockchainItemWrapper className="container" 
+                            onClick={() => {value.handleBlockchainDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
-                                    <div className="row">
+                                    <div className="row mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
-                                            <img src={img} className=""alt="bitcoin dollars altcoins"/>
+                                            <img src={img}  alt="Blockchain dollars altcoins"/>
                                         </div>
-                                        <div className="text-container col-8 col-md-2 col-lg-2">
-                                            <div className="text my-3">
+                                        <div className="text-container col-8 col-md-10 col-lg-10">
+                                            <div className="text mt-3">
                                                 <div className="title">{title}</div>
                                             </div>
-                                            <div className="row header mx-1">
+                                            <div className="row header mt-3 mx-1">
                                                 <div className="metatag"><button className="keyword-btn">#news</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
                                     </div>
                                 </Link>
-                            </SearchItemWrapper>
+                            </BlockchainItemWrapper>
                         )}}
                 </ProductConsumer>
         )
     }
 }
 
-const SearchItemWrapper = styled.div`
+const BlockchainItemWrapper = styled.div`
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
@@ -56,6 +56,9 @@ const SearchItemWrapper = styled.div`
         height: 50px;
         overflow: hidden;
         font-family: 'Yeseva One', sans-serif;
+    }
+    .content {
+        font-size: 0.6rem;
     }
     .container {
         box-shadow: 0px 0px 3px 2px darkgrey;
@@ -90,8 +93,8 @@ const SearchItemWrapper = styled.div`
         left: -9999px;
         right: -9999px;
         margin: auto;
-        max-width: 180%;
-        max-height: 180%;
+        max-width: 190%;
+        max-height: 190%;
     }
     .text {
         overflow: hidden;

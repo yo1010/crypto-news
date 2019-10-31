@@ -12,6 +12,8 @@ class ProductProvider extends Component {
         this.hottestDatabase = Firebase.database().ref().child('HottestNews');
         this.editorDatabase = Firebase.database().ref().child('EditorsChoice');
         this.arrayNews = [{}];
+        this.arrayBitcoinNews = [{}];
+        this.arrayBlockchainNews = [{}];
         this.searchArray = [{}];
         this.arrayTopNews = [{}];
         this.state = {
@@ -21,7 +23,9 @@ class ProductProvider extends Component {
             topNews: [{}],
             searchList: [{}],
             editorNews: {},
-            hottestNews: {}
+            hottestNews: {},
+            bitcoinNews: [{}],
+            blockchainNews: [{}]
         };
     }
     handleDetail = (id) => {
@@ -30,12 +34,41 @@ class ProductProvider extends Component {
             return {openNewsItem:newsItem}
         })
     };
+    handleBitcoinDetail = (id) => {
+        const newsItem = this.state.bitcoinNews.find((item => item.id === id));
+        this.setState(()=>{
+            return {openNewsItem:newsItem}
+        })
+    };
+    handleBlockchainDetail = (id) => {
+        const newsItem = this.state.blockchainNews.find((item => item.id === id));
+        this.setState(()=>{
+            return {openNewsItem:newsItem}
+        })
+    };
     handleSearch = (input) => {
+        let newState = [];
+        let finalState = [];
+        let finalObj;
+        for (let nItem in this.state.news) {
+            let obj = this.state.news[nItem];
+            let objVal = Object.values(obj);
+            let objString = objVal.filter(e => typeof e === 'string' && e !== '');
+            for (let str in objString) {
+                let lowStr = objString[str].toLowerCase();
+                if (lowStr.includes(input)) {
+                    finalObj = obj;
+                }
+            }
+            newState.unshift(finalObj);
+        };
+        let finalStateSet = new Set(newState);
+        finalState = Array.from(finalStateSet);
+        console.log(finalState);
+        console.log(newState);
         if (input !== "") {
-            let newState = [];
-            newState = this.state.news.filter(article => article.content ? article.content.includes(input) : null);
             this.setState({
-                searchList: newState
+                searchList: finalState
             });
         }
     };
@@ -67,13 +100,24 @@ class ProductProvider extends Component {
         });
         this.database.on('value', (snapshot) => {
             this.arrayNews = [];
+            this.arrayBitcoinNews = [];
+            this.arrayBlockchainNews = [];
             snapshot.forEach(childSnapshot => {
+                if (childSnapshot.val().keyword1 === "биткойн новости") {
+                    this.arrayBitcoinNews.unshift(childSnapshot.val());
+                }
+                if (childSnapshot.val().keyword2 === "блокчейн") {
+                    this.arrayBlockchainNews.unshift(childSnapshot.val());
+                }
                 this.arrayNews.unshift(childSnapshot.val());
             });
             this.arrayNews.splice(0,4)
             this.setState({
                 news: this.arrayNews,
+                bitcoinNews: this.arrayBitcoinNews,
+                blockchainNews: this.arrayBlockchainNews
             });
+            console.log(this.state.bitcoinNews)
         });
     };
     render() {
@@ -82,8 +126,9 @@ class ProductProvider extends Component {
                 ...this.state,
                 handleDetail: this.handleDetail,
                 handleTopDetail: this.handleTopDetail,
-                handleSearch: this.handleSearch
-                
+                handleSearch: this.handleSearch,
+                handleBitcoinDetail: this.handleBitcoinDetail,
+                handleBlockchainDetail: this.handleBlockchainDetail
             }}>
                 {this.props.children}
             </ProductContext.Provider>

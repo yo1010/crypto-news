@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/crypto-img.jpg';
+import img from '../public/img/bitcoin-img.jpg';
 import {ProductConsumer} from './context';
 import {Link} from 'react-router-dom';
 
-export default class SearchItem extends Component {
+export default class BitcoinItem extends Component {
     render() {
         const {id, title, publishedOn} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <SearchItemWrapper className="container" 
-                            onClick={() => {value.handleDetail(id)}}>
+                            <BitcoinItemWrapper className="container" 
+                            onClick={() => {value.handleBitcoinDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="row">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
                                             <img src={img} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
-                                        <div className="text-container col-8 col-md-2 col-lg-2">
+                                        <div className="text-container col-8 col-md-10 col-lg-10">
                                             <div className="text my-3">
                                                 <div className="title">{title}</div>
                                             </div>
@@ -29,14 +29,14 @@ export default class SearchItem extends Component {
                                         </div>
                                     </div>
                                 </Link>
-                            </SearchItemWrapper>
+                            </BitcoinItemWrapper>
                         )}}
                 </ProductConsumer>
         )
     }
 }
 
-const SearchItemWrapper = styled.div`
+const BitcoinItemWrapper = styled.div`
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
@@ -90,8 +90,8 @@ const SearchItemWrapper = styled.div`
         left: -9999px;
         right: -9999px;
         margin: auto;
-        max-width: 180%;
-        max-height: 180%;
+        img-width: 110%;
+        img-height: 110%;
     }
     .text {
         overflow: hidden;

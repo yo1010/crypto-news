@@ -35,10 +35,12 @@ export default class Navbar extends Component {
         if (this.state.hideSearch === true) {
             this.setState({hideSearch: false})
         }
+        this.scrollTop()
     }
     updateInputValue(e) {
+        let lowStr = e.target.value.toLowerCase();
         this.setState({
-            inputValue: e.target.value
+            inputValue: lowStr
         })
     }
     clearInputValue() {
@@ -68,13 +70,15 @@ export default class Navbar extends Component {
                 }
             })
         }
-        if (stateToggle === true) { 
-            this.setState(() => {
-                return{
-                    toggle: false
-                }
-            })
+        if (stateToggle === true) {
+            if ((e.target.className === "fas fa-times") || (e.target.className === "navbar-toggler")) {
+                this.setState(() => {
+                    return{
+                        toggle: false
+                    }
+                })
             }
+        }           
     }
     scrollTop() {
         window.scrollTo(0, 0);
@@ -112,19 +116,19 @@ export default class Navbar extends Component {
                                 <ul className="navbar-nav icon-nav">                                                                                 
                                     <li className="text-capitalize nav-item ml-auto">
                                         <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
-                                            <button className="button">
+                                            <button className="button p-1">
                                             <i className="fab fa-facebook icon-sm" />
                                             </button>
                                         </a>
                                     </li>
-                                    <li className="text-capitalize nav-item mr-1">
-                                        <button className="button">
+                                    <li className="text-capitalize nav-item mr-2">
+                                        <button className="button p-1">
                                             <i className="fab fa-telegram icon-sm" /></button></li>
                                 </ul>
                             </NavWrapper>
                             <NavWrapper className={this.state.hasScrolled ? 
-                                'navbar op navbar-expand-md navbar-dark' : 
-                                'no-op navbar navbar-expand-md navbar-dark'}>
+                                'navbar op navbar-expand-lg navbar-dark' : 
+                                'no-op navbar navbar-expand-lg navbar-dark'}>
                                 <Link to="/">
                                     <div className="navbar-brand" onClick={() => this.scrollTop()}>
                                         <img src={logo} alt="logo" className="navbar-brand-img"/>
@@ -132,7 +136,7 @@ export default class Navbar extends Component {
                                 </Link>
                                 <button className="navbar-toggler" type="button" data-target="#navbarSupportedContent" 
                                 aria-controls="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <i className="fas fa-bars"></i>
+                                    <i className={this.state.toggle ? "fas fa-times":"fas fa-bars"}></i>
                                 </button>
                                 <div className={this.state.toggle ? "navbar-collapse" :
                                     "navbar-collapse collapse"}  id="navbarSupportedContent">
@@ -144,9 +148,30 @@ export default class Navbar extends Component {
                                                     Новости</button>
                                             </Link>
                                         </li>
+                                        <li className="text-capitalize nav-item ml-1 py-1">
+                                            <Link to="/bitcoin-news">
+                                                <button className="button" onClick={() => this.scrollTop()}>
+                                                    <div className="slider mx-auto"/>
+                                                    Биткойн</button>
+                                            </Link>
+                                        </li>
+                                        <li className="text-capitalize nav-item ml-1 py-1">
+                                            <Link to="/blockchain-news">
+                                                <button className="button" onClick={() => this.scrollTop()}>
+                                                    <div className="slider mx-auto"/>
+                                                    Блокчейн</button>
+                                            </Link>
+                                        </li>
+                                        <li className="text-capitalize nav-item ml-1 py-1">
+                                            <Link to="/crypto-dictionary">
+                                                <button className="button" onClick={() => this.scrollTop()}>
+                                                    <div className="slider mx-auto"/>
+                                                    <span className="orange">Dictionary</span></button>
+                                            </Link>
+                                        </li>
                                         <li className="text-capitalize nav-item ml-auto py-1">
                                             <CurrentDate /></li> 
-                                        <li className="nav-item mr-1">
+                                        <li className="nav-item search-item mr-3">
                                             <div className="search-bar row">
                                                 <button className={this.state.hideSearch ? "btn-search button hiddenInput" : "btn-search button"} onClick={()=>{
                                                     this.hasClicked();
@@ -158,12 +183,16 @@ export default class Navbar extends Component {
                                                                 value.handleSearch(this.state.inputValue);
                                                                 this.clearInputValue();
                                                                 this.hasntClicked();
-                                                                }} disabled={!this.state.inputValue}>
+                                                                }}>
                                                                 <i className="fas fa-search search-icon pt-1"></i></button>
                                                         </Link>
                                                         <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
-                                                        onChange={this.updateInputValue} type="search" placeholder="Search" aria-label="Search"/>
+                                                        onChange={this.updateInputValue} type="search" placeholder="Search News" aria-label="Search"/>
                                                 </form>
+                                                <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} onClick={()=>{
+                                                    this.hasntClicked();
+                                                    }}>
+                                                    <i className="fas fa-times search-icon pt-1"></i></button>
                                             </div>
                                         </li> 
                                     </ul>
@@ -179,6 +208,9 @@ export default class Navbar extends Component {
 
 const NavWrapper = styled.nav`
     background:white;
+    .orange {
+        color: var(--mainOrange);
+    }
     .disabled-link {
         pointer-events: none;
     }
@@ -207,8 +239,8 @@ const NavWrapper = styled.nav`
         flex-direction: row !important;
         border: solid 2px var(--mainOrange);
     }
-    .form-control:focus {
-        outline: none;
+    .form-control {
+        transition: 1s;
     }
     .search-icon {
         font-size: 1.2rem;
@@ -228,7 +260,7 @@ const NavWrapper = styled.nav`
         color: var(--mainOrange);
         transform: translate(0px, 5px);
         height: 1.5rem;
-        width: 10rem;
+        width: 9rem;
         text-transform: capitalize;
         cursor: default;
         font-family: 'Yeseva One', sans-serif;
@@ -309,10 +341,15 @@ const NavWrapper = styled.nav`
             color: var(--mainOrange);
             text-shadow: 2px 2px 1px black;
         }
+        .fa-times{
+            color: var(--mainOrange);
+            text-shadow: 2px 2px 1px black;
+        }
     }
-    .fa-bars{
+    .fa-bars, .fa-times {
         color: black;
         padding-left: 2px;
+        font-size: 1.5rem;
     }
     @media (min-width: 768px) {
         .navbar-nav {
@@ -343,6 +380,9 @@ const NavWrapper = styled.nav`
             margin-top: 0.5rem;
         }
         .dateholder {
+            display: none;
+        }
+        .search-item {
             display: none;
         }
     }
