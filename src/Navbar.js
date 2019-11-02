@@ -183,12 +183,14 @@ export default class Navbar extends Component {
                                             </Link>
                                         </li>
                                         <li className="text-capitalize nav-item row ml-1 mr-2">
-                                            <button className="button py-1 mt-1">
-                                                <i className="fab fa-telegram-plane" /></button>
-                                                <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
-                                                    <button className="button py-1 mt-1">
-                                                        <i className="fab fa-facebook-f" /></button>
-                                                </a>
+                                            <a href="https://t.me/bitcoiniaru" target="_top">
+                                                <button className="button py-1 mt-1">
+                                                    <i className="fab fa-telegram-plane" /></button>
+                                            </a>
+                                            <a href="https://www.facebook.com/bitcoinia.ru/" target="_top">
+                                                <button className="button py-1 mt-1">
+                                                    <i className="fab fa-facebook-f" /></button>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

@@ -14,8 +14,7 @@ export default function Footer() {
 const FooterWrapper = styled.div`
     padding: 0.3rem;
     width:100%;
-    background: var(--blueGreen);
-    box-shadow: inset 0px 4px 2px -2px darkgrey;
+    background: rgb(248,248,248);
     .text{
         color: black;
         text-align: center;

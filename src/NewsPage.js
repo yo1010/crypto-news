@@ -31,8 +31,10 @@ export default class NewsPage extends Component {
                                                         <button className="button-sm">
                                                             <i className="fab fa-facebook" /></button>
                                                     </a>
-                                                    <button className="button-sm">
-                                                        <i className="fab fa-telegram" /></button>
+                                                    <a href="https://t.me/bitcoiniaru" target="_top">
+                                                        <button className="button-sm">
+                                                            <i className="fab fa-telegram" /></button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
