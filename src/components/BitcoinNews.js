@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ProductConsumer} from './context';
+import {ProductConsumer} from '../context';
 import styled from 'styled-components';
 import BitcoinItem from './BitcoinItem';
 

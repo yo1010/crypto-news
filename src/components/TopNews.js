@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/top-news2.jpg';
-import imgBg from '../public/img/black-and-white-buildings-city-2255.jpg';
-import {ProductConsumer} from './context';
+import img from '../../public/img/top-news2.jpg';
+import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';
 import MostReadNews from './MostReadNews';
@@ -51,53 +50,55 @@ export default class TopNews extends Component {
         return (
             <ProductConsumer>
                 {value => {
-                    const {id, title, publishedOn} = value.topNews[this.state.slideIndex];
+                    const {id, title, publishedOn, readingTime} = value.topNews[this.state.slideIndex];
                     return (
                         <React.Fragment>
-                            <NewsContainer imgUrl={imgBg}>
-                                <div className="container big-container">
-                                    <div className="row mx-auto mb-3">
-                                        <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
-                                        onClick={() => {value.handleTopDetail(id)}}>
-                                            <Link className="article-link" to={`/newsarticle/${title}`}>
-                                                <div className="img-column-one mx-auto">
-                                                    <button className="btn-danger">Latest News</button>
-                                                    <div className="img-container">
-                                                        <img src={img} className="img-fluid" alt="top-news"/>
-                                                    </div>
-                                                    <div className="text-column">
-                                                        <div className="text-container mx-auto">
-                                                            <h3 className="heading text-capitalize">
-                                                                {title}
-                                                            </h3>
-                                                            <h5 className="text">
+                            <NewsContainer>
+                                <div className="row mx-auto mb-1">
+                                    <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
+                                    onClick={() => {value.handleTopDetail(id)}}>
+                                        <Link className="article-link" to={`/newsarticle/${title}`}>
+                                            <div className="img-column-one mx-auto">
+                                                <button className="btn-danger text-capitalize">
+                                                    последние новости</button>
+                                                <div className="img-container">
+                                                    <img src={img} className="img-fluid" alt="top-news"/>
+                                                </div>
+                                                <div className="text-column">
+                                                    <div className="text-container mx-auto">
+                                                        <p className="heading text-capitalize">
+                                                            {title}
+                                                        </p>
+                                                        <div className="row date-minutes">
+                                                            <div className="heading text ml-3">
                                                                 {publishedOn}
-                                                            </h5>
+                                                            </div>
+                                                            <div className="heading text ml-5">
+                                                                {readingTime} min read
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </Link>
-                                            <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
-                                                <i className="fas fa-chevron-left arrow"></i></button>
-                                            <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
-                                                <i className="fas fa-chevron-right arrow"></i></button>
-                                            <div className="dots">
-                                                <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
-                                                onClick={()=>this.currentSlide(0)}></span>
-                                                <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
-                                                onClick={()=>this.currentSlide(1)}></span>
-                                                <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
-                                                onClick={()=>this.currentSlide(2)}></span>
-                                                <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
-                                                onClick={()=>this.currentSlide(3)}></span>
                                             </div>
+                                        </Link>
+                                        <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
+                                            <i className="fas fa-chevron-left arrow"></i></button>
+                                        <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
+                                            <i className="fas fa-chevron-right arrow"></i></button>
+                                        <div className="dots">
+                                            <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
+                                            onClick={()=>this.currentSlide(0)}></span>
+                                            <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
+                                            onClick={()=>this.currentSlide(1)}></span>
+                                            <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
+                                            onClick={()=>this.currentSlide(2)}></span>
+                                            <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
+                                            onClick={()=>this.currentSlide(3)}></span>
                                         </div>
-                                        <div className="img-column-two mx-auto col-10 col-md-4 col-lg-4">
-                                            <div className="container small-container">
-                                                <EditorNews/>
-                                                <MostReadNews/>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div className="img-column-two mx-auto col-10 col-md-4 col-lg-4">
+                                            <EditorNews/>
+                                            <MostReadNews/>
                                     </div>
                                 </div>
                             </NewsContainer>
@@ -113,12 +114,8 @@ const NewsContainer = styled.div`
     padding: 1rem;
     width: 100%;
     border-top: solid 5px var(--mainOrange);
-    background-color: lightgrey;
-    background-image: url(${props => props.imgUrl});
-    background-size: cover;
-    background-position: center;
     margin-right: 0.8rem;
-    margin-top: 6.5rem;
+    margin-top: 5.5rem;
     border-bottom-color: var(--mainOrange);
     border-bottom-width: 1rem;
     .img-container {
@@ -136,8 +133,8 @@ const NewsContainer = styled.div`
     .btn-slide {
         cursor: pointer;
         position: absolute;
-        top:47%;
-        color: black;
+        top:45%;
+        color: var(--blueGreen);
         font-weight: bold;
         transition: 0.6s ease;
         border: none;
@@ -147,11 +144,11 @@ const NewsContainer = styled.div`
         outline: none;
     }
     .prev {
-        left: -1rem;
+        left: 1.2rem;
         padding-left: 0;
     }
     .next {
-        right: -1rem;
+        right: 1.2rem;
         padding-right: 0;
     }
     .btn-slide:hover {
@@ -161,10 +158,7 @@ const NewsContainer = styled.div`
         animation-iteration-count: 3;
     }
     .arrow {
-        font-size: 2rem;
-    }
-    .big-container {
-        padding: 1rem;
+        font-size: 3rem;
     }
     .dots{
         position: absolute;
@@ -179,7 +173,7 @@ const NewsContainer = styled.div`
         height: 15px;
         width: 15px;
         margin: 0 2px;
-        background-color: white;
+        background-color: black;
         border-radius: 50%;
         display: inline-block;
         transition: background-color 0.6s ease;
@@ -197,22 +191,11 @@ const NewsContainer = styled.div`
         outline: none;
         border: var(--mainOrange) !important;
         font-family: 'Yeseva One', sans-serif;
+        border-top-right-radius: 0.4rem;
     }
     .editors-choice {
         margin-top: 1rem;
         text-align: center;
-    }
-    .btn-danger-sm {
-        position: absolute;
-        z-index: 1;
-        bottom: 73%;
-        font-size: 1.4rem;
-        background: var(--blueGreen) !important;
-        color: white;
-        outline: none;
-        border: var(--blueGreen) !important;
-        text-transform: capitalize;
-        font-family: 'Yeseva One', sans-serif;
     }
     .text-container {
         margin-bottom: 1rem;
@@ -226,10 +209,11 @@ const NewsContainer = styled.div`
         font-size: 1.5rem;
         font-weight: bold;
         font-family: 'Arsenal', sans-serif;
+        text-shadow: 1px 1px black;
     }
     .text {
-        font-family: 'Arsenal', sans-serif;
-        font-size: 1rem;
+        font-size: 1.2rem;
+        color: var(--mainOrange);
     }
     .heading-sm {
         margin-top: 0.5rem;
@@ -244,7 +228,7 @@ const NewsContainer = styled.div`
         margin-top: 1.2rem;
     }
     .second-image {
-        margin-top:3.30rem;
+        margin-top: -0.1rem;
     }
     .text-column {
         overflow: hidden;
@@ -260,12 +244,14 @@ const NewsContainer = styled.div`
         overflow: hidden;
         width: 100%;
         position: absolute;
-        bottom: 0%;
+        bottom: -4%;
         color: white;
         padding: 1rem;
-        height: 70%;
+        height: 100%;
         margin-bottom: 0.5rem;
         font-size: 1rem;
+        font-weight: bold;
+        text-shadow: 0.5px 0.5px black;
     }
     .img-column {
         position: relative;
@@ -330,13 +316,26 @@ const NewsContainer = styled.div`
             display: none;
         }
         .heading {
-            font-size: 1rem;
+            font-size: 1.3rem;
         }
         .title {
             margin: 3rem;
         }
         .btn-danger {
-            font-size: 1.2rem;
+            font-size: 2rem;
+        }
+    }
+    @media (max-width: 680px) {
+        .heading {
+            font-size: 1.1rem;
+        }
+        .btn-danger {
+            font-size: 1.5rem;
+        }
+        .text-column {
+            height: 55%;
+            width: 95%;
+            left: 5%;
         }
     }
     @media (min-width: 768px) and (max-width: 992px) {
@@ -367,7 +366,21 @@ const NewsContainer = styled.div`
     }
     @media (max-width: 499px) {
         .text-column {
-            height: 75%;
+            height: 110%;
+            width: 90%;
+            left: 7%;
+        }
+        .heading {
+            font-size: 1.1rem;
+        }
+        .btn-danger {
+            display: none;
+        }
+        .btn-slide {
+            top: 40%;
+        }
+        .text {
+            color: white;
         }
     }
 `

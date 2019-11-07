@@ -5,7 +5,8 @@ export default function CryptoDictionary() {
     return (
         <CryptoDictionaryWrapper>
             <div className="container">
-                <div className="heading text-capitalize my-5">crypto <span className="orange">dictionary</span></div>
+                <div className="heading text-capitalize my-5">крипто <span className="orange">
+                    Словарь</span></div>
                 <div className="title text-capitalize my-3">what is cryptocurrency?</div>
                 <div className="content">
                     <p>A <span className="orange">cryptocurrency</span> (or crypto currency) is a digital asset designed to work as a 

@@ -1,42 +1,42 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/bitcoin-img.jpg';
-import {ProductConsumer} from './context';
+import img from '../../public/img/blockchain-img.jpg';
+import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 
-export default class BitcoinItem extends Component {
+export default class BlockchainItem extends Component {
     render() {
-        const {id, title, publishedOn} = this.props.article;
+        const {id, title, publishedOn, readingTime} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <BitcoinItemWrapper className="container" 
-                            onClick={() => {value.handleBitcoinDetail(id)}}>
+                            <BlockchainItemWrapper className="container" 
+                            onClick={() => {value.handleBlockchainDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="row mx-auto">
                                         <div className="img-container col-sm-4 col-md-2 col-lg-2">
-                                            <img src={img} className=""alt="bitcoin dollars altcoins"/>
+                                            <img src={img} className=""alt="Blockchain dollars altcoins"/>
                                         </div>
                                         <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
                                             <div className="text my-3">
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn">#news</button></div>
+                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} min read</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
                                     </div>
                                 </Link>
-                            </BitcoinItemWrapper>
+                            </BlockchainItemWrapper>
                         )}}
                 </ProductConsumer>
         )
     }
 }
 
-const BitcoinItemWrapper = styled.div`
+const BlockchainItemWrapper = styled.div`
     &:hover {
         box-shadow: 0px 0px 4px 3px darkgrey;
     }
@@ -49,10 +49,12 @@ const BitcoinItemWrapper = styled.div`
         cursor: pointer;
     }
     .keyword-btn {
-        border: solid 2px var(--mainOrange);
-        border-radius: 0.2rem;
+        border: none;
         font-size: 0.75rem;
+        background: white;
         outline: none;
+        font-weight: bold;
+        color: var(--blueGreen);
     }
     .metatag {
         margin-bottom: 0.2rem;
@@ -115,7 +117,8 @@ const BitcoinItemWrapper = styled.div`
     }
     .date-btn {
         font-size: 0.75rem;
-        color: var(--mainOrange);
+        color: var(--blueGreen);
+        font-weight: bold;
         border: none;
         background: none;
         outline: none;

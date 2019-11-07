@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import logo from '../public/img/Bitcoinia3.png';
+import logo from '../../public/img/Bitcoinia3.png';
 import CurrentDate from './CurrentDate';
-import {ProductConsumer} from './context';
+import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 
@@ -106,7 +106,7 @@ export default class Navbar extends Component {
                                         <script type="text/javascript" src="https://widget.coinlore.com/widgets/ticker-widget.js"></script>
                                         </Helmet>
                                         <div className="coinlore-priceticker-widget" 
-                                        data-mcurrency="rub" data-bcolor="#fff" 
+                                        data-mcurrency="usd" data-bcolor="#fff" 
                                         data-scolor="#333" data-ccolor="#428bca" data-pcolor="#428bca"></div>
                                     </div>
                                 </div>
@@ -130,22 +130,22 @@ export default class Navbar extends Component {
                                         this.hasClicked();
                                         }}>
                                         <i className="fas fa-search search-icon pt-1"></i></button>
-                                    <form className="form-inline my-lg-0">
-                                            <Link to="/search-results" className={!this.state.inputValue ? "disabled-link" : ""}>
-                                                <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} type="submit" onClick={()=>{
-                                                    value.handleSearch(this.state.inputValue);
-                                                    this.clearInputValue();
-                                                    this.hasntClicked();
-                                                    }}>
-                                                    <i className="fas fa-search search-icon pt-1"></i></button>
-                                            </Link>
-                                            <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
-                                            onChange={this.updateInputValue} type="search" placeholder="Search News" aria-label="Search"/>
+                                    <form className="form-inline">
+                                        <Link to="/search-results" className={!this.state.inputValue ? "disabled-link" : ""}>
+                                            <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} type="submit" onClick={()=>{
+                                                value.handleSearch(this.state.inputValue);
+                                                this.clearInputValue();
+                                                this.hasntClicked();
+                                                }}>
+                                                <i className="fas fa-search search-icon pt-1"></i></button>
+                                        </Link>
+                                        <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
+                                        onChange={this.updateInputValue} type="search" placeholder="Search News" aria-label="Search"/>
                                     </form>
                                     <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} onClick={()=>{
                                         this.hasntClicked();
                                         }}>
-                                        <i className="fas fa-arrow-left search-icon pt-1"></i></button>
+                                        <i className="fas fa-arrow-left close-icon pt-1"></i></button>
                                 </div>
                                 <button className="navbar-toggler" type="button" data-target="#SupportedContent" 
                                 aria-controls="#SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -179,7 +179,8 @@ export default class Navbar extends Component {
                                             <Link to="/crypto-dictionary">
                                                 <button className="button" onClick={() => this.scrollTop()}>
                                                     <div className="slider mx-auto"/>
-                                                    <span className="orange">Dictionary</span></button>
+                                                    <span className="orange">
+                                                        Словарь</span></button>
                                             </Link>
                                         </li>
                                         <li className="text-capitalize nav-item row ml-1 mr-2">
@@ -242,21 +243,18 @@ const NavWrapper = styled.nav`
     }
     .search-bar {
         margin-left: 1rem;
-        padding: 0;
-        border-radius: 2.5rem;
-        height: 2rem;
+        border-radius: 3rem;
         flex-direction: row !important;
         border: solid 2px var(--mainOrange);
         transition: 1s;
     }
-    .form-control {
-        margin-bottom: 0.8rem;
-        height: 1.3rem;
-        transition: 1s;
+    .search-bar:active {
+        animation: color 2s ease-out;
     }
     .search-icon {
         font-size: 1rem;
-        margin-bottom: 1rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
     }
     .dateholder {
         background: none;
@@ -265,7 +263,7 @@ const NavWrapper = styled.nav`
         font-weight: 900;
         outline: none;
         font-size: 0.9rem;
-        color: var(--mainOrange);
+        color: var(--blueGreen);
         transform: translate(0px, 5px);
         width: 9rem;
         text-transform: capitalize;
@@ -304,12 +302,12 @@ const NavWrapper = styled.nav`
     .button:hover {
         color: var(--mainOrange);
         i {
-            color: var(--mainOrange);
+            color: var(--blueGreen);
         }
         .slider {
             animation: widen 0.5s;
             width: 100%;
-            backgroun: var(--mainOrange);
+            background: var(--mainOrange);
             border-top: solid 3px var(--mainOrange);
         }
     }
@@ -406,5 +404,8 @@ const NavWrapper = styled.nav`
     }
     @keyframes shorten {
         from {width: 100%} to {width: 0%}
+    }
+    @keyframes color {
+        from {background: white} to {background: var(--mainOrange)}
     }
 `

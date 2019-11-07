@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import NewsItem from "./NewsItem";
-import { ProductConsumer } from './context';
+import { ProductConsumer } from '../context';
 
 export default class News extends Component {
     render() {
@@ -10,14 +10,14 @@ export default class News extends Component {
                 <div className="row">
                     <div className="separator1"></div>
                     <div className="separator2">
-                        <button className="title-separator text-capitalize px-1">more news:</button>
+                        <button className="title-separator text-capitalize px-1">больше новостей:</button>
                         <div className="smallseparator"></div>
                     </div>
                 </div>
                 <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
-                            return value.news.map(
+                            return value.newsLeft.map(
                                 article => {
                                     return <NewsItem key={article.id}
                                             article={article} />
@@ -57,10 +57,11 @@ padding-bottom: 3rem;
     padding-bottom: 10px;
     font-family: 'Yeseva One', sans-serif;
 }
-
 @media (max-width: 499px) {
     .title-separator{
-        font-size: 1.6rem;
+        font-size: 1.3rem;
+        transform: translate(0px, 0px);
+        padding-top: 5px;
     }
 }
 `

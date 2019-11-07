@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import { ProductConsumer } from './context';
-import img from '../public/img/news-item.jpg';
+import { ProductConsumer } from '../context';
+import img from '../../public/img/news-item.jpg';
 
 export default class NewsPage extends Component {
     componentDidUpdate() {
@@ -15,8 +15,9 @@ export default class NewsPage extends Component {
             <React.Fragment>
                 <ProductConsumer>
                     {(value) => {
-                        const {title, content, paragraph1, paragraph2, paragraph3, publishedOn, 
-                            keyword1, keyword2, keyword3, subtitle1, subtitle2, subtitle3} = value.openNewsItem;
+                        const {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
+                            paragraph5, publishedOn, keyword1, keyword2, keyword3, subtitle1,
+                            subtitle2, subtitle3, subtitle4, subtitle5} = value.openNewsItem;
                         return (
                             <NewsPageWrapper>
                                 <div className="container mx-auto">
@@ -57,6 +58,10 @@ export default class NewsPage extends Component {
                                         <div className="mb-3">{paragraph2}</div>
                                         <div className="mb-3 sub-title">{subtitle3}</div>
                                         <div className="mb-3">{paragraph3}</div>
+                                        <div className="mb-3 sub-title">{subtitle4}</div>
+                                        <div className="mb-3">{paragraph4}</div>
+                                        <div className="mb-3 sub-title">{subtitle5}</div>
+                                        <div className="mb-3">{paragraph5}</div>
                                         <div className="keywords row mb-2">
                                             <div className="first-keyword">
                                                 <button className="keyword-btn">#{keyword1}</button>

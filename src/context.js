@@ -16,16 +16,20 @@ class ProductProvider extends Component {
         this.arrayBlockchainNews = [{}];
         this.searchArray = [{}];
         this.arrayTopNews = [{}];
+        this.arrayNewsLeft = [{}];
         this.state = {
             search: "",
             news: [{}],
+            newsLeft: [{}], 
             openNewsItem: {},
             topNews: [{}],
             searchList: [{}],
             editorNews: {},
             hottestNews: {},
             bitcoinNews: [{}],
-            blockchainNews: [{}]
+            blockchainNews: [{}],
+            readingTime: 0,
+            arrVal: []
         };
     }
     handleDetail = (id) => {
@@ -78,21 +82,35 @@ class ProductProvider extends Component {
             return {openNewsItem:newsItem}
         })
     };
+    calcReadingTime = () => {
+        for (let newsItem in this.state.topNews) {
+            let arrVal = Object.values(this.state.topNews[newsItem]);
+            let arrString = arrVal.filter(e => typeof e === 'string' && e !== '');
+            let totalCоunt = 0;
+            let readingTime = 0;
+            for (let str in arrString) {
+                let wordCount = arrString[str].split(' ').length;
+                totalCоunt += wordCount;
+            }
+            readingTime = Math.round(totalCоunt / 200);
+        }
+    }
     UNSAFE_componentWillMount() {
-        this.hottestDatabase.on('value', snapshot => {
-            this.setState({
-                hottestNews: snapshot.val(),
-            });
-        });
-        this.editorDatabase.on('value', snapshot => {
-            this.setState({
-                editorNews: snapshot.val(),
-            });
-        });
         this.database.limitToLast(4).on('value', snapshot => {
             this.arrayTopNews =[{}];
             snapshot.forEach(childSnapshot => {
-                this.arrayTopNews.unshift(childSnapshot.val());
+                let childVal = childSnapshot.val();
+                let arrVal = Object.values(childVal);
+                let arrString = arrVal.filter(e => typeof e === 'string' && e !== '');
+                let totalCоunt = 0;
+                let readingTime = 0;
+                for (let str in arrString) {
+                    let wordCount = arrString[str].split(' ').length;
+                    totalCоunt += wordCount;
+                }
+                readingTime = Math.round(totalCоunt / 200);
+                childVal.readingTime = readingTime;
+                this.arrayTopNews.unshift(childVal);
                 this.setState({
                     topNews: this.arrayTopNews,
                 });
@@ -100,20 +118,34 @@ class ProductProvider extends Component {
         });
         this.database.on('value', (snapshot) => {
             this.arrayNews = [];
+            this.arrayNewsLeft = [];
             this.arrayBitcoinNews = [];
             this.arrayBlockchainNews = [];
             snapshot.forEach(childSnapshot => {
-                if (childSnapshot.val().keyword1 === "биткойн новости") {
-                    this.arrayBitcoinNews.unshift(childSnapshot.val());
+                let childVal = childSnapshot.val();
+                let arrVal = Object.values(childVal);
+                let arrString = arrVal.filter(e => typeof e === 'string' && e !== '');
+                let totalCоunt = 0;
+                let readingTime = 0;
+                for (let str in arrString) {
+                    let wordCount = arrString[str].split(' ').length;
+                    totalCоunt += wordCount;
                 }
-                if (childSnapshot.val().keyword2 === "блокчейн") {
-                    this.arrayBlockchainNews.unshift(childSnapshot.val());
+                readingTime = Math.round(totalCоunt / 200);
+                childVal.readingTime = readingTime;
+                if (childVal.keyword1 === "биткойн новости") {
+                    this.arrayBitcoinNews.unshift(childVal);
                 }
-                this.arrayNews.unshift(childSnapshot.val());
+                if (childVal.keyword2 === "блокчейн") {
+                    this.arrayBlockchainNews.unshift(childVal);
+                }
+                this.arrayNews.unshift(childVal);
             });
-            this.arrayNews.splice(0,4)
+            this.arrayNews.splice(0,4);
+            this.arrayNewsLeft = this.arrayNews.slice(4);
             this.setState({
                 news: this.arrayNews,
+                newsLeft: this.arrayNewsLeft,
                 bitcoinNews: this.arrayBitcoinNews,
                 blockchainNews: this.arrayBlockchainNews
             });
@@ -127,7 +159,8 @@ class ProductProvider extends Component {
                 handleTopDetail: this.handleTopDetail,
                 handleSearch: this.handleSearch,
                 handleBitcoinDetail: this.handleBitcoinDetail,
-                handleBlockchainDetail: this.handleBlockchainDetail
+                handleBlockchainDetail: this.handleBlockchainDetail,
+                calcReadingTime: this.calcReadingTime
             }}>
                 {this.props.children}
             </ProductContext.Provider>

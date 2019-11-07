@@ -1,42 +1,42 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/crypto-img.jpg';
-import {ProductConsumer} from './context';
+import img from '../../public/img/bitcoin-img.jpg';
+import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 
-export default class SearchItem extends Component {
+export default class BitcoinItem extends Component {
     render() {
-        const {id, title, publishedOn} = this.props.article;
+        const {id, title, publishedOn, readingTime} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <SearchItemWrapper className="container" 
-                            onClick={() => {value.handleDetail(id)}}>
+                            <BitcoinItemWrapper className="container" 
+                            onClick={() => {value.handleBitcoinDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="row mx-auto">
-                                        <div className="img-container col-4 col-md-2 col-lg-2">
+                                        <div className="img-container col-sm-4 col-md-2 col-lg-2">
                                             <img src={img} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
-                                        <div className="text-container col-8 col-md-10 col-lg-10">
+                                        <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
                                             <div className="text my-3">
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn">#news</button></div>
+                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} min read</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
                                     </div>
                                 </Link>
-                            </SearchItemWrapper>
+                            </BitcoinItemWrapper>
                         )}}
                 </ProductConsumer>
         )
     }
 }
 
-const SearchItemWrapper = styled.div`
+const BitcoinItemWrapper = styled.div`
     &:hover {
         box-shadow: 0px 0px 4px 3px darkgrey;
     }
@@ -49,16 +49,18 @@ const SearchItemWrapper = styled.div`
         cursor: pointer;
     }
     .keyword-btn {
-        border: solid 2px var(--mainOrange);
-        border-radius: 0.2rem;
+        font-weight: bold;
+        border: none;
         font-size: 0.75rem;
+        background: white;
         outline: none;
+        color: var(--blueGreen);
     }
     .metatag {
         margin-bottom: 0.2rem;
     }
     .title {
-        font-size: 0.75rem;
+        font-size: 1rem;
         height: 50px;
         overflow: hidden;
         font-family: 'Yeseva One', sans-serif;
@@ -96,8 +98,8 @@ const SearchItemWrapper = styled.div`
         left: -9999px;
         right: -9999px;
         margin: auto;
-        max-width: 180%;
-        max-height: 180%;
+        img-width: 110%;
+        img-height: 110%;
     }
     .text {
         overflow: hidden;
@@ -115,7 +117,8 @@ const SearchItemWrapper = styled.div`
     }
     .date-btn {
         font-size: 0.75rem;
-        color: var(--mainOrange);
+        color: var(--blueGreen);
+        font-weight: bold;
         border: none;
         background: none;
         outline: none;
@@ -127,11 +130,17 @@ const SearchItemWrapper = styled.div`
     .date {
         margin-right: 0.5rem;
     }
+    @media (max-width: 800px) {
+        .title {
+            font-size: 0.75rem;
+        }
+    }
     @media (max-width: 499px) {
-        .keyword-btn {font-size:0.5rem;}
-        .date-btn {
-            font-size:0.5rem;
-            font-weight: bold;
+        .text-container {
+            width: 100%;
+        }
+        .img {
+            display: none;
         }
     }
 `

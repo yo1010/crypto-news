@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ProductConsumer} from './context';
+import {ProductConsumer} from '../context';
 import styled from 'styled-components';
 import BlockchainItem from './BlockchainItem';
 
@@ -17,7 +17,7 @@ export default class BlockchainNews extends Component {
                                         return <BlockchainItem key={article.id}
                                             article={article} />
                                     }
-                                    if (value.blockchainNews < 1) {
+                                    if (value.BlockchainNews < 1) {
                                         return <div className="no-results">No articles <span className="orange"> found</span></div>
                                     }
                                 }

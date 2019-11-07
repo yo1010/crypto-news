@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../public/img/Bitcoinia3.png';
+import logo from '../../public/img/Bitcoinia3.png';
 
 export default function Footer() {
     return (

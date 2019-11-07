@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../public/img/news-item.jpg';
-import {ProductConsumer} from './context';
+import img from '../../public/img/crypto-img.jpg';
+import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 
-export default class NewsItem extends Component {
+export default class SearchItem extends Component {
     render() {
         const {id, title, publishedOn} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <NewsItemWrapper className="col-6 col-md-4 col-lg-3 col-xl-3" 
+                            <SearchItemWrapper className="container" 
                             onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
-                                    <div className="container">
-                                        <div className="img-container">
-                                            <img src={img} className="img-fluid"alt="bitcoin dollars altcoins"/>
+                                    <div className="row mx-auto">
+                                        <div className="img-container col-4 col-md-2 col-lg-2">
+                                            <img src={img} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
-                                        <div className="text-container">
+                                        <div className="text-container col-8 col-md-10 col-lg-10">
                                             <div className="text my-3">
                                                 <div className="title">{title}</div>
                                             </div>
@@ -29,14 +29,20 @@ export default class NewsItem extends Component {
                                         </div>
                                     </div>
                                 </Link>
-                            </NewsItemWrapper>
+                            </SearchItemWrapper>
                         )}}
                 </ProductConsumer>
         )
     }
 }
 
-const NewsItemWrapper = styled.div`
+const SearchItemWrapper = styled.div`
+    &:hover {
+        box-shadow: 0px 0px 4px 3px darkgrey;
+    }
+    background: white;
+    padding-bottom: 1rem;
+    box-shadow: 0px 0px 3px 2px darkgrey;
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
@@ -74,15 +80,24 @@ const NewsItemWrapper = styled.div`
     }
     .img-container {
         position: relative;
-        overflow: hidden;
-        width: 100%;
+        overflow:hidden;
         margin-top: 1rem;
         border-bottom: solid 5px var(--mainOrange);
         border-radius: 0.2rem;
         box-shadow: 0px 0px 1px 1px grey;
+        text-align: center;
+        display: block;
     }
     img {
         filter: grayscale(40%) brightness(80%);
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+        max-width: 180%;
+        max-height: 180%;
     }
     .text {
         overflow: hidden;
