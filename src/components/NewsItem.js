@@ -30,6 +30,7 @@ export default class NewsItem extends Component {
     }
     componentDidMount() {
         this.calcReadingTime();
+        window.scrollTo(0,0);
     }
     render() {
         const {id, title, publishedOn, imageUrl} = this.props.article;
@@ -37,7 +38,7 @@ export default class NewsItem extends Component {
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <NewsItemWrapper className="col-6 col-md-4 col-lg-3 col-xl-3" 
+                            <NewsItemWrapper className="col-10 col-sm-6 col-md-4 col-lg-3 col-xl-3" 
                             onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="container">
@@ -148,14 +149,10 @@ const NewsItemWrapper = styled.div`
     .date {
         margin-right: 0.5rem;
     }
-    @media (max-width: 499px) {
-        .keyword-btn {font-size:0.5rem;}
-        i {
-            font-size:0.5rem;
-        }
-        .date-btn {
-            font-size:0.5rem;
-            font-weight: bold;
+    @media (max-width: 575px) {
+        & {
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 `

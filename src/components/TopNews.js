@@ -56,9 +56,7 @@ export default class TopNews extends Component {
         })
     }
     componentDidMount() {
-        this.finalUrls.push(this.state.firstUrl);
-        this.setState({finalUrls:this.finalUrls});
-        console.log(this.state.finalUrls);
+        window.scrollTo(0,0);
     }
     render() {
         return (
