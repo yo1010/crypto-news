@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Firebase from './firebase';
 import 'firebase/database';
+import 'firebase/storage';
 
 //create Context Object
 const ProductContext = React.createContext();
@@ -9,8 +10,7 @@ class ProductProvider extends Component {
     constructor() {
         super();
         this.database = Firebase.database().ref("flamelink/environments/production/content/news/en-US");
-        this.hottestDatabase = Firebase.database().ref().child('HottestNews');
-        this.editorDatabase = Firebase.database().ref().child('EditorsChoice');
+        this.storage = Firebase.storage().ref("flamelink/media");
         this.arrayNews = [{}];
         this.arrayBitcoinNews = [{}];
         this.arrayBlockchainNews = [{}];
@@ -28,9 +28,23 @@ class ProductProvider extends Component {
             hottestNews: {},
             bitcoinNews: [{}],
             blockchainNews: [{}],
+            urlArray: [],
             readingTime: 0,
             arrVal: []
         };
+        this.storage.listAll().then((res) => {
+            let urlArray = [];
+            let refName = "";
+            res.items.forEach((itemRef) => {
+                refName = itemRef.name.toLowerCase();
+                let refChild = this.storage.child(refName)
+                refChild.getDownloadURL().then((url)=>{
+                    urlArray.unshift(url);
+                })
+            })
+            this.setState({urlArray: urlArray})
+            console.log(urlArray)
+        });
     }
     handleDetail = (id) => {
         const newsItem = this.state.news.find((item => item.id === id));
@@ -94,13 +108,32 @@ class ProductProvider extends Component {
             }
             readingTime = Math.round(totalCоunt / 200);
         }
-    }
+    };
     UNSAFE_componentWillMount() {
+        this.storage.listAll().then((res) => {
+            let refName = "";
+            this.urlArray = [];
+            res.items.forEach((itemRef) => {
+                refName = itemRef.name.toLowerCase();
+                let refChild = this.storage.child(refName)
+                refChild.getDownloadURL().then((url)=>{
+                    this.urlArray.unshift(url);
+                })
+            })
+        });
         this.database.limitToLast(4).on('value', snapshot => {
             this.arrayTopNews =[{}];
             snapshot.forEach(childSnapshot => {
                 let childVal = childSnapshot.val();
                 let arrVal = Object.values(childVal);
+                let imgVal = arrVal[3];
+                this.state.urlArray.forEach((item) => {
+                    if (Array.isArray(imgVal)) {
+                        if (item.includes(imgVal[0])) {
+                            childVal.imageUrl = item;
+                        }
+                    }
+                })
                 let arrString = arrVal.filter(e => typeof e === 'string' && e !== '');
                 let totalCоunt = 0;
                 let readingTime = 0;
@@ -124,6 +157,14 @@ class ProductProvider extends Component {
             snapshot.forEach(childSnapshot => {
                 let childVal = childSnapshot.val();
                 let arrVal = Object.values(childVal);
+                let imgVal = arrVal[3];
+                this.state.urlArray.forEach((item) => {
+                    if (Array.isArray(imgVal)) {
+                        if (item.includes(imgVal[0])) {
+                            childVal.imageUrl = item;
+                        }
+                    }
+                })
                 let arrString = arrVal.filter(e => typeof e === 'string' && e !== '');
                 let totalCоunt = 0;
                 let readingTime = 0;
@@ -133,6 +174,7 @@ class ProductProvider extends Component {
                 }
                 readingTime = Math.round(totalCоunt / 200);
                 childVal.readingTime = readingTime;
+
                 if (childVal.keyword1 === "биткойн новости") {
                     this.arrayBitcoinNews.unshift(childVal);
                 }
@@ -151,6 +193,9 @@ class ProductProvider extends Component {
             });
         });
     };
+    componentWillUnmount() {
+        this.database.off();
+    };
     render() {
         return (
             <ProductContext.Provider value={{
@@ -160,7 +205,8 @@ class ProductProvider extends Component {
                 handleSearch: this.handleSearch,
                 handleBitcoinDetail: this.handleBitcoinDetail,
                 handleBlockchainDetail: this.handleBlockchainDetail,
-                calcReadingTime: this.calcReadingTime
+                calcReadingTime: this.calcReadingTime,
+                getImg: this.getImg
             }}>
                 {this.props.children}
             </ProductContext.Provider>
@@ -170,4 +216,4 @@ class ProductProvider extends Component {
 
 const ProductConsumer = ProductContext.Consumer;
 
-export {ProductProvider, ProductConsumer};
+export {ProductProvider, ProductConsumer, ProductContext};

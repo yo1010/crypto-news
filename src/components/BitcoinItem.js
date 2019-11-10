@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 export default class BitcoinItem extends Component {
     render() {
-        const {id, title, publishedOn, readingTime} = this.props.article;
+        const {id, title, publishedOn, readingTime, imageUrl} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
@@ -15,8 +15,8 @@ export default class BitcoinItem extends Component {
                             onClick={() => {value.handleBitcoinDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="row mx-auto">
-                                        <div className="img-container col-sm-4 col-md-2 col-lg-2">
-                                            <img src={img} className=""alt="bitcoin dollars altcoins"/>
+                                        <div className="img-container col-4 col-md-2 col-lg-2">
+                                            <img src={imageUrl ? imageUrl : img} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
                                         <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
                                             <div className="text my-3">
@@ -98,8 +98,8 @@ const BitcoinItemWrapper = styled.div`
         left: -9999px;
         right: -9999px;
         margin: auto;
-        img-width: 110%;
-        img-height: 110%;
+        max-width: 180%;
+        max-height: 180%;
     }
     .text {
         overflow: hidden;
@@ -135,11 +135,22 @@ const BitcoinItemWrapper = styled.div`
             font-size: 0.75rem;
         }
     }
+    @media (max-width: 585px) {
+        .img-container {
+            display: none;
+        }
+        img {
+            display: none;
+        }
+        .title {
+            text-align: center;
+        }
+    }
     @media (max-width: 499px) {
         .text-container {
             width: 100%;
         }
-        .img {
+        img {
             display: none;
         }
     }

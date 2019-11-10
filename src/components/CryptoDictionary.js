@@ -7,97 +7,54 @@ export default function CryptoDictionary() {
             <div className="container">
                 <div className="heading text-capitalize my-5">крипто <span className="orange">
                     Словарь</span></div>
-                <div className="title text-capitalize my-3">what is cryptocurrency?</div>
+                <div className="title text-capitalize my-3">Что такое криптовалюта?</div>
                 <div className="content">
-                    <p>A <span className="orange">cryptocurrency</span> (or crypto currency) is a digital asset designed to work as a 
-                        medium of exchange that uses strong cryptography to secure financial transactions, 
-                        control the creation of additional units, and verify the transfer of assets.</p>
+                    <p><span className="orange">Криптовалюта</span> - это цифровой актив, разработанный для работы в качестве средства обмена, использующего сильную криптографию для защиты финансовых транзакций, контроля создания дополнительных единиц и проверки передачи активов.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is blockchain?</div>
+                <div className="title text-capitalize my-3">Что такое блокчейн?</div>
                 <div className="content">
-                    <p>A <span className="orange">blockchain</span> is a database that is shared across a network of computers. 
-                        Once a record has been added to the chain it is very difficult to change. ... 
-                        The records that the network accepted are added to a block. Each block contains 
-                        a unique code called a hash. It also contains the hash of the previous block in the 
-                        chain.</p>
-                        <p>A <span className="orange">digital ledger</span> is used to record 
-                        transactions across many computers so that any involved record cannot 
-                        be altered retroactively, without the alteration of all subsequent blocks.</p>
+                    <p><span className="orange">Блокчейн</span> - это база данных, которая совместно используется сетью компьютеров. После добавления записи в цепочку ее очень трудно изменить.Записи, принятые сетью, добавляются в блок. Каждый блок содержит уникальный код, называемый хэш. Он также содержит хэш предыдущего блока в цепочке.</p>
+                        <p><span className="orange">Цифровая книга (digital ledger)</span> используется для записи транзакций на многих компьютерах, так что любая вовлеченная запись не может быть изменена задним числом, без изменения всех последующих блоков.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is bitcoin?</div>
+                <div className="title text-capitalize my-3">Что такое биткойн?</div>
                 <div className="content">
-                    <p><span className="orange">Bitcoin</span> is a digital and global money system currency. It allows people to send or 
-                        receive money across the internet, even to someone they don't know or don't trust. ... 
-                        The mathematical field of cryptography is the basis for Bitcoin's security. 
-                        Bitcoin was invented by someone using the name Satoshi Nakamoto.</p>
+                    <p><span className="orange">Биткойн</span> является валютой цифровой и глобальной денежной системы. Это позволяет людям отправлять или получать деньги через Интернет, даже тем, кого они не знают или не имеют большого доверия. Математическое поле криптографии - основа безопасности Биткойна. Сам биткойн был изобретен Сатоши Накамото.</p>
                 </div>
-                <div className="title text-capitalize my-3">how does bitcoin work?</div>
+                <div className="title text-capitalize my-3">Как работает биткойн?</div>
                 <div className="content">
-                    <p>Each Bitcoin is basically a computer file which is stored in a 'digital wallet' 
-                        app on a smartphone or computer. People can send Bitcoins (or part of one) to your digital wallet, 
-                        and you can send Bitcoins to other people. Every single transaction is recorded in a public list 
-                        called the blockchain.</p>
+                    <p>Каждый биткойн - это, по сути, компьютерный файл, который хранится в приложении «цифровой кошелек» на смартфоне или компьютере. Люди могут отправлять биткойны (или их часть) на ваш цифровой кошелек, а вы можете отправлять биткойны другим людям. Каждая отдельная транзакция записывается в публичный список, называемый блокчейн.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is altcoin?</div>
+                <div className="title text-capitalize my-3">Что такое Альткойн?</div>
                 <div className="content">
-                    <p>An <span className="orange">altcoin</span> is any digital cryptocurrency similar to Bitcoin. The term is said to stand 
-                        for “alternative to Bitcoin” and is used describe any cryptocurrency that is not a 
-                        Bitcoin.</p>
+                    <p><span className="orange">Альткойн</span> - это любая цифровая криптовалюта, похожая на биткойн. Говорят, что этот термин означает «альтернатива биткойну» и используется для описания любой криптовалюты, которая не является биткойном.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is ethereum?</div>
+                <div className="title text-capitalize my-3">Что такое Ethereum?</div>
                 <div className="content">
-                    <p>Launched in 2015, <span className="orange">Ethereum</span> is an open-source, blockchain-based, decentralized 
-                        software platform used for its own cryptocurrency, ether. It enables 
-                        SmartContracts and Distributed Applications (ĐApps) to be built and run without 
-                        any downtime, fraud, control, or interference from a third party.</p>
+                    <p><span className="orange">Ethereum</span> запущенный в 2015 году, представляет собой децентрализованную программную платформу с открытым исходным кодом, основанную на цепочке блоков, используемую для собственной криптовалюты ether. Это позволяет создавать и запускать SmartContracts и Распределенные приложения (ppApps) без простоев, мошенничества, контроля или вмешательства третьей стороны.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is the difference between bitcoin and ethereum?</div>
+                <div className="title text-capitalize my-3">В чем разница между биткойнами и Ethereum?</div>
                 <div className="content">
-                    <p><span className="orange">Ethereum</span> is another cryptocurrency, and one many people see as potentially 
-                        overtaking <span className="orange">Bitcoin</span> as the dominant coin in the market. ... The difference between 
-                        Ethereum and Bitcoin is the fact that Bitcoin is nothing more than a currency, 
-                        whereas Ethereum is a ledger technology that companies are using to build new 
-                        programs.</p>
+                    <p><span className="orange">Ethereum</span>  это еще одна криптовалюта, и многие считают, что 
+                    <span className="orange"> Биткойн</span> может превзойти потенциальную монету на рынке. Разница между Ethereum и Биткойном заключается в том, что Биткойн - не что иное, как валюта, тогда как Ethereum - это бухгалтерская технология, которую компании используют для создания новых программ.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is ICO?</div>
+                <div className="title text-capitalize my-3">Что такое ICO?</div>
                 <div className="content">
-                    <p>An <span className="orange">Initial Coin Offering</span> (ICO) is the 
-                        cryptocurrency space's rough equivalent to an IPO in the mainstream investment 
-                        world. ICOs act as fundraisers of sorts; a company looking to create a new coin, 
-                        app, or service launches an ICO.</p>
-                    <p> In an ICO, a quantity of cryptocurrency is sold in the form of "tokens" ("coins") to 
-                        speculators or investors, in exchange for legal tender or other cryptocurrencies such 
-                        as Bitcoin or Ethereum. The tokens sold are promoted as future functional units of 
-                        currency if or when the ICO's funding goal is met and the project launches. 
-                        In some cases like Ethereum the tokens are required to use the system for its purposes.</p>
-                    <p>An ICO can be a source of capital for startup companies. ICOs can allow startups to avoid regulatory 
-                        compliance and intermediaries such as venture capitalists, banks and stock exchanges.</p>
+                    <p><span className="orange">Первоначальное предложение монет</span> (ICO) является грубым эквивалентом пространства криптовалюты для IPO в основном инвестиционном мире. ICO выступают в качестве сборщиков средств; компания, желающая создать новую монету, приложение или услугу, запускает ICO.</p>
+                    <p>В ICO количество криптовалюты продается в форме «жетонов» («монет») спекулянтам или инвесторам в обмен на законное платежное средство или другие криптовалюты, такие как Биткойн или Ethereum. Проданные токены рекламируются как будущие функциональные единицы валюты, если или когда будет достигнута цель финансирования ICO и начнется проект. В некоторых случаях, таких как Ethereum, токены должны использовать систему для своих целей.</p>
+                    <p>ICO может быть источником капитала для начинающих компаний. ICO могут позволить стартапам избежать соблюдения нормативных требований и посредников, таких как: венчурные капиталисты, банки и биржи.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is IEO?</div>
+                <div className="title text-capitalize my-3">Что такое IEO?</div>
                 <div className="content">
-                    <p>An <span className="orange">Initial Exchange Offering</span> (IEO) is a token sale hold on an exchange. 
-                    IEO works on different cryptocurrency exchanges depending on how it gets planned. 
-                    The exchanges create a platform where the pool of developers can mint and sell the projects 
-                    to crypto enthusiasts and investors!</p>
-                    <p>Before the token sale gets conducted on the IEO exchange platform, both the exchange team 
-                        and the project team will deal with an agreement. The exchange platform will do a thorough 
-                        review of the project using certain conditions to make sure the project is worthy authentic.</p>
-                    <p>Once the exchange platform is comfortable with the project, it will unveil the date for token sale 
-                        along with the fixed price per token. If in case the exchange has its own token, then the contributors 
-                        have to purchase the units of tokens before they can participate in Initial Exchange Offering.</p>
+                    <p><span className="orange">Первоначальное предложение биржа</span> (IEO) является удержанием продажи токена на бирже. IEO работает на разных биржах криптовалюты в зависимости от того, как это запланировано. Биржи создают платформу, где объеденение разработчиков может чеканить и продавать проекты крипто-энтузиастам и инвесторам!
+</p>
+                    <p>До того, как продажа токенов будет проведена на платформе обмена IEO, как команда обмена, так и команда проекта будут иметь дело с соглашением. Биржевая платформа проведет тщательный анализ проекта, используя определенные условия, чтобы убедиться, что проект достоин аутентичности.</p>
+                    <p>Как только платформа обмена данными освоится с проектом, она обнародует дату продажи токена вместе с фиксированной ценой за токен. Если у биржи есть свой токен, участники должны приобрести единицы токенов, прежде чем они смогут участвовать в Первоначальном предложении обмена.</p>
                 </div>
-                <div className="title text-capitalize my-3">what is mining?</div>
+                <div className="title text-capitalize my-3">Что такое майнинг?</div>
                 <div className="content">
-                    <p><span className="orange">Cryptocurrency Mining</span> or cryptomining, is a process in which 
-                    transactions for various forms of cryptocurrency are verified and added to the blockchain digital ledger.</p>
-                    <p>Each time a cryptocurrency transaction is made, a cryptocurrency miner is responsible for ensuring 
-                        the authenticity of information and updating the blockchain with the transaction. The mining process 
-                        itself involves competing with other cryptominers to solve complicated mathematical problems with 
-                        cryptographic hash functions that are associated with a block containing the transaction data.</p>
-                    <p>The first cryptocurrency miner to crack the code is rewarded by being able to authorize the transaction, 
-                        and in return for the service provided, cryptominers earn small amounts of cryptocurrency of their own. 
-                        In order to be competitive with other cryptominers, though, a cryptocurrency miner needs a computer with 
-                        specialized hardware.</p>
+                    <p><span className="orange">Криптовалюта майнинг</span> - это процесс, в котором транзакции для различных форм криптовалюты проверяются и добавляются в цифровой регистр блокчейна.</p>
+                    <p>Каждый раз, когда выполняется транзакция криптовалюты, майнер криптовалюты отвечает за обеспечение подлинности информации и обновление цепочки блоков с помощью транзакции. Сам процесс майнинга включает в себя конкуренцию с другими криптоминерами для решения сложных математических задач с помощью криптографических хеш-функций, связанных с блоком, содержащим данные транзакции.</p>
+                    <p>Первый криптовалютный майнер, взломавший код, вознаграждается возможностью авторизовать транзакцию, а взамен за предоставленный сервис криптоминеры зарабатывают небольшое количество собственной криптовалюты. Однако, чтобы быть конкурентоспособным с другими криптоминерами, майнеру криптовалют необходим компьютер со специализированным оборудованием.</p>
                 </div>
             </div>
         </CryptoDictionaryWrapper>

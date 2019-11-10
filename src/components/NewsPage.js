@@ -17,7 +17,8 @@ export default class NewsPage extends Component {
                     {(value) => {
                         const {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
                             paragraph5, publishedOn, keyword1, keyword2, keyword3, subtitle1,
-                            subtitle2, subtitle3, subtitle4, subtitle5} = value.openNewsItem;
+                            subtitle2, subtitle3, subtitle4, subtitle5, imageUrl} = value.openNewsItem;
+                        console.log(value.openNewsItem)
                         return (
                             <NewsPageWrapper>
                                 <div className="container mx-auto">
@@ -46,7 +47,7 @@ export default class NewsPage extends Component {
                                         </div>
                                         <div className="col-12 mt-1">
                                             <div className="img-container">
-                                                <img src={img} className="img-fluid" alt="news photo"/>
+                                                <img src={imageUrl ? imageUrl : img} className="img-fluid" alt="news photo"/>
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +126,6 @@ const NewsPageWrapper = styled.div`
         border-bottom: solid 5px var(--mainOrange);
         border-radius: 0.2rem;
         box-shadow: 0px 0px 2px 2px grey;
-        height: 200px;
     }
     img {
         filter: grayscale(40%) brightness(80%);

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../../public/img/news-item.jpg';
+import img from "../../public/img/news-item.jpg";
+import Firebase from '../firebase';
+import 'firebase/storage';
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 
 export default class NewsItem extends Component {
     constructor() {
         super();
+        this.storage = this.storage = Firebase.storage().ref("flamelink/media");
         this.state = {
             readingTime: 0
         }
@@ -29,8 +32,7 @@ export default class NewsItem extends Component {
         this.calcReadingTime();
     }
     render() {
-        console.log(this.state.readingTime);
-        const {id, title, publishedOn} = this.props.article;
+        const {id, title, publishedOn, imageUrl} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
@@ -40,7 +42,7 @@ export default class NewsItem extends Component {
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="container">
                                         <div className="img-container">
-                                            <img src={img} className="img-fluid"alt="bitcoin dollars altcoins"/>
+                                            <img src={imageUrl ? imageUrl : img} className="img-fluid"alt="bitcoin dollars altcoins"/>
                                         </div>
                                         <div className="text-container">
                                             <div className="text my-3">

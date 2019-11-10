@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../../public/img/top-news2.jpg';
-import {ProductConsumer} from '../context';
+import {ProductConsumer, ProductContext} from '../context';
+import img from '../../public/img/top-news.jpg';
 import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';
 import MostReadNews from './MostReadNews';
+
 export default class TopNews extends Component {
     constructor() {
-        super(),
+        super();
+        this.urlArray = [];
+        this.refNames = [];
+        this.finalUrls = [];
+        this.firstUrl = "";
+        this.imgNames = [];
         this.state = {
-            slideIndex: 0
-        },
+            slideIndex: 0,
+            imgArr: [],
+            firstUrl: "",
+            firstNews: {},
+            finalUrls: [],
+            urlName: ""
+        };
         this.plusSlides=this.plusSlides.bind(this);
         this.minusSlides=this.minusSlides.bind(this);
         this.currentSlide=this.currentSlide.bind(this);
@@ -26,7 +37,6 @@ export default class TopNews extends Component {
                 return {slideIndex: slideIndex + n}
             })
         }
-        console.log(slideIndex)
     }
     minusSlides(n) {
         let slideIndex = this.state.slideIndex;
@@ -39,30 +49,35 @@ export default class TopNews extends Component {
                 return {slideIndex: slideIndex - n}
             })
         }
-        console.log(slideIndex)
     }
     currentSlide(n) {
         this.setState(() => {
             return {slideIndex: n}
         })
     }
+    componentDidMount() {
+        this.finalUrls.push(this.state.firstUrl);
+        this.setState({finalUrls:this.finalUrls});
+        console.log(this.state.finalUrls);
+    }
     render() {
         return (
             <ProductConsumer>
                 {value => {
-                    const {id, title, publishedOn, readingTime} = value.topNews[this.state.slideIndex];
+                    const {id, title, publishedOn, readingTime, imageUrl} = value.topNews[this.state.slideIndex];
                     return (
                         <React.Fragment>
                             <NewsContainer>
                                 <div className="row mx-auto mb-1">
                                     <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
-                                    onClick={() => {value.handleTopDetail(id)}}>
+                                    onClick={() => {value.handleTopDetail(id)
+                                    this.getImg()}}>
                                         <Link className="article-link" to={`/newsarticle/${title}`}>
                                             <div className="img-column-one mx-auto">
                                                 <button className="btn-danger text-capitalize">
                                                     последние новости</button>
                                                 <div className="img-container">
-                                                    <img src={img} className="img-fluid" alt="top-news"/>
+                                                    <img src={imageUrl ? imageUrl : img} className="img-fluid" alt="top-news"/>
                                                 </div>
                                                 <div className="text-column">
                                                     <div className="text-container mx-auto">
@@ -109,6 +124,7 @@ export default class TopNews extends Component {
         )
     }
 }
+TopNews.contextType = ProductContext;
 
 const NewsContainer = styled.div`
     padding: 1rem;
@@ -228,7 +244,7 @@ const NewsContainer = styled.div`
         margin-top: 1.2rem;
     }
     .second-image {
-        margin-top: -0.1rem;
+        margin-top: 1.25rem;
     }
     .text-column {
         overflow: hidden;

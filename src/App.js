@@ -20,7 +20,7 @@ class App extends Component {
         <NavBar/>
         <Switch>
           <Route exact path="/" component={TopNews}/>
-          <Route path="/newsarticle" component={NewsPage}/>
+          <Route path="/newsarticle/:title" component={NewsPage}/>
           <Route path="/search-results" component={SearchResults}/>
           <Route path="/crypto-dictionary" component={CryptoDictionary}/>
           <Route path="/bitcoin-news" component={BitcoinNews}/>

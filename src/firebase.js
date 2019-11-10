@@ -1,5 +1,5 @@
 import * as firebase from 'firebase/app';
-import "firebase/performance";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDnshkY_5-DPEtksrbsX7AEo135ErVCxKQ",
@@ -13,8 +13,5 @@ const firebaseConfig = {
 };
 
 const Firebase = firebase.initializeApp(firebaseConfig);
-
-const perf = firebase.performance();
-
 
 export default Firebase;
