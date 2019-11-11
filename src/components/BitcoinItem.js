@@ -38,6 +38,8 @@ export default class BitcoinItem extends Component {
 
 const BitcoinItemWrapper = styled.div`
     &:hover {
+        animation: small-jump;
+        animation-duration: 0.1s;
         box-shadow: 0px 0px 4px 3px darkgrey;
     }
     background: white;
@@ -153,5 +155,8 @@ const BitcoinItemWrapper = styled.div`
         img {
             display: none;
         }
+    }
+    @keyframes small-jump {
+        from {transform: translate(0px,0px)} to {transform:translate(0px, -5px)}}
     }
 `

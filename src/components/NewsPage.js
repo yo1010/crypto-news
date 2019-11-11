@@ -124,8 +124,8 @@ const NewsPageWrapper = styled.div`
         width: 100%;
         margin-top: 1rem;
         border-bottom: solid 5px var(--mainOrange);
-        border-radius: 0.2rem;
-        box-shadow: 0px 0px 2px 2px grey;
+        border-bottom-left-radius: 0.2rem;
+        border-bottom-right-radius: 0.2rem;
     }
     img {
         filter: grayscale(40%) brightness(80%);

@@ -93,6 +93,8 @@ const NewsItemWrapper = styled.div`
         background: white;
     }
     .container:hover {
+        animation: small-jump;
+        animation-duration: 0.2s;
         transition: 1s;
         box-shadow: 0px 0px 4px 3px darkgrey;
         .img-container {
@@ -154,5 +156,8 @@ const NewsItemWrapper = styled.div`
             margin-left: auto;
             margin-right: auto;
         }
+    }
+    @keyframes small-jump {
+        from {transform: translate(0px,0px)} to {transform:translate(0px, -5px)}}
     }
 `

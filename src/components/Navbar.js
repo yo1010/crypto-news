@@ -349,6 +349,10 @@ const NavWrapper = styled.nav`
             text-shadow: 2px 2px 1px black;
         }
     }
+    .fa-times {
+        animation: rotate-back;
+        animation-duration: 0.2s;
+    }
     .fa-bars, .fa-times {
         color: black;
         padding-left: 2px;
@@ -407,5 +411,8 @@ const NavWrapper = styled.nav`
     }
     @keyframes color {
         from {background: white} to {background: var(--mainOrange)}
+    }
+    @keyframes rotate-back {
+        from {transform: rotate(0deg)} to {transform: rotate(360deg)}
     }
 `
