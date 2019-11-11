@@ -63,21 +63,22 @@ export default class TopNews extends Component {
         return (
             <ProductConsumer>
                 {value => {
-                    const {id, title, publishedOn, readingTime, imageUrl} = value.topNews[this.state.slideIndex];
+                    const {id, title, publishedOn, readingTime, imageUrl} = value.topNews[this.state.slideIndex] ? 
+                        value.topNews[this.state.slideIndex] : value.topNews[0];
                     return (
                         <React.Fragment>
                             <NewsContainer>
                                 <div className="row mx-auto mb-1">
                                     <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
-                                    onClick={() => {value.handleTopDetail(id)
-                                    this.getImg()}}>
+                                    onClick={() => {value.handleDetail(id)}}>
                                         <Link className="article-link" to={`/newsarticle/${title}`}>
                                             <div className="img-column-one mx-auto">
                                                 <button className="btn-danger text-capitalize">
                                                     последние новости</button>
                                                 <div className="img-container">
+                                                        {imageUrl ? <img src={imageUrl} className="img-fluid img-main" alt="top-news"/> :
+                                                        <img src={img} className="img-fluid img-bg" alt="top-news"/>}
                                                     <div className="img-container-second">
-                                                        <img src={imageUrl ? imageUrl : img} className="img-fluid img-main" alt="top-news"/>
                                                     </div>
                                                 </div>
                                                 <div className="text-column">
@@ -128,8 +129,6 @@ export default class TopNews extends Component {
 TopNews.contextType = ProductContext;
 
 const NewsContainer = styled.div`
-    animation: show-on-load ease-out;
-    animation-duration: 1s;
     padding: 1rem;
     width: 100%;
     margin-right: 0.8rem;
@@ -143,10 +142,17 @@ const NewsContainer = styled.div`
         margin-top: 1rem;
     }
     .img-container-second {
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        bottom: 0%;
         background-image: url(${imgBg});
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+        animation: spin;
+        animation-duration: 1.5s;
     }
     .img-container-sm {
         background-image: url(${imgBg});
@@ -155,12 +161,18 @@ const NewsContainer = styled.div`
         background-position: center;
     }
     img {
-        animation: show-on-load ease-out;
-        animation-duration: 2s;
+        filter: grayscale(40%) brightness(80%);
     }
     .img-main {
-        animation: show-on-load ease-in;
-        animation-duration: 2s;
+        animation: show-on-load;
+        animation-duration: 0.5s;
+    }
+    .actual-img-sm {
+        animation: show-on-load;
+        animation-duration: 0.5s;
+    }
+    .img-bg {
+        opacity: 0.0;
     }
     .img-column-one:hover {
         img {
@@ -426,7 +438,7 @@ const NewsContainer = styled.div`
         to {transform: translate(0px,0px)}
     }
     @keyframes spin {
-        from {transform: rotate(360deg)}
-        to {transform: rotate(0deg)}
+        0% {transform: rotate(0deg)}
+        100% {transform: rotate(1080deg)}
     }
 `

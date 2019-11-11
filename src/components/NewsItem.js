@@ -1,39 +1,16 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import img from "../../public/img/news-item.jpg";
-import Firebase from '../firebase';
 import 'firebase/storage';
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 
 export default class NewsItem extends Component {
-    constructor() {
-        super();
-        this.storage = this.storage = Firebase.storage().ref("flamelink/media");
-        this.state = {
-            readingTime: 0
-        }
-    }
-    calcReadingTime = () => {
-        let arrVal = Object.values(this.props.article);
-        let arrString = arrVal.filter(e => typeof e === 'string' && e !== '');
-        let totalCоunt = 0;
-        let readingTime = 0;
-        for (let str in arrString) {
-            let wordCount = arrString[str].split(' ').length;
-            totalCоunt += wordCount;
-        }
-        readingTime = Math.round(totalCоunt / 200);
-        this.setState({
-            readingTime: readingTime
-        })
-    }
     componentDidMount() {
-        this.calcReadingTime();
         window.scrollTo(0,0);
     }
     render() {
-        const {id, title, publishedOn, imageUrl} = this.props.article;
+        const {id, title, publishedOn, imageUrl, readingTime} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
@@ -50,7 +27,7 @@ export default class NewsItem extends Component {
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{this.state.readingTime} мин</button></div>
+                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
@@ -65,7 +42,7 @@ export default class NewsItem extends Component {
 
 const NewsItemWrapper = styled.div`
     animation: show-on-load-left ease-out;
-    animation-duration: 2s;
+    animation-duration: 1.8s;
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {

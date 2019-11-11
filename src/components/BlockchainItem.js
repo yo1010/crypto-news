@@ -12,7 +12,7 @@ export default class BlockchainItem extends Component {
                     {(value) => {
                         return (
                             <BlockchainItemWrapper className="container" 
-                            onClick={() => {value.handleBlockchainDetail(id)}}>
+                            onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="row item-container mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">

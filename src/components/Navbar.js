@@ -424,7 +424,7 @@ const NavWrapper = styled.nav`
         from {background: white} to {background: var(--mainOrange)}
     }
     @keyframes rotate-back {
-        from {transform: rotate(0deg)} to {transform: rotate(360deg)}
+        from {transform: rotate(0deg)} to {transform: rotate(720deg)}
     }
     @keyframes open-input {
         from {width: 0rem} to {width: 11rem};

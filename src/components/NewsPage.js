@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import { ProductConsumer } from '../context';
+import { ProductConsumer, ProductContext } from '../context';
 import img from '../../public/img/news-item.jpg';
 
 export default class NewsPage extends Component {
@@ -9,16 +9,17 @@ export default class NewsPage extends Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0);
+        //use pathname to return object on refresh
+        console.log(this.props.location.pathname);
     }
     render() {
         return (
             <React.Fragment>
                 <ProductConsumer>
                     {(value) => {
-                        const {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
+                        let {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
                             paragraph5, publishedOn, keyword1, keyword2, keyword3, subtitle1,
                             subtitle2, subtitle3, subtitle4, subtitle5, imageUrl} = value.openNewsItem;
-                        console.log(value.openNewsItem)
                         return (
                             <NewsPageWrapper>
                                 <div className="container mx-auto">
@@ -84,6 +85,7 @@ export default class NewsPage extends Component {
         )
     }
 }
+NewsPage.contextType = ProductContext;
 
 const NewsPageWrapper = styled.div`
     margin-top: 9rem;
