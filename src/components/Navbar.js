@@ -137,10 +137,10 @@ export default class Navbar extends Component {
                                                 this.clearInputValue();
                                                 this.hasntClicked();
                                                 }}>
-                                                <i className="fas fa-search search-icon pt-1"></i></button>
+                                                <i className="fas fa-search search-icon link-icon pt-1"></i></button>
                                         </Link>
                                         <input value={this.state.inputValue} className={this.state.hideSearch ? "form-control" : "form-control hiddenInput"} 
-                                        onChange={this.updateInputValue} type="search" placeholder="Search News" aria-label="Search"/>
+                                        onChange={this.updateInputValue} type="search" placeholder="Поиск Новостей" aria-label="Search"/>
                                     </form>
                                     <button className={this.state.hideSearch ? "btn-search button" : "btn-search button hiddenInput"} onClick={()=>{
                                         this.hasntClicked();
@@ -251,10 +251,19 @@ const NavWrapper = styled.nav`
     .search-bar:active {
         animation: color 2s ease-out;
     }
+    .form-control {
+        width: 11rem;
+        animation: open-input ease-out;
+        animation-duration: 0.5s;
+    }
     .search-icon {
         font-size: 1rem;
         padding-left: 0.1rem;
         padding-right: 0.1rem;
+    }
+    .link-icon {
+        animation: rotate-back;
+        animation-duration: 0.5s;
     }
     .dateholder {
         background: none;
@@ -406,13 +415,13 @@ const NavWrapper = styled.nav`
     @keyframes widen {
         from {width: 0%} to {width: 100%}
     }
-    @keyframes shorten {
-        from {width: 100%} to {width: 0%}
-    }
     @keyframes color {
         from {background: white} to {background: var(--mainOrange)}
     }
     @keyframes rotate-back {
         from {transform: rotate(0deg)} to {transform: rotate(360deg)}
+    }
+    @keyframes open-input {
+        from {width: 0rem} to {width: 11rem};
     }
 `

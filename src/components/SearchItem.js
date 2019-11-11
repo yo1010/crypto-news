@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 export default class SearchItem extends Component {
     render() {
-        const {id, title, publishedOn, imageUrl} = this.props.article;
+        const {id, title, publishedOn, readingTime, imageUrl} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
@@ -23,7 +23,7 @@ export default class SearchItem extends Component {
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn">#news</button></div>
+                                                <div className="metatag"><button className="keyword-btn">{readingTime}</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
