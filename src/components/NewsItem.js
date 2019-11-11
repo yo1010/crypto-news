@@ -50,7 +50,7 @@ export default class NewsItem extends Component {
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{this.state.readingTime} min</button></div>
+                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{this.state.readingTime} мин</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
@@ -64,6 +64,8 @@ export default class NewsItem extends Component {
 }
 
 const NewsItemWrapper = styled.div`
+    animation: show-on-load-left ease-out;
+    animation-duration: 2s;
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
@@ -93,9 +95,9 @@ const NewsItemWrapper = styled.div`
         background: white;
     }
     .container:hover {
-        animation: small-jump;
-        animation-duration: 0.2s;
-        transition: 1s;
+        animation: small-jump ease-in;
+        animation-duration: 0.3s;
+        transition: 0.5s;
         box-shadow: 0px 0px 4px 3px darkgrey;
         .img-container {
             border-bottom: solid 5px var(--blueGreen);
@@ -158,6 +160,12 @@ const NewsItemWrapper = styled.div`
         }
     }
     @keyframes small-jump {
-        from {transform: translate(0px,0px)} to {transform:translate(0px, -5px)}}
+        0% {transform:translate(0px, 0px)}
+        50% {transform:translate(0px, -5px)} 
+        100%{transform:translate(0px,0px)}
+    }
+    @keyframes show-on-load-left {
+        from {transform: translate(-100rem, 0px)}
+        to {transform: translate(0px,0px)}
     }
 `

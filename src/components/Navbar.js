@@ -157,28 +157,28 @@ export default class Navbar extends Component {
                                         <li className="text-capitalize nav-item first-item py-1">
                                             <Link to="/">
                                                 <button className="button" onClick={() => this.scrollTop()}>
-                                                    <div className="slider mx-auto"/>
+                                                    <div className="slider"/>
                                                     Новости</button>
                                             </Link>
                                         </li>
                                         <li className="text-capitalize nav-item ml-1 py-1">
                                             <Link to="/bitcoin-news">
                                                 <button className="button" onClick={() => this.scrollTop()}>
-                                                    <div className="slider mx-auto"/>
+                                                    <div className="slider"/>
                                                     Биткойн</button>
                                             </Link>
                                         </li>
                                         <li className="text-capitalize nav-item ml-1 py-1">
                                             <Link to="/blockchain-news">
                                                 <button className="button" onClick={() => this.scrollTop()}>
-                                                    <div className="slider mx-auto"/>
+                                                    <div className="slider"/>
                                                     Блокчейн</button>
                                             </Link>
                                         </li>
                                         <li className="text-capitalize nav-item ml-1 py-1">
                                             <Link to="/crypto-dictionary">
                                                 <button className="button" onClick={() => this.scrollTop()}>
-                                                    <div className="slider mx-auto"/>
+                                                    <div className="slider"/>
                                                     <span className="orange">
                                                         Словарь</span></button>
                                             </Link>
@@ -305,7 +305,6 @@ const NavWrapper = styled.nav`
         height: 2.5rem;
     }
     .slider {
-        width: 100%;
         border-top: solid 3px white;
     }
     .button:hover {
@@ -314,8 +313,8 @@ const NavWrapper = styled.nav`
             color: var(--blueGreen);
         }
         .slider {
-            animation: widen 0.5s;
-            width: 100%;
+            width: 0%;
+            animation: widen ease-in 0.4s;
             background: var(--mainOrange);
             border-top: solid 3px var(--mainOrange);
         }
@@ -413,7 +412,13 @@ const NavWrapper = styled.nav`
         to { transform: translate(0px, -3px); }
     }
     @keyframes widen {
-        from {width: 0%} to {width: 100%}
+        0% {width: 0%; margin-right: auto}
+        50% {width: 100%; margin-right: 0}
+        80% {margin-left:auto}
+        100% {width: 0%; margin-left: auto}
+    }
+    @keyframes shorten {
+
     }
     @keyframes color {
         from {background: white} to {background: var(--mainOrange)}

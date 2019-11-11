@@ -14,7 +14,7 @@ export default class BlockchainItem extends Component {
                             <BlockchainItemWrapper className="container" 
                             onClick={() => {value.handleBlockchainDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
-                                    <div className="row mx-auto">
+                                    <div className="row item-container mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
                                             <img src={imageUrl ? imageUrl : img} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
@@ -23,7 +23,7 @@ export default class BlockchainItem extends Component {
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} min read</button></div>
+                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
@@ -37,9 +37,13 @@ export default class BlockchainItem extends Component {
 }
 
 const BlockchainItemWrapper = styled.div`
+    .item-container {
+        animation: show-on-load-blockchain;
+        animation-duration: 0.5s;
+    }
     &:hover {
-        animation: small-jump;
-        animation-duration: 0.1s;
+        animation: small-jump ease-in;
+        animation-duration: 0.2s;
         box-shadow: 0px 0px 4px 3px darkgrey;
     }
     background: white;
@@ -157,6 +161,12 @@ const BlockchainItemWrapper = styled.div`
         }
     }
     @keyframes small-jump {
-        from {transform: translate(0px,0px)} to {transform:translate(0px, -5px)}}
+        0% {transform:translate(0px, 0px)}
+        50% {transform:translate(0px, -5px)} 
+        100%{transform:translate(0px,0px)}
+    }
+    @keyframes show-on-load-blockchain {
+        from {transform: translate(0px,-100rem)}
+        to {transform: translate(0px,0px)}
     }
 `

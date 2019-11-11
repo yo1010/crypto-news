@@ -7,8 +7,8 @@ export default function MostReadNews() {
     return (
         <ProductConsumer>
             {value => {
-                if (value.news[6] !== undefined) {
-                    const {id, title, publishedOn, readingTime, imageUrl} = value.news[1];
+                if (value.editorNews[1] !== undefined) {
+                    const {id, title, publishedOn, readingTime, imageUrl} = value.editorNews[1];
                     return(
                         <div className="img-sm-column second-image mx-auto" onClick={() => {value.handleDetail(id)}}>
                             <Link className="article-link" to={`/newsarticle/${id}`}>
@@ -23,7 +23,7 @@ export default function MostReadNews() {
                                                 {publishedOn}
                                             </div>
                                             <div className="heading text ml-auto mr-3">
-                                                {readingTime} min read
+                                                {readingTime} мин чтение
                                             </div>
                                         </div>
                                     </div>

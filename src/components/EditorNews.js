@@ -15,8 +15,8 @@ export default class EditorNews extends Component {
         return (
             <ProductConsumer>
                 {value => {    
-                    if (value.news[0] !== undefined) {
-                            const {id, title, publishedOn, readingTime, imageUrl} = value.news[0];
+                    if (value.editorNews[0] !== undefined) {
+                            const {id, title, publishedOn, readingTime, imageUrl} = value.editorNews[0];
                     return (
                         <div className="img-sm-column mx-auto" onClick={() => {value.handleDetail(id)}}>
                             <Link className="article-link" to={`/newsarticle/${title}`}>
@@ -31,7 +31,7 @@ export default class EditorNews extends Component {
                                                 {publishedOn}
                                             </div>
                                             <div className="heading text ml-auto mr-3">
-                                                {readingTime} min read
+                                                {readingTime} мин чтение
                                             </div>
                                         </div>
                                     </div>

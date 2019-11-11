@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function CryptoDictionary() {
     return (
         <CryptoDictionaryWrapper>
-            <div className="container">
+            <div className="container dict-container">
                 <div className="heading text-capitalize my-5">крипто <span className="orange">
                     Словарь</span></div>
                 <div className="title text-capitalize my-3">Что такое криптовалюта?</div>
@@ -46,7 +46,7 @@ export default function CryptoDictionary() {
                 <div className="title text-capitalize my-3">Что такое IEO?</div>
                 <div className="content">
                     <p><span className="orange">Первоначальное предложение биржа</span> (IEO) является удержанием продажи токена на бирже. IEO работает на разных биржах криптовалюты в зависимости от того, как это запланировано. Биржи создают платформу, где объеденение разработчиков может чеканить и продавать проекты крипто-энтузиастам и инвесторам!
-</p>
+                    </p>
                     <p>До того, как продажа токенов будет проведена на платформе обмена IEO, как команда обмена, так и команда проекта будут иметь дело с соглашением. Биржевая платформа проведет тщательный анализ проекта, используя определенные условия, чтобы убедиться, что проект достоин аутентичности.</p>
                     <p>Как только платформа обмена данными освоится с проектом, она обнародует дату продажи токена вместе с фиксированной ценой за токен. Если у биржи есть свой токен, участники должны приобрести единицы токенов, прежде чем они смогут участвовать в Первоначальном предложении обмена.</p>
                 </div>
@@ -65,6 +65,18 @@ export default function CryptoDictionary() {
 const CryptoDictionaryWrapper = styled.div`
     margin-top: 8rem;
     padding: 1rem;
+    .heading {
+        animation: show-on-load-right ease-out;
+        animation-duration: 1s;
+    }
+    .title {
+        animation: show-on-load-right ease-out;
+        animation-duration: 1.5s;
+    }
+    .content {
+        animation: show-on-load-right ease-out;
+        animation-duration: 2s;
+    }
     .orange {
         color: var(--mainOrange)
     }
@@ -80,5 +92,9 @@ const CryptoDictionaryWrapper = styled.div`
     .content {
         font-family: "Arsenal", sans-serif;
         font-size: 1rem;
+    }
+    @keyframes show-on-load-right {
+        from {transform: translate(100rem, 0px)}
+        to {transform: translate(0px,0px)}
     }
 `

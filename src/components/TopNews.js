@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import {ProductConsumer, ProductContext} from '../context';
 import img from '../../public/img/top-news.jpg';
+import imgBg from '../../public/img/bitcoin.png';
 import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';
 import MostReadNews from './MostReadNews';
@@ -75,7 +76,9 @@ export default class TopNews extends Component {
                                                 <button className="btn-danger text-capitalize">
                                                     последние новости</button>
                                                 <div className="img-container">
-                                                    <img src={imageUrl ? imageUrl : img} className="img-fluid" alt="top-news"/>
+                                                    <div className="img-container-second">
+                                                        <img src={imageUrl ? imageUrl : img} className="img-fluid img-main" alt="top-news"/>
+                                                    </div>
                                                 </div>
                                                 <div className="text-column">
                                                     <div className="text-container mx-auto">
@@ -87,7 +90,7 @@ export default class TopNews extends Component {
                                                                 {publishedOn}
                                                             </div>
                                                             <div className="heading text ml-5">
-                                                                {readingTime} min read
+                                                                {readingTime} мин чтение
                                                             </div>
                                                         </div>
                                                     </div>
@@ -125,9 +128,10 @@ export default class TopNews extends Component {
 TopNews.contextType = ProductContext;
 
 const NewsContainer = styled.div`
+    animation: show-on-load ease-out;
+    animation-duration: 1s;
     padding: 1rem;
     width: 100%;
-    border-top: solid 5px var(--mainOrange);
     margin-right: 0.8rem;
     margin-top: 5.5rem;
     border-bottom-color: var(--mainOrange);
@@ -137,6 +141,26 @@ const NewsContainer = styled.div`
         overflow: hidden;
         width: 100%;
         margin-top: 1rem;
+    }
+    .img-container-second {
+        background-image: url(${imgBg});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .img-container-sm {
+        background-image: url(${imgBg});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    img {
+        animation: show-on-load ease-out;
+        animation-duration: 2s;
+    }
+    .img-main {
+        animation: show-on-load ease-in;
+        animation-duration: 2s;
     }
     .img-column-one:hover {
         img {
@@ -174,7 +198,7 @@ const NewsContainer = styled.div`
     .arrow {
         font-size: 3rem;
     }
-    .dots{
+    .dots {
         position: absolute;
         top: 99%;
         width:90%;
@@ -396,5 +420,13 @@ const NewsContainer = styled.div`
         .text {
             color: white;
         }
+    }
+    @keyframes show-on-load {
+        from {transform: translate(0px,-100rem)}
+        to {transform: translate(0px,0px)}
+    }
+    @keyframes spin {
+        from {transform: rotate(360deg)}
+        to {transform: rotate(0deg)}
     }
 `

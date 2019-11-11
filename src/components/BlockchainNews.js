@@ -31,6 +31,8 @@ export default class BlockchainNews extends Component {
 }
 
 const BlockchainWrapper = styled.div`
+    animation: show-on-load-blockchain;
+    animation-duration: 2s;
     background: rgb(248,248,248);
     margin-top: 7rem;
     padding: 4rem; 
@@ -46,5 +48,9 @@ const BlockchainWrapper = styled.div`
         margin-top: 5rem;
         font-size: 1.5rem;
         font-family: "Arsenal", sans-serif;
+    }
+    @keyframes show-on-load-blockchain {
+        from {transform: translate(0px,-100rem)}
+        to {transform: translate(0px,0px)}
     }
 `

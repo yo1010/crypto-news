@@ -32,6 +32,8 @@ export default class News extends Component {
 }
 
 const NewsWrapper = styled.div`
+animation: show-on-load-left ease-out;
+animation-duration: 2s;
 background: rgb(248,248,248);
 padding-bottom: 3rem;
 .container {

@@ -19,7 +19,7 @@ class ProductProvider extends Component {
         this.arrayNewsLeft = [{}];
         this.state = {
             search: "",
-            news: [{}],
+            editorNews: [{}],
             newsLeft: [{}], 
             openNewsItem: {},
             topNews: [{}],
@@ -47,7 +47,7 @@ class ProductProvider extends Component {
         });
     }
     handleDetail = (id) => {
-        const newsItem = this.state.news.find((item => item.id === id));
+        const newsItem = this.state.editorNews.find((item => item.id === id));
         this.setState(()=>{
             return {openNewsItem:newsItem}
         })
@@ -68,8 +68,8 @@ class ProductProvider extends Component {
         let newState = [];
         let finalState = [];
         let finalObj;
-        for (let nItem in this.state.news) {
-            let obj = this.state.news[nItem];
+        for (let nItem in this.state.editorNews) {
+            let obj = this.state.editorNews[nItem];
             let objVal = Object.values(obj);
             let objString = objVal.filter(e => typeof e === 'string' && e !== '');
             for (let str in objString) {
@@ -115,7 +115,7 @@ class ProductProvider extends Component {
             this.urlArray = [];
             res.items.forEach((itemRef) => {
                 refName = itemRef.name.toLowerCase();
-                let refChild = this.storage.child(refName)
+                let refChild = this.storage.child(refName);
                 refChild.getDownloadURL().then((url)=>{
                     this.urlArray.unshift(url);
                 })
@@ -174,7 +174,6 @@ class ProductProvider extends Component {
                 }
                 readingTime = Math.round(totalCоunt / 200);
                 childVal.readingTime = readingTime;
-
                 if (childVal.keyword1 === "биткойн новости") {
                     this.arrayBitcoinNews.unshift(childVal);
                 }
@@ -186,7 +185,7 @@ class ProductProvider extends Component {
             this.arrayNews.splice(0,4);
             this.arrayNewsLeft = this.arrayNews.slice(4);
             this.setState({
-                news: this.arrayNews,
+                editorNews: this.arrayNews,
                 newsLeft: this.arrayNewsLeft,
                 bitcoinNews: this.arrayBitcoinNews,
                 blockchainNews: this.arrayBlockchainNews

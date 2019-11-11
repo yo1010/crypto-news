@@ -23,7 +23,7 @@ export default class SearchItem extends Component {
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn">{readingTime}</button></div>
+                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
@@ -38,8 +38,8 @@ export default class SearchItem extends Component {
 
 const SearchItemWrapper = styled.div`
 &:hover {
-    animation: small-jump;
-    animation-duration: 0.1s;
+    animation: small-jump ease-in;
+    animation-duration: 0.2s;
     box-shadow: 0px 0px 4px 3px darkgrey;
 }
 background: white;
@@ -157,6 +157,8 @@ i {
     }
 }
 @keyframes small-jump {
-    from {transform: translate(0px,0px)} to {transform:translate(0px, -5px)}}
+    0% {transform:translate(0px, 0px)}
+    50% {transform:translate(0px, -5px)} 
+    100%{transform:translate(0px,0px)}
 }
 `
