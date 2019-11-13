@@ -21,11 +21,13 @@ export default class TopNews extends Component {
             firstUrl: "",
             firstNews: {},
             finalUrls: [],
-            urlName: ""
+            urlName: "",
+            hasloaded: false
         };
         this.plusSlides=this.plusSlides.bind(this);
         this.minusSlides=this.minusSlides.bind(this);
         this.currentSlide=this.currentSlide.bind(this);
+        this.handleLoad=this.handleLoad.bind(this);
     }
     plusSlides(n) {
         let slideIndex = this.state.slideIndex;
@@ -56,6 +58,12 @@ export default class TopNews extends Component {
             return {slideIndex: n}
         })
     }
+    handleLoad() {
+        console.log('has loaded')
+        this.setState({
+            hasloaded: true
+        })
+    }
     componentDidMount() {
         window.scrollTo(0,0);
     }
@@ -66,58 +74,59 @@ export default class TopNews extends Component {
                     const {id, title, publishedOn, readingTime, imageUrl} = value.topNews[this.state.slideIndex] ? 
                         value.topNews[this.state.slideIndex] : value.topNews[0];
                     return (
-                        <React.Fragment>
-                            <NewsContainer className="row mx-auto mb-1">
-                                <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
-                                onClick={() => {value.handleDetail(id)}}>
-                                    <Link className="article-link" to={`/newsarticle/${title}`}>
-                                        <div className="img-column-one mx-auto">
-                                            <button className="btn-danger text-capitalize">
-                                                последние новости</button>
-                                            <div className="img-container">
-                                                    {imageUrl ? <img src={imageUrl} className="img-fluid img-main" alt="top-news"/> :
-                                                    <img src={img} className="img-fluid img-bg" alt="top-news"/>}
-                                                <div className="img-container-second">
-                                                </div>
+                        <NewsContainer className={this.state.hasloaded ? "row mx-auto mb-1" : "row mx-auto mb-1 notloaded"}>
+                            <div className={this.state.hasloaded ? "img-column mx-auto col-12 col-md-8 col-lg-8" : "img-column mx-auto col-12 col-md-8 col-lg-8 notloaded"}
+                            onClick={() => {value.handleDetail(id)}}>
+                                <Link className="article-link" to={`/newsarticle/${title}`}>
+                                    <div className="img-column-one mx-auto">
+                                        <button className="btn-danger text-capitalize">
+                                            последние новости</button>
+                                        <div className="img-container">
+                                                <img src={imageUrl} className="img-fluid img-main" alt="top-news"/>
+                                            <div className="img-container-second">
                                             </div>
-                                            <div className="text-column">
-                                                <div className="text-container mx-auto">
-                                                    <p className="heading text-capitalize">
-                                                        {title}
-                                                    </p>
-                                                    <div className="row date-minutes">
-                                                        <div className="heading text ml-3">
-                                                            {publishedOn}
-                                                        </div>
-                                                        <div className="heading text ml-5">
-                                                            {readingTime} мин чтение
-                                                        </div>
+                                        </div>
+                                        <div className="text-column">
+                                            <div className="text-container mx-auto">
+                                                <p className="heading text-capitalize">
+                                                    {title}
+                                                </p>
+                                                <div className="row date-minutes">
+                                                    <div className="heading text ml-3">
+                                                        {publishedOn}
+                                                    </div>
+                                                    <div className="heading text ml-5">
+                                                        {readingTime} мин чтение
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </Link>
-                                    <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
-                                        <i className="fas fa-chevron-left arrow"></i></button>
-                                    <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
-                                        <i className="fas fa-chevron-right arrow"></i></button>
-                                    <div className="dots">
-                                        <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
-                                        onClick={()=>this.currentSlide(0)}></span>
-                                        <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
-                                        onClick={()=>this.currentSlide(1)}></span>
-                                        <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
-                                        onClick={()=>this.currentSlide(2)}></span>
-                                        <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
-                                        onClick={()=>this.currentSlide(3)}></span>
                                     </div>
+                                </Link>
+                                <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
+                                    <i className="fas fa-chevron-left arrow"></i></button>
+                                <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
+                                    <i className="fas fa-chevron-right arrow"></i></button>
+                                <div className="dots">
+                                    <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
+                                    onClick={()=>this.currentSlide(0)}></span>
+                                    <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
+                                    onClick={()=>this.currentSlide(1)}></span>
+                                    <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
+                                    onClick={()=>this.currentSlide(2)}></span>
+                                    <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
+                                    onClick={()=>this.currentSlide(3)}></span>
                                 </div>
-                                <div className="img-column-two mx-auto col-10 col-md-4 col-lg-4">
-                                        <EditorNews/>
-                                        <MostReadNews/>
-                                </div>
-                            </NewsContainer>
-                        </React.Fragment>
+                            </div>
+                            <div className={this.state.hasloaded ? "img-column-two mx-auto col-10 col-md-4 col-lg-4" 
+                                : "img-column-two mx-auto col-10 col-md-4 col-lg-4 notloaded"}>
+                                    <EditorNews/>
+                                    <MostReadNews handleLoad={this.handleLoad}/>
+                            </div>
+                            <div className={this.state.hasloaded ? "container notloaded" : "container"}>
+                                <img src={imgBg} className="img-fluid loading-img"/>
+                            </div>
+                        </NewsContainer>
                     )
                 }}
             </ProductConsumer>
@@ -127,6 +136,9 @@ export default class TopNews extends Component {
 TopNews.contextType = ProductContext;
 
 const NewsContainer = styled.div`
+    .notloaded {
+        display: none;
+    }
     padding: 1rem;
     width: 100%;
     margin-right: 0.8rem;
@@ -149,6 +161,8 @@ const NewsContainer = styled.div`
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+    }
+    .loading-img {
         animation: spin;
         animation-duration: 1.5s;
     }
@@ -158,16 +172,11 @@ const NewsContainer = styled.div`
         background-size: cover;
         background-position: center;
     }
-    img {
+    .img-main {
         filter: grayscale(40%) brightness(80%);
     }
-    .img-main {
-        animation: show-on-load;
-        animation-duration: 0.5s;
-    }
     .actual-img-sm {
-        animation: show-on-load;
-        animation-duration: 0.5s;
+        filter: grayscale(40%) brightness(80%);
     }
     .img-bg {
         opacity: 0.0;

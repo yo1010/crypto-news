@@ -13,6 +13,7 @@ class ProductProvider extends Component {
         this.storage = Firebase.storage().ref("flamelink/media");
         this.arrayNews = [{}];
         this.openNewsItem = {};
+        this.indexNewsItem = 0;
         this.arrayBitcoinNews = [{}];
         this.arrayBlockchainNews = [{}];
         this.searchArray = [{}];
@@ -25,7 +26,10 @@ class ProductProvider extends Component {
             topNews: [{}],
             searchList: [{}],
             editorNews: {},
-            openNewsItem: {},
+            openNewsItem: this.openNewsItem,
+            indexNewsItem: 0,
+            fromTopNews: false,
+            fromEditorNews: false,
             hottestNews: {},
             bitcoinNews: [{}],
             blockchainNews: [{}],
@@ -93,10 +97,23 @@ class ProductProvider extends Component {
     }
     handleDetail = (id) => {
         this.openNewsItem = this.state.editorNews.find((item => item.id === id));
+        if (this.openNewsItem !== undefined) {
+            this.indexNewsItem = this.state.editorNews.indexOf(this.openNewsItem);
+            this.setState(() =>({
+                fromEditorNews: true
+            }));
+        }
         if (this.openNewsItem === undefined) {
             this.openNewsItem = this.state.topNews.find((item => item.id === id));
+            this.indexNewsItem = this.state.topNews.indexOf(this.openNewsItem);
+            this.setState(() =>({
+                fromTopNews: true
+            }));
         };
-        this.setState({openNewsItem: this.openNewsItem});
+        this.setState({
+            openNewsItem: this.openNewsItem,
+            indexNewsItem: this.indexNewsItem
+        });
     };
     handleSearch = (input) => {
         let newState = [];

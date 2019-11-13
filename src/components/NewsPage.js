@@ -4,25 +4,72 @@ import { ProductConsumer, ProductContext } from '../context';
 import img from '../../public/img/news-item.jpg';
 
 export default class NewsPage extends Component {
+    constructor() {
+        super();
+        this.editorNewsItem = {};
+        this.topNewsItem = {};
+        this.currentUrl = "";
+        this.state = {
+            currentItem: {},
+            dataloaded: false
+        }
+    }
     componentDidUpdate() {
         window.scrollTo(0, 0);
+        if (Object.keys(this.state.currentItem).length === 0) {
+            for (let item in this.context.editorNews) {
+                if (this.context.editorNews[item].title === this.currentUrl) {
+                    if (Object.keys(this.editorNewsItem).length === 0) {
+                        this.editorNewsItem = this.context.editorNews[item];
+                        console.log('it was in editornews')
+                        console.log(this.editorNewsItem)
+                    } 
+                }   
+                if (Object.keys(this.editorNewsItem).length === 0) {
+                    for (let item in this.context.topNews) {
+                        if (this.context.topNews[item].title === this.currentUrl) {
+                            if (Object.keys(this.topNewsItem).length === 0) {
+                                this.topNewsItem = this.context.topNews[item];
+                                console.log('it was in topnews')
+                            } 
+                        } 
+                    }
+                }
+            }
+            if ((Object.keys(this.topNewsItem).length > 0)) {
+                this.setState({currentItem: this.topNewsItem})
+                console.log('item state from topNews')
+            } else if (Object.keys(this.editorNewsItem).length > 0) {
+                this.setState({currentItem: this.editorNewsItem});
+                console.log('item state from editorNews')
+            } else {
+                console.log('no state set')
+            }
+        }
+    }
+    handleImgLoad = () => {
+        this.setState({dataloaded: true})
     }
     componentDidMount() {
         window.scrollTo(0, 0);
         //use pathname to return object on refresh
-        console.log(this.props.location.pathname);
+        this.currentUrl = this.props.location.pathname.replace('/newsarticle/', '');
+        console.log(this.currentUrl);
+        this.setState({currentItem: this.context.openNewsItem});
     }
     render() {
         return (
             <React.Fragment>
                 <ProductConsumer>
                     {(value) => {
-                        let {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
+                        const index = value.indexNewsItem;
+                        console.log(index);
+                        const {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
                             paragraph5, publishedOn, keyword1, keyword2, keyword3, subtitle1,
-                            subtitle2, subtitle3, subtitle4, subtitle5, imageUrl} = value.openNewsItem;
+                            subtitle2, subtitle3, subtitle4, subtitle5, imageUrl} = this.state.currentItem;
                         return (
                             <NewsPageWrapper>
-                                <div className="container mx-auto">
+                                <div className={this.state.dataloaded ? "container mx-auto" : "container mx-auto notloaded"}>
                                     <div className="row mx-auto">
                                         <div className="col-12">
                                             <div className="row header">
@@ -48,7 +95,7 @@ export default class NewsPage extends Component {
                                         </div>
                                         <div className="col-12 mt-1">
                                             <div className="img-container">
-                                                <img src={imageUrl ? imageUrl : img} className="img-fluid" alt="news photo"/>
+                                                <img src={imageUrl} onLoad={() => this.handleImgLoad()} className="img-fluid" ref={elem => this.nv = elem} alt="news article"/>
                                             </div>
                                         </div>
                                     </div>
@@ -89,8 +136,13 @@ NewsPage.contextType = ProductContext;
 
 const NewsPageWrapper = styled.div`
     margin-top: 9rem;
+    .notloaded {
+        display: none;
+    }
     .container {
         padding:1rem;
+        animation: show-on-load-right ease-out;
+        animation-duration: 0.5s
     }
     .border-container {
         border-top: solid 5px var(--mainOrange);
@@ -173,6 +225,10 @@ const NewsPageWrapper = styled.div`
         .keyword-btn {
             font-size: 0.75rem;
         }
+    }
+    @keyframes show-on-load-right {
+        from {transform: translate(-100rem, 0px)}
+        to {transform: translate(0px,0px)}
     }
 `
 

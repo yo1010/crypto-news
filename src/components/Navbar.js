@@ -91,7 +91,7 @@ export default class Navbar extends Component {
     componentWillUnmount() {
         // Unlisten if the component unmounts.
         window.removeEventListener('scroll', this.handleScroll);
-        window.addEventListener('click', this.handleClick);
+        window.removeEventListener('click', this.handleClick);
     }
     render() {
         return (
