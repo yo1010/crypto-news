@@ -65,7 +65,8 @@ export default class NewsPage extends Component {
                         console.log(index);
                         const {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
                             paragraph5, publishedOn, keyword1, keyword2, keyword3, subtitle1,
-                            subtitle2, subtitle3, subtitle4, subtitle5, imageUrl} = this.state.currentItem;
+                            subtitle2, subtitle3, subtitle4, subtitle5, imageUrl} = Object.keys(this.context.openNewsItem).length > 0 ? 
+                            this.context.openNewsItem : this.state.currentItem;
                         return (
                             <NewsPageWrapper>
                                 <div className={this.state.dataloaded ? "container mx-auto" : "container mx-auto notloaded"}>

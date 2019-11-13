@@ -439,7 +439,7 @@ const NewsContainer = styled.div`
             top: 40%;
         }
         .text {
-            color: white;
+            color: var(--mainOrange);
         }
     }
     @keyframes show-on-load {
