@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import {ProductConsumer, ProductContext} from '../context';
-import img from '../../public/img/top-news.jpg';
 import imgBg from '../../public/img/bitcoin.png';
 import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';

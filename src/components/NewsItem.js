@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from "../../public/img/news-item.jpg";
 import 'firebase/storage';
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
@@ -20,7 +19,7 @@ export default class NewsItem extends Component {
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="container">
                                         <div className="img-container">
-                                            <img src={imageUrl ? imageUrl : img} className="img-fluid"alt="bitcoin dollars altcoins"/>
+                                            <img src={imageUrl} onLoad={() => this.props.handleLoad()}className="img-fluid"alt="bitcoin dollars altcoins"/>
                                         </div>
                                         <div className="text-container">
                                             <div className="text mb-3 mt-1">

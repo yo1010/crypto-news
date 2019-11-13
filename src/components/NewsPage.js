@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import { ProductConsumer, ProductContext } from '../context';
-import img from '../../public/img/news-item.jpg';
 
 export default class NewsPage extends Component {
     constructor() {

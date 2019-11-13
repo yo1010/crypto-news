@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
-import img from '../../public/img/crypto-img.jpg';
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 
@@ -16,7 +15,7 @@ export default class SearchItem extends Component {
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="row mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
-                                            <img src={imageUrl ? imageUrl : img} className=""alt="bitcoin dollars altcoins"/>
+                                            <img src={imageUrl} className=""alt="bitcoin dollars altcoins"/>
                                         </div>
                                         <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
                                             <div className="text my-3">

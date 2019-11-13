@@ -4,23 +4,32 @@ import NewsItem from "./NewsItem";
 import { ProductConsumer } from '../context';
 
 export default class News extends Component {
+    constructor() {
+        super();
+        this.state = {
+            hasloaded: false
+        }   
+    };
+    handleLoad = () => {
+        this.setState({hasloaded: true})
+    };
     render() {
         return (
             <NewsWrapper>
-                <div className="row">
+                <div className={this.state.hasloaded ? "row" : "row notloaded"}>
                     <div className="separator1"></div>
                     <div className="separator2">
                         <button className="title-separator text-capitalize px-1">больше новостей:</button>
                         <div className="smallseparator"></div>
                     </div>
                 </div>
-                <div className="row mx-auto">
+                <div className={this.state.hasloaded ? "row mx-auto" : "row mx-auto notloaded"}>
                     <ProductConsumer>
                         {(value) => {
                             return value.newsLeft.map(
                                 article => {
                                     return <NewsItem key={article.id}
-                                            article={article} />
+                                            article={article} handleLoad={this.handleLoad} />
                                 }
                             )
                         }}
@@ -32,6 +41,9 @@ export default class News extends Component {
 }
 
 const NewsWrapper = styled.div`
+.notloaded {
+    display: none;
+}
 animation: show-on-load-left ease-out;
 animation-duration: 1s;
 background: rgb(248,248,248);

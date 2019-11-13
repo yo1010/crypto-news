@@ -1,5 +1,4 @@
 import React from 'react';
-import img from '../../public/img/top-news.jpg';
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 

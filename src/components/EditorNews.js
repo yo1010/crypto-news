@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import img from '../../public/img/top-news.jpg';
 import {ProductConsumer, ProductContext} from '../context';
 import {Link} from 'react-router-dom';
 
@@ -22,7 +21,7 @@ export default class EditorNews extends Component {
                             <Link className="article-link" to={`/newsarticle/${title}`}>
                                 <div className="img-sm mx-auto">
                                     <div className="img-container img-container-sm">
-                                        <img src={imageUrl ? imageUrl : img} className="img-fluid actual-img-sm" alt="top-news"/>
+                                        <img src={imageUrl} className="img-fluid actual-img-sm" alt="top-news"/>
                                     </div>
                                     <div className="editor-title">
                                         <p>{title}</p>
