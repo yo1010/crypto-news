@@ -74,8 +74,8 @@ const CryptoDictionaryWrapper = styled.div`
         animation-duration: 1.5s;
     }
     .content {
-        animation: show-on-load-right ease-out;
-        animation-duration: 2s;
+        animation: show-on-load-left ease-out;
+        animation-duration: 1.5s;
     }
     .orange {
         color: var(--mainOrange)
@@ -95,6 +95,10 @@ const CryptoDictionaryWrapper = styled.div`
     }
     @keyframes show-on-load-right {
         from {transform: translate(100rem, 0px)}
+        to {transform: translate(0px,0px)}
+    }
+    @keyframes show-on-load-left {
+        from {transform: translate(-100rem, 0px)}
         to {transform: translate(0px,0px)}
     }
 `

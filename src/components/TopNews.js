@@ -67,56 +67,54 @@ export default class TopNews extends Component {
                         value.topNews[this.state.slideIndex] : value.topNews[0];
                     return (
                         <React.Fragment>
-                            <NewsContainer>
-                                <div className="row mx-auto mb-1">
-                                    <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
-                                    onClick={() => {value.handleDetail(id)}}>
-                                        <Link className="article-link" to={`/newsarticle/${title}`}>
-                                            <div className="img-column-one mx-auto">
-                                                <button className="btn-danger text-capitalize">
-                                                    последние новости</button>
-                                                <div className="img-container">
-                                                        {imageUrl ? <img src={imageUrl} className="img-fluid img-main" alt="top-news"/> :
-                                                        <img src={img} className="img-fluid img-bg" alt="top-news"/>}
-                                                    <div className="img-container-second">
-                                                    </div>
+                            <NewsContainer className="row mx-auto mb-1">
+                                <div className="img-column mx-auto col-12 col-md-8 col-lg-8"
+                                onClick={() => {value.handleDetail(id)}}>
+                                    <Link className="article-link" to={`/newsarticle/${title}`}>
+                                        <div className="img-column-one mx-auto">
+                                            <button className="btn-danger text-capitalize">
+                                                последние новости</button>
+                                            <div className="img-container">
+                                                    {imageUrl ? <img src={imageUrl} className="img-fluid img-main" alt="top-news"/> :
+                                                    <img src={img} className="img-fluid img-bg" alt="top-news"/>}
+                                                <div className="img-container-second">
                                                 </div>
-                                                <div className="text-column">
-                                                    <div className="text-container mx-auto">
-                                                        <p className="heading text-capitalize">
-                                                            {title}
-                                                        </p>
-                                                        <div className="row date-minutes">
-                                                            <div className="heading text ml-3">
-                                                                {publishedOn}
-                                                            </div>
-                                                            <div className="heading text ml-5">
-                                                                {readingTime} мин чтение
-                                                            </div>
+                                            </div>
+                                            <div className="text-column">
+                                                <div className="text-container mx-auto">
+                                                    <p className="heading text-capitalize">
+                                                        {title}
+                                                    </p>
+                                                    <div className="row date-minutes">
+                                                        <div className="heading text ml-3">
+                                                            {publishedOn}
+                                                        </div>
+                                                        <div className="heading text ml-5">
+                                                            {readingTime} мин чтение
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </Link>
-                                        <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
-                                            <i className="fas fa-chevron-left arrow"></i></button>
-                                        <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
-                                            <i className="fas fa-chevron-right arrow"></i></button>
-                                        <div className="dots">
-                                            <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
-                                            onClick={()=>this.currentSlide(0)}></span>
-                                            <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
-                                            onClick={()=>this.currentSlide(1)}></span>
-                                            <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
-                                            onClick={()=>this.currentSlide(2)}></span>
-                                            <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
-                                            onClick={()=>this.currentSlide(3)}></span>
                                         </div>
+                                    </Link>
+                                    <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
+                                        <i className="fas fa-chevron-left arrow"></i></button>
+                                    <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
+                                        <i className="fas fa-chevron-right arrow"></i></button>
+                                    <div className="dots">
+                                        <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(0)}></span>
+                                        <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(1)}></span>
+                                        <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(2)}></span>
+                                        <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(3)}></span>
                                     </div>
-                                    <div className="img-column-two mx-auto col-10 col-md-4 col-lg-4">
-                                            <EditorNews/>
-                                            <MostReadNews/>
-                                    </div>
+                                </div>
+                                <div className="img-column-two mx-auto col-10 col-md-4 col-lg-4">
+                                        <EditorNews/>
+                                        <MostReadNews/>
                                 </div>
                             </NewsContainer>
                         </React.Fragment>
@@ -173,6 +171,10 @@ const NewsContainer = styled.div`
     }
     .img-bg {
         opacity: 0.0;
+    }
+    .img-column {
+        animation: show-on-load;
+        animation-duration: 0.5s;
     }
     .img-column-one:hover {
         img {
@@ -307,7 +309,6 @@ const NewsContainer = styled.div`
         position: relative;
         border-width: 5px;
         border-color: var(--mainOrange);
-        margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
@@ -315,7 +316,6 @@ const NewsContainer = styled.div`
         position: relative;
         border-width: 5px;
         border-color: var(--mainOrange);
-        margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
         box-shadow: 0px 0px 2px 2px black;
@@ -324,9 +324,10 @@ const NewsContainer = styled.div`
         position: relative;
         border-width: 5px;
         border-color: var(--mainOrange);
-        margin-right: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        animation: show-on-load;
+        animation-duration: 0.5s;
     }
     .img-sm-column {
         box-shadow: 0px 0px 2px 2px black;

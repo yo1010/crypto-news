@@ -23,7 +23,7 @@ export default class NewsItem extends Component {
                                             <img src={imageUrl ? imageUrl : img} className="img-fluid"alt="bitcoin dollars altcoins"/>
                                         </div>
                                         <div className="text-container">
-                                            <div className="text my-3">
+                                            <div className="text mb-3 mt-1">
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
