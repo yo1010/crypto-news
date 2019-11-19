@@ -90,7 +90,7 @@ export default class NewsPage extends Component {
                                         </div>
                                         <div className="text-container col-12 mt-1 border-container">
                                             <div className="title mt-1">
-                                                {title}
+                                                <h2>{title}</h2>
                                             </div>
                                         </div>
                                         <div className="col-12 mt-1">
@@ -101,15 +101,15 @@ export default class NewsPage extends Component {
                                     </div>
                                     <div className="container content">
                                         <div className="mb-3">{content}</div>
-                                        <div className="mb-3 sub-title">{subtitle1}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle1}</h5></div>
                                         <div className="mb-3">{paragraph1}</div>
-                                        <div className="mb-3 sub-title">{subtitle2}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle2}</h5></div>
                                         <div className="mb-3">{paragraph2}</div>
-                                        <div className="mb-3 sub-title">{subtitle3}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle3}</h5></div>
                                         <div className="mb-3">{paragraph3}</div>
-                                        <div className="mb-3 sub-title">{subtitle4}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle4}</h5></div>
                                         <div className="mb-3">{paragraph4}</div>
-                                        <div className="mb-3 sub-title">{subtitle5}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle5}</h5></div>
                                         <div className="mb-3">{paragraph5}</div>
                                         <div className="keywords row mb-2">
                                             <div className="first-keyword">

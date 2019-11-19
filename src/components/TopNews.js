@@ -88,7 +88,7 @@ export default class TopNews extends Component {
                                         <div className="text-column">
                                             <div className="text-container mx-auto">
                                                 <p className="heading text-capitalize">
-                                                    {title}
+                                                    <h1>{title}</h1>
                                                 </p>
                                                 <div className="row date-minutes">
                                                     <div className="heading text ml-3">
@@ -264,7 +264,7 @@ const NewsContainer = styled.div`
     h5 {
         marging-bottom: 0.5rem;
     }
-    .heading {
+    .heading, h1 {
         margin-top: 0.5rem;
         font-size: 1.5rem;
         font-weight: bold;
@@ -385,7 +385,7 @@ const NewsContainer = styled.div`
         }
     }
     @media (max-width: 680px) {
-        .heading {
+        .heading, h1 {
             font-size: 1.1rem;
         }
         .btn-danger {
@@ -408,7 +408,7 @@ const NewsContainer = styled.div`
         .editor-title {
             font-size: 0.70rem;
         }
-        .heading {
+        .heading, h1 {
             font-size: 1rem;
         }
     }
@@ -429,7 +429,7 @@ const NewsContainer = styled.div`
             width: 90%;
             left: 7%;
         }
-        .heading {
+        .heading, h1 {
             font-size: 1.1rem;
         }
         .btn-danger {

@@ -25,7 +25,7 @@ export default class NewsItem extends Component {
                                         </div>
                                         <div className="text-container">
                                             <div className="text mb-3 mt-1">
-                                                <div className="title">{title}</div>
+                                                <div className="title"><h1>{title}</h1></div>
                                             </div>
                                             <div className="row header mx-1">
                                                 <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
@@ -59,7 +59,7 @@ const NewsItemWrapper = styled.div`
     .metatag {
         margin-bottom: 0.2rem;
     }
-    .title {
+    .title, h1 {
         font-size: 0.75rem;
         height: 50px;
         overflow: hidden;
