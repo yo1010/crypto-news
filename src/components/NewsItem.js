@@ -21,7 +21,7 @@ export default class NewsItem extends Component {
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="container">
                                         <div className="img-container">
-                                            <img src={imageUrl} className="img-fluid"alt="bitcoin dollars altcoins"/>
+                                            <img src={imageUrl} className="img-fluid"alt="Биткойн новости сегодня"/>
                                         </div>
                                         <div className="text-container">
                                             <div className="text mb-3 mt-1">
