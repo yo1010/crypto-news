@@ -66,7 +66,7 @@ export default class NewsPage extends Component {
                         console.log(index);
                         const {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
                             paragraph5, publishedOn, keyword1, keyword2, keyword3, subtitle1,
-                            subtitle2, subtitle3, subtitle4, subtitle5, imageUrl} = Object.keys(this.context.openNewsItem).length > 0 ? 
+                            subtitle2, subtitle3, subtitle4, subtitle5, moreInfo, imageUrl} = Object.keys(this.context.openNewsItem).length > 0 ? 
                             this.context.openNewsItem : this.state.currentItem;
                         return (
                             <NewsPageWrapper>
@@ -112,6 +112,9 @@ export default class NewsPage extends Component {
                                         <div className="mb-3">{paragraph4}</div>
                                         <div className="mb-3 sub-title"><h5>{subtitle5}</h5></div>
                                         <div className="mb-3">{paragraph5}</div>
+                                        <div className="more-info mt-5">
+                                            <span className="orange">Больше Информации: <a href={moreInfo}>{moreInfo}</a></span>
+                                        </div>
                                         <div className="keywords row mb-2">
                                             <div className="first-keyword">
                                                 <button className="keyword-btn">#{keyword1}</button>
@@ -184,6 +187,12 @@ const NewsPageWrapper = styled.div`
         border-bottom: solid 5px var(--mainOrange);
         border-bottom-left-radius: 0.2rem;
         border-bottom-right-radius: 0.2rem;
+    }
+    .orange {
+        color: var(--mainOrange);
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-family: 'Yeseva One', sans-serif;
     }
     .img-main {
         filter: grayscale(40%) brightness(80%);
