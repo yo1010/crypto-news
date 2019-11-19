@@ -85,7 +85,7 @@ class ProductProvider extends Component {
                 this.arrayNews.unshift(childVal);
             });
             this.arrayTopNews = this.arrayNews.splice(0,4);
-            this.arrayNewsLeft = this.arrayNews.slice(4);
+            this.arrayNewsLeft = this.arrayNews.slice(2);
             this.setState({
                 topNews: this.arrayTopNews,
                 editorNews: this.arrayNews,
