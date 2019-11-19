@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import { ProductConsumer, ProductContext } from '../context';
+import imgBg from '../../public/img/bitcoin.png';
 
 export default class NewsPage extends Component {
     constructor() {
@@ -95,7 +96,7 @@ export default class NewsPage extends Component {
                                         </div>
                                         <div className="col-12 mt-1">
                                             <div className="img-container">
-                                                <img src={imageUrl} onLoad={() => this.handleImgLoad()} className="img-fluid" ref={elem => this.nv = elem} alt="news article"/>
+                                                <img src={imageUrl} onLoad={() => this.handleImgLoad()} className="img-fluid img-main" ref={elem => this.nv = elem} alt="news article"/>
                                             </div>
                                         </div>
                                     </div>
@@ -124,6 +125,9 @@ export default class NewsPage extends Component {
                                         </div>
                                     </div>
                                 </div>
+                                <div className={this.state.dataloaded ? "container notloaded" : "container"}>
+                                    <img src={imgBg} className="img-fluid loading-img"/>
+                            </div>
                             </NewsPageWrapper>
                         )
                     }}
@@ -181,9 +185,13 @@ const NewsPageWrapper = styled.div`
         border-bottom-left-radius: 0.2rem;
         border-bottom-right-radius: 0.2rem;
     }
-    img {
+    .img-main {
         filter: grayscale(40%) brightness(80%);
         border-radius: 0;
+    }
+    .loading-img {
+        animation: spin;
+        animation-duration: 1.5s;
     }
     .title {
         font-size: 1.5rem;
@@ -219,8 +227,8 @@ const NewsPageWrapper = styled.div`
         font-size: 1.5rem;
     }
     @media (max-width: 502px) {
-        .title {
-            font-size: 1rem;
+        .title, h2 {
+            font-size: 1.5rem;
         }
         .keyword-btn {
             font-size: 0.75rem;
@@ -229,6 +237,10 @@ const NewsPageWrapper = styled.div`
     @keyframes show-on-load-right {
         from {transform: translate(-100rem, 0px)}
         to {transform: translate(0px,0px)}
+    }
+    @keyframes spin {
+        0% {transform: rotate(0deg)}
+        100% {transform: rotate(1080deg)}
     }
 `
 

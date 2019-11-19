@@ -4,6 +4,7 @@ import 'firebase/storage';
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import img from '../../public/img/placeholder-16-9.jpg'
 
 export default class NewsItem extends Component {
     render() {
@@ -21,7 +22,7 @@ export default class NewsItem extends Component {
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="container">
                                         <div className="img-container">
-                                            <img src={imageUrl} className="img-fluid"alt="Биткойн новости сегодня"/>
+                                            <img src={imageUrl ? imageUrl : img} className="img-fluid"alt="Биткойн новости сегодня"/>
                                         </div>
                                         <div className="text-container">
                                             <div className="text mb-3 mt-1">
