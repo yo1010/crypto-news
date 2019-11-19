@@ -5,7 +5,7 @@ import logo from '../../public/img/Bitcoinia3.png';
 export default function Footer() {
     return (
         <FooterWrapper>
-            <div className="text">Copyright© 2019. <span><img src={logo} alt="bitcoinia logo"/></span> All rights reserved.</div>
+            <div className="text">Copyright© 2019. <span><img src={logo} alt="Биткойна"/></span> All rights reserved.</div>
         </FooterWrapper>
     )
 }

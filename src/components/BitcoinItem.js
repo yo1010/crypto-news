@@ -15,7 +15,7 @@ export default class BitcoinItem extends Component {
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="row item-container mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
-                                            <img src={imageUrl} className=""alt="bitcoin dollars altcoins"/>
+                                            <img src={imageUrl} className=""alt="Биткойн новости"/>
                                         </div>
                                         <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
                                             <div className="text my-3">

@@ -9,6 +9,7 @@
     "react-dom": "^16.10.2",
     "react-fade-in": "^0.1.6",
     "react-helmet": "^5.2.1",
+    "react-lazyload": "^2.6.5",
     "react-loading": "^2.0.3",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^5.1.2",

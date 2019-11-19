@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import NewsItem from "./NewsItem";
 import { ProductConsumer } from '../context';
+import LazyLoad from 'react-lazyload';
 
 export default class News extends Component {
     constructor() {
@@ -10,26 +11,27 @@ export default class News extends Component {
             hasloaded: false
         }   
     };
-    handleLoad = () => {
-        this.setState({hasloaded: true})
-    };
     render() {
         return (
             <NewsWrapper>
-                <div className={this.state.hasloaded ? "row" : "row notloaded"}>
+                <div className="row">
                     <div className="separator1"></div>
                     <div className="separator2">
                         <button className="title-separator text-capitalize px-1">больше новостей:</button>
                         <div className="smallseparator"></div>
                     </div>
                 </div>
-                <div className={this.state.hasloaded ? "row mx-auto" : "row mx-auto notloaded"}>
+                <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
                             return value.newsLeft.map(
                                 article => {
-                                    return <NewsItem key={article.id}
-                                            article={article} handleLoad={this.handleLoad} />
+                                    return  (
+                                        <LazyLoad offset={50}>
+                                            <NewsItem key={article.id}
+                                                article={article} />
+                                        </LazyLoad>
+                                    )
                                 }
                             )
                         }}

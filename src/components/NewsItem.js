@@ -3,11 +3,9 @@ import styled from "styled-components";
 import 'firebase/storage';
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default class NewsItem extends Component {
-    componentDidMount() {
-        window.scrollTo(0,0);
-    }
     render() {
         const {id, title, publishedOn, imageUrl, readingTime} = this.props.article;
         return (
@@ -16,10 +14,14 @@ export default class NewsItem extends Component {
                         return (
                             <NewsItemWrapper className="col-10 col-sm-6 col-md-4 col-lg-3 col-xl-3" 
                             onClick={() => {value.handleDetail(id)}}>
+                                <Helmet>
+                                    <meta property="og:title" content={title}/>
+                                    <meta property="og:image" content={imageUrl}/>
+                                </Helmet>
                                 <Link className="article-link" to={`/newsarticle/${title}`}>
                                     <div className="container">
                                         <div className="img-container">
-                                            <img src={imageUrl} onLoad={() => this.props.handleLoad()}className="img-fluid"alt="bitcoin dollars altcoins"/>
+                                            <img src={imageUrl} className="img-fluid"alt="bitcoin dollars altcoins"/>
                                         </div>
                                         <div className="text-container">
                                             <div className="text mb-3 mt-1">
@@ -40,8 +42,8 @@ export default class NewsItem extends Component {
 }
 
 const NewsItemWrapper = styled.div`
-    animation: show-on-load-left ease-out;
-    animation-duration: 1.8s;
+    animation: show-on-load-opacity ease-in;
+    animation-duration: 0.5s;
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
@@ -143,5 +145,8 @@ const NewsItemWrapper = styled.div`
     @keyframes show-on-load-left {
         from {transform: translate(-100rem, 0px)}
         to {transform: translate(0px,0px)}
+    }
+    @keyframes show-on-load-opacity {
+        from {opacity: 0.0} to {opacity: 1}
     }
 `
