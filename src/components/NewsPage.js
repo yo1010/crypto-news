@@ -112,7 +112,7 @@ export default class NewsPage extends Component {
                                         <div className="mb-3">{paragraph4}</div>
                                         <div className="mb-3 sub-title"><h5>{subtitle5}</h5></div>
                                         <div className="mb-3">{paragraph5}</div>
-                                        <div className="more-info mt-5">
+                                        <div className={moreInfo ? "more-info mt-5" : "more-info mt-5 notloaded"}>
                                             <span className="orange">Больше Информации: <a href={moreInfo}>{moreInfo}</a></span>
                                         </div>
                                         <div className="keywords row mb-2">
