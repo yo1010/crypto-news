@@ -162,8 +162,8 @@ const NewsContainer = styled.div`
         background-position: center;
     }
     .loading-img {
-        animation: spin;
-        animation-duration: 1.5s;
+        animation: spin linear infinite;
+        animation-duration: 1s;
     }
     .img-container-sm {
         background-image: url(${imgBg});

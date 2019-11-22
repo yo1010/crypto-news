@@ -199,8 +199,8 @@ const NewsPageWrapper = styled.div`
         border-radius: 0;
     }
     .loading-img {
-        animation: spin;
-        animation-duration: 1.5s;
+        animation: spin linear infinite;
+        animation-duration: 1s;
     }
     .title {
         font-size: 1.5rem;
