@@ -94,8 +94,8 @@ class ProductProvider extends Component {
                 let urlName = childVal.title.split('').map(function (char) { 
                     return a[char] || char
                 }).join("");
-                urlName = urlName.replace(/\s+/g, '');
                 urlName = urlName.replace(/[^a-zA-Z ]/g, "");
+                urlName = urlName.replace(/\s+/g, '-');
                 childVal.urlName = urlName;
                 //splitting data into either Bitcoin or Blockchain
                 if (childVal.keyword1 === "биткойн новости") {
