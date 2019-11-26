@@ -7,8 +7,10 @@ import { Helmet } from 'react-helmet';
 import img from '../../public/img/placeholder-16-9.jpg'
 
 export default class NewsItem extends Component {
+
     render() {
-        const {id, title, publishedOn, imageUrl, readingTime} = this.props.article;
+        const {id, title, publishedOn, imageUrl, readingTime, urlName} = this.props.article;
+        console.log(urlName)
         return (
                 <ProductConsumer>
                     {(value) => {
@@ -19,7 +21,7 @@ export default class NewsItem extends Component {
                                     <meta property="og:title" content={title}/>
                                     <meta property="og:image" content={imageUrl}/>
                                 </Helmet>
-                                <Link className="article-link" to={`/newsarticle/${title}`}>
+                                <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="container">
                                         <div className="img-container">
                                             <img src={imageUrl ? imageUrl : img} className="img-fluid"alt="Биткойн новости сегодня"/>
@@ -44,7 +46,7 @@ export default class NewsItem extends Component {
 
 const NewsItemWrapper = styled.div`
     animation: show-on-load-opacity ease-in;
-    animation-duration: 0.5s;
+    animation-duration: 0.75s;
     margin-top: 3rem;
     border-radius: 0.3rem;
     &:hover {
@@ -67,7 +69,7 @@ const NewsItemWrapper = styled.div`
         font-family: 'Yeseva One', sans-serif;
     }
     .container {
-        box-shadow: 0px 0px 3px 2px darkgrey;
+        box-shadow: 0px 0px 2.5px 1.5px darkgrey;
         border-radius: 0.2rem;
         padding: 0.5rem;
         margin-right: 1rem;
@@ -149,5 +151,5 @@ const NewsItemWrapper = styled.div`
     }
     @keyframes show-on-load-opacity {
         from {opacity: 0.0} to {opacity: 1}
-    }
+    Щ
 `

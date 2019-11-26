@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {ProductConsumer} from '../context';
 import styled from 'styled-components';
 import BlockchainItem from './BlockchainItem';
-import LazyLoad from 'react-lazyload';
 
 export default class BlockchainNews extends Component {
     render() {

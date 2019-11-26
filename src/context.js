@@ -59,6 +59,7 @@ class ProductProvider extends Component {
             snapshot.forEach(childSnapshot => {
                 let childVal = childSnapshot.val();
                 let arrVal = Object.values(childVal);
+                // creating an imageUrl property for each item in database
                 let imgVal = arrVal[3];
                 this.state.urlArray.forEach((item) => {
                     if (Array.isArray(imgVal)) {
@@ -67,6 +68,7 @@ class ProductProvider extends Component {
                         }
                     }
                 })
+                // creating a readingTime property for each item in database
                 let arrString = arrVal.filter(e => typeof e === 'string' && e !== '');
                 let totalCоunt = 0;
                 let readingTime = 0;
@@ -76,6 +78,26 @@ class ProductProvider extends Component {
                 }
                 readingTime = Math.round(totalCоunt / 200);
                 childVal.readingTime = readingTime;
+                //creating a urlName property for each item in database
+                let a = {"Ё":"YO","Й":"I","Ц":"TS","У":"U",
+                "К":"K","Е":"E","Н":"N","Г":"G","Ш":"SH",
+                "Щ":"SCH","З":"Z","Х":"H","Ъ":"u","ё":"yo",
+                "й":"i","ц":"ts","у":"u","к":"k","е":"e","н":"n",
+                "г":"g","ш":"sh","щ":"sch","з":"z","х":"h","ъ":"u",
+                "Ф":"F","Ы":"I","В":"V","А":"a","П":"P","Р":"R",
+                "О":"O","Л":"L","Д":"D","Ж":"ZH","Э":"E","ф":"f",
+                "ы":"i","в":"v","а":"a","п":"p","р":"r","о":"o",
+                "л":"l","д":"d","ж":"zh","э":"e","Я":"Ya","Ч":
+                "CH","С":"S","М":"M","И":"I","Т":"T","Ь":"u",
+                "Б":"B","Ю":"YU","я":"ya", "и":"i", "ч":"ch","с":"s","м":"m",
+                "т":"t","ь":"u","б":"b","ю":"yu"};
+                let urlName = childVal.title.split('').map(function (char) { 
+                    return a[char] || char
+                }).join("");
+                urlName = urlName.replace(/\s+/g, '');
+                urlName = urlName.replace(/[^a-zA-Z ]/g, "");
+                childVal.urlName = urlName;
+                //splitting data into either Bitcoin or Blockchain
                 if (childVal.keyword1 === "биткойн новости") {
                     this.arrayBitcoinNews.unshift(childVal);
                 }

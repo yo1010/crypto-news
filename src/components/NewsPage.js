@@ -11,26 +11,23 @@ export default class NewsPage extends Component {
         this.currentUrl = "";
         this.state = {
             currentItem: {},
-            dataloaded: false
+            dataloaded: false,
         }
     }
     componentDidUpdate() {
         window.scrollTo(0, 0);
         if (Object.keys(this.state.currentItem).length === 0) {
             for (let item in this.context.editorNews) {
-                if (this.context.editorNews[item].title === this.currentUrl) {
+                if (this.context.editorNews[item].urlName === this.currentUrl) {
                     if (Object.keys(this.editorNewsItem).length === 0) {
                         this.editorNewsItem = this.context.editorNews[item];
-                        console.log('it was in editornews')
-                        console.log(this.editorNewsItem)
                     } 
                 }   
                 if (Object.keys(this.editorNewsItem).length === 0) {
                     for (let item in this.context.topNews) {
-                        if (this.context.topNews[item].title === this.currentUrl) {
+                        if (this.context.topNews[item].urlName === this.currentUrl) {
                             if (Object.keys(this.topNewsItem).length === 0) {
                                 this.topNewsItem = this.context.topNews[item];
-                                console.log('it was in topnews')
                             } 
                         } 
                     }
@@ -38,14 +35,12 @@ export default class NewsPage extends Component {
             }
             if ((Object.keys(this.topNewsItem).length > 0)) {
                 this.setState({currentItem: this.topNewsItem})
-                console.log('item state from topNews')
             } else if (Object.keys(this.editorNewsItem).length > 0) {
                 this.setState({currentItem: this.editorNewsItem});
-                console.log('item state from editorNews')
-            } else {
-                console.log('no state set')
             }
         }
+        console.log(this.state.blockchainNews)
+        console.log(this.state.bitcoinNews)
     }
     handleImgLoad = () => {
         this.setState({dataloaded: true})
@@ -112,8 +107,8 @@ export default class NewsPage extends Component {
                                         <div className="mb-3">{paragraph4}</div>
                                         <div className="mb-3 sub-title"><h5>{subtitle5}</h5></div>
                                         <div className="mb-3">{paragraph5}</div>
-                                        <div className={moreInfo ? "more-info mt-5" : "more-info mt-5 notloaded"}>
-                                            <span className="orange">Больше Информации: <a href={moreInfo}>{moreInfo}</a></span>
+                                        <div className={moreInfo ? "more-info mt-5 sub-title" : "more-info mt-5 notloaded"}>
+                                            <span className="orange">Больше Информации: <a className="infoLink"href={moreInfo}>{moreInfo}</a></span>
                                         </div>
                                         <div className="keywords row mb-2">
                                             <div className="first-keyword">
@@ -130,7 +125,7 @@ export default class NewsPage extends Component {
                                 </div>
                                 <div className={this.state.dataloaded ? "container notloaded" : "container"}>
                                     <img src={imgBg} className="img-fluid loading-img"/>
-                            </div>
+                                </div>
                             </NewsPageWrapper>
                         )
                     }}
@@ -240,6 +235,9 @@ const NewsPageWrapper = styled.div`
             font-size: 1.5rem;
         }
         .keyword-btn {
+            font-size: 0.75rem;
+        }
+        .infoLink {
             font-size: 0.75rem;
         }
     }

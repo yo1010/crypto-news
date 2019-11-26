@@ -15,10 +15,10 @@ export default class EditorNews extends Component {
             <ProductConsumer>
                 {value => {    
                     if (value.editorNews[0] !== undefined) {
-                            const {id, title, publishedOn, readingTime, imageUrl} = value.editorNews[0];
+                            const {id, title, publishedOn, readingTime, imageUrl, urlName} = value.editorNews[0];
                     return (
                         <div className="img-sm-column mx-auto" onClick={() => {value.handleDetail(id)}}>
-                            <Link className="article-link" to={`/newsarticle/${title}`}>
+                            <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                 <div className="img-sm mx-auto">
                                     <div className="img-container img-container-sm">
                                         <img src={imageUrl} className="img-fluid actual-img-sm" alt="top-news"/>

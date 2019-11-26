@@ -5,14 +5,14 @@ import {Link} from 'react-router-dom';
 
 export default class SearchItem extends Component {
     render() {
-        const {id, title, publishedOn, readingTime, imageUrl} = this.props.article;
+        const {id, title, publishedOn, readingTime, imageUrl, urlName} = this.props.article;
         return (
                 <ProductConsumer>
                     {(value) => {
                         return (
                             <SearchItemWrapper className="container" 
                             onClick={() => {value.handleDetail(id)}}>
-                                <Link className="article-link" to={`/newsarticle/${title}`}>
+                                <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="row mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
                                             <img src={imageUrl} className=""alt="bitcoin dollars altcoins"/>

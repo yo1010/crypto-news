@@ -7,10 +7,10 @@ export default function MostReadNews(props) {
         <ProductConsumer>
             {value => {
                 if (value.editorNews[1] !== undefined) {
-                    const {id, title, publishedOn, readingTime, imageUrl} = value.editorNews[1];
+                    const {id, title, publishedOn, readingTime, imageUrl, urlName} = value.editorNews[1];
                     return(
                         <div className="img-sm-column second-image mx-auto" onClick={() => {value.handleDetail(id)}}>
-                            <Link className="article-link" to={`/newsarticle/${id}`}>
+                            <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                 <div className="img-sm mx-auto">
                                     <div className="img-container img-container-sm">
                                         <img src={imageUrl} onLoad={() => props.handleLoad()} className="img-fluid actual-img-sm" alt="top-news"/>

@@ -70,13 +70,13 @@ export default class TopNews extends Component {
         return (
             <ProductConsumer>
                 {value => {
-                    const {id, title, publishedOn, readingTime, imageUrl} = value.topNews[this.state.slideIndex] ? 
+                    const {id, title, publishedOn, readingTime, imageUrl, urlName} = value.topNews[this.state.slideIndex] ? 
                         value.topNews[this.state.slideIndex] : value.topNews[0];
                     return (
                         <NewsContainer className={this.state.hasloaded ? "row mx-auto mb-1" : "row mx-auto mb-1 notloaded"}>
                             <div className={this.state.hasloaded ? "img-column mx-auto col-12 col-md-8 col-lg-8" : "img-column mx-auto col-12 col-md-8 col-lg-8 notloaded"}
                             onClick={() => {value.handleDetail(id)}}>
-                                <Link className="article-link" to={`/newsarticle/${title}`}>
+                                <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="img-column-one mx-auto">
                                         <button className="btn-danger text-capitalize">
                                             последние новости</button>
@@ -87,9 +87,9 @@ export default class TopNews extends Component {
                                         </div>
                                         <div className="text-column">
                                             <div className="text-container mx-auto">
-                                                <p className="heading text-capitalize">
+                                                <div className="heading text-capitalize">
                                                     <h1>{title}</h1>
-                                                </p>
+                                                </div>
                                                 <div className="row date-minutes">
                                                     <div className="heading text ml-3">
                                                         {publishedOn}
@@ -427,7 +427,7 @@ const NewsContainer = styled.div`
         .text-column {
             height: 110%;
             width: 90%;
-            left: 7%;
+            left: 5.5%;
         }
         .heading, h1 {
             font-size: 1.1rem;
