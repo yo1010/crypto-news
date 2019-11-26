@@ -5,6 +5,7 @@ import imgBg from '../../public/img/bitcoin.png';
 import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';
 import MostReadNews from './MostReadNews';
+import MissedNews from './MissedNews';
 
 export default class TopNews extends Component {
     constructor() {
@@ -65,6 +66,7 @@ export default class TopNews extends Component {
     }
     componentDidMount() {
         window.scrollTo(0,0);
+        
     }
     render() {
         return (
@@ -120,8 +122,9 @@ export default class TopNews extends Component {
                             <div className={this.state.hasloaded ? "img-column-two mx-auto col-10 col-md-4 col-lg-4" 
                                 : "img-column-two mx-auto col-10 col-md-4 col-lg-4 notloaded"}>
                                     <EditorNews/>
-                                    <MostReadNews handleLoad={this.handleLoad}/>
+                                    <MostReadNews handleLoad={this.handleLoad} />
                             </div>
+                            <div className="mx-auto">{this.state.hasloaded ? <MissedNews /> : " "}</div>
                             <div className={this.state.hasloaded ? "container notloaded" : "container"}>
                                 <img src={imgBg} className="img-fluid loading-img"/>
                             </div>
@@ -388,13 +391,19 @@ const NewsContainer = styled.div`
         .heading, h1 {
             font-size: 1.1rem;
         }
+        .title-header {
+            font-size: 0.8rem;
+        }
         .btn-danger {
             font-size: 1.5rem;
         }
         .text-column {
             height: 55%;
-            width: 95%;
-            left: 5%;
+            width: 92%;
+            left: 4.3%;
+        }
+        .missed-news {
+            display: none;
         }
     }
     @media (min-width: 768px) and (max-width: 992px) {
@@ -411,11 +420,17 @@ const NewsContainer = styled.div`
         .heading, h1 {
             font-size: 1rem;
         }
+        .title-header {
+            font-size: 1.1rem;
+        }
     }
     @media (min-width: 992px) and (max-width: 1200px) {
         .text-container {
             height: 326px
             font-size: 1rem;
+        }
+        .title-header {
+            font-size: 1.1rem;
         }
     }
     @media (min-width: 1200px) {

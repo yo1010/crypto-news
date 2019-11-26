@@ -7,10 +7,8 @@ import { Helmet } from 'react-helmet';
 import img from '../../public/img/placeholder-16-9.jpg'
 
 export default class NewsItem extends Component {
-
     render() {
         const {id, title, publishedOn, imageUrl, readingTime, urlName} = this.props.article;
-        console.log(urlName)
         return (
                 <ProductConsumer>
                     {(value) => {
@@ -23,16 +21,18 @@ export default class NewsItem extends Component {
                                 </Helmet>
                                 <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="container">
+                                        <div className="text-container">
+                                            <div className="row header mb-1">
+                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
+                                                <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
+                                            </div>
+                                        </div>
                                         <div className="img-container">
                                             <img src={imageUrl ? imageUrl : img} className="img-fluid"alt="Биткойн новости сегодня"/>
                                         </div>
-                                        <div className="text-container">
-                                            <div className="text mb-3 mt-1">
+                                        <div className="text-container mt-1">
+                                            <div className="text mt-1">
                                                 <div className="title"><h1>{title}</h1></div>
-                                            </div>
-                                            <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
-                                                <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
                                     </div>
@@ -64,12 +64,16 @@ const NewsItemWrapper = styled.div`
     }
     .title, h1 {
         font-size: 0.75rem;
-        height: 50px;
         overflow: hidden;
         font-family: 'Yeseva One', sans-serif;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width:100%;
+        margin-top: 0.2rem;
     }
     .container {
-        box-shadow: 0px 0px 2.5px 1.5px darkgrey;
+        box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
         border-radius: 0.2rem;
         padding: 0.5rem;
         margin-right: 1rem;
@@ -79,7 +83,7 @@ const NewsItemWrapper = styled.div`
         animation: small-jump ease-in;
         animation-duration: 0.3s;
         transition: 0.5s;
-        box-shadow: 0px 0px 4px 3px darkgrey;
+        box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
         .img-container {
             border-bottom: solid 5px var(--blueGreen);
             transition: 0.5s;
@@ -97,7 +101,6 @@ const NewsItemWrapper = styled.div`
         position: relative;
         overflow: hidden;
         width: 100%;
-        margin-top: 1rem;
         border-bottom: solid 5px var(--mainOrange);
         border-radius: 0.2rem;
         box-shadow: 0px 0px 1px 1px grey;
@@ -112,7 +115,7 @@ const NewsItemWrapper = styled.div`
         margin-right: 3px;
     }
     .header {
-        width: 100%;
+        width: 110%;
         text-align: center;
     }
     .article-link {
@@ -127,12 +130,20 @@ const NewsItemWrapper = styled.div`
         background: none;
         outline: none;
         cursor: default;
+        margin-right: 0.4rem;
     }
     i {
         font-size: 0.75rem;
     }
-    .date {
-        margin-right: 0.5rem;
+    @media (min-width: 1450px) {
+        .date-btn {
+            margin-right: 1rem;
+        }
+    }
+    @media (max-width: 775px) {
+        .date-btn {
+            margin-right: 1rem;
+        }
     }
     @media (max-width: 575px) {
         & {
@@ -140,7 +151,7 @@ const NewsItemWrapper = styled.div`
             margin-right: auto;
         }
     }
-    @keyframes small-jump {
+    @keyframes small-jump { 
         0% {transform:translate(0px, 0px)}
         50% {transform:translate(0px, -5px)} 
         100%{transform:translate(0px,0px)}
@@ -151,5 +162,5 @@ const NewsItemWrapper = styled.div`
     }
     @keyframes show-on-load-opacity {
         from {opacity: 0.0} to {opacity: 1}
-    Щ
+    }
 `

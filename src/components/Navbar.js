@@ -417,9 +417,6 @@ const NavWrapper = styled.nav`
         80% {margin-left:auto}
         100% {width: 0%; margin-left: auto}
     }
-    @keyframes shorten {
-
-    }
     @keyframes color {
         from {background: white} to {background: var(--mainOrange)}
     }
