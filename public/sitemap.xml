@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url> <loc>http://www.bitcoinia.ru/</loc> </url>
-<url> <loc>http://www.bitcoinia.ru/bitcoin-news</loc> </url>
-<url> <loc>http://www.bitcoinia.ru/blockchain-news</loc> </url>
-<url> <loc>http://www.bitcoinia.ru/search-results</loc> </url>
-<url> <loc>http://www.bitcoinia.ru/crypto-dictionary</loc> </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>http://bitcoinia.ru</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/search-results</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/bitcoin-news</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/blockchain-news</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/crypto-dictionary</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KakizbezhatukriptomoshennichestvanaTinder</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Bitfinexpomozhetrazrabotatuobrazovatelunieprogrammidlyalyubiteleikripto</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/ProtsessCryptoqueenadvokatOneCoinpriznanvinovnimvotmivaniideneg</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Pochemustrahoviekompaniinetrogayutkripto</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/undefined</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/protsentainstitutsionalunihinvestorovvseescheostavlyayutsvoisredstvanabirzhah</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/GoogleischetskachokbitkoinovposletogokaktsenaBTCdostiglamesyachnogominimuma</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/NoviiotchetbolushinstvozhertvkriptomoshennichestvanahodyatsyavIndoneziiNigeriiSSHaiVuetname</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Kakigratuspomoschuyukripto</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/YUaRBankprekratilobmenibitkoinovssilayasunachetkosturegulirovaniya</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KitaiskoegosudarstvennoetelevidenienazivaetkriptovalyutinezakonnimishemamiPontsi</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/HakerpredlagaettisvvideBTCvkachestvenagradizavzlomHalliburton</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Kakkriptoiblokcheinvliyayutnageopolitiku</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/TopkriptonaetoinedeleNEOLINKADABNBLEO</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/PlanaprovalilsyaglobaluniidolgvrazmeretisDollarovilimlnDollarovzabitkoin</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/TSentraluniibankKitayaogranichitdenezhniipotokvpreddveriitsifrovoivalyuti</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Indiiskiiparlamentnazimneisessiinerassmotritvoprosopolnomzapretekriptoobmena</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KitaiskiiTwitterBinancezablokirovanizzaneizvestnihnarushenii</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/BitkoinispravlyaetPayPalsokraschaetviplatiboleemodeleiPornhub</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/GeneraluniidirektorMorganCreekCapitalProdaiteaktsiiAmazonkupiteBitkoin</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/AmazonKitayavihoditnabitkoini</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KitaiskayatsifrovayavalyutaneischetpolnogokontrolyadannihkommentiruetTSentraluniibank</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KrupneishiibankKanadiobdumivaetnalichiekriptovalyutiposlezapretabitkoinovotchet</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/MagnatNedvizhimostiprodaetCondovNuyuIorkezamlndollarovvbitkoinah</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/FirmaVCAndreessenHorowitzzapuskaetbesplatnuyunedelunuyushkoluCrypto</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/BitkoinnerealuniizayavilbivshiiglavaEvropeiskogotsentralunogobanka</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/GosudarstvennieSMIKitayaBitkoinperviiuspehBlockchain</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/VRossiinoviizakonpozvolitpolitsiikonfiskovatubitkoinisgoda</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/DXnaosnoveNasdaqObmenpriostanavlivaettorgovlyupitaetsyaprodatukompaniyu</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/IssledovateliutverzhdayutchtoodinizBitkoinovihkitovvgodubilBullRan</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/ObmenayabirzhabitkoinovBitMEXpropustilatisyachielektronnihpisempoluzovateleikakgovoritsyavotchetah</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/DeribitviplatitpoluzovatelyamdomlnPoslevnezapnoiavariitorgovlibitkoinanaurovneK</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/BitkoinBlizhnegoVostokaKanadskiiEkspatvDubaiskoityurume</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/VVenesuelesdelalihitroumnoeoborudovaniekotoroemozhetispoluzovatubitkoinivovremyaotklyucheniielektrichestva</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KonfidentsialuniefailiMiningGiantBitmaindlyaIPOnahodyatsyanabazeSSHa</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/UpravlyayuschiikanadskimfondomrazmestitBitkoinnakrupneisheifondovoibirzhe</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/SoglasnonovomuotchetuitaluyantsipredpochitayutdelatupokupkionlainsbitkoinamianesVisailiAmericanExpress</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/PiterSHiffobvinyaetkitovvtomchtobitkoinnabiraetprotsentovprotivzolota</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KimDotkompozhertvovalgonorarKimBitkoinaDzhulianuassanzhuvpreddveriimillionovdollarovSSHa</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/PodannimotraslevogoissledovaniyavKitaeboleekompaniistsepochkoiblokov</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/ObuemfuyuchersovnaBitkoinotBakktsostavilmillionovdollarovzachasa</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/KitaiWeChatischetaktsiiBlockchainiAShareSkyrocket</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Bitkoinpodnimaetsyadodollarovkudaetoprivedyot</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/TailandZakonokriptovalyuteizmenitsyavgoduiostanetsyakonkurentosposobnim</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Kitaiskayatsifrovayavalyutazapustitsyaopredelennocherezmesyatsevsoglasnoslovaminvestorov</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Lamborghiniispoluzuetblokcheindlyaautentifikatsiipereprodannihavtomobilei</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/DeutscheBoerseSwisscomureguliruyuttsenniebumagispomoschuyuCordaiHyperledger</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/VredonosnieprogramminaofitsialunomsaiteMoneromogutukrastukriptografiyu</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/NiderlandipolitsiyaarestovalaosnovatelyastartapaBlockchainkotoriisobralboleemillionovdollarov</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/MinisterstvonatsionalunoibezopasnostividelilotisyachdollarovnarazrabotkutehnologiibezopasnostiBlockchain</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/DzhonMakafizapuskaetWHACKDkriptoEpshteinneubivalsebya</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/GooglepogruzhaetsyavtsifroviefinansispomoschuyusvyazannihsGooglePaytekuschihschetov</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/TelegramprositsudotklonituiskSECprotivkriptovalyutiGram</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/PolloPollokriptoproektpolozhivshiikuritsunastolvVenesuele</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/EkspredsedateluFRSGrinspenNetsmislavtsifrovihvalyutahTSentralunogobanka</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Vaiomingvpervievistoriipredstavilpravilahraneniyakriptografiidlyablokcheinbankov</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/UPSpostavlyaetgovyadinuvYaponiyuotslezhivayaiotslezhivayaspomoschuyutehnologiiBlockchain</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/UberMoneykakBigTechizobretaetmobilunieplatezhi</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/DzhoLyubinKitaiizbezhitdetsentralizovannihaspektovblokcheina</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/DeutscheBrsestremitsyaoblegchituperevodtsifrovihtsennihbumagspomoschuyunovoisdelki</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/OtchetKitaiskoepravitelustvoGuanchzhoupredstavlyaetmlnSubsidiinablokcheinfond</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Kitaipredosteregaetotkriptovalyutispekulyatsiinafoneobmanablokcheina</loc><priority>0.5</priority></url>
+<url><loc>http://bitcoinia.ru/newsarticle/Vesimogutstatuneuznavaemimipripomoschireguliruyuschihvoprosov</loc><priority>0.5</priority></url>
 </urlset>
