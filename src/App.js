@@ -14,6 +14,9 @@ import BitcoinNews from './components/BitcoinNews';
 import BlockchainNews from './components/BlockchainNews';
 
 class App extends Component {
+  componentDidMount() {
+    window.scrollTo(0,0)
+  }
   render() {
     return (      
       <React.Fragment>

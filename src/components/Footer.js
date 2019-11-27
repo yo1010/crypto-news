@@ -13,7 +13,7 @@ export default class Footer extends Component {
     handleScroll() {
         let topOfPage = window.pageYOffset;
         // Check if it was scrolled back to the top.
-        if (topOfPage <= 500) {
+        if (topOfPage <= 800) {
             this.setState(() => {
                 return {hasScrolled: false}
             })
@@ -63,11 +63,12 @@ const FooterWrapper = styled.div`
     .scroll-top-btn {
         position: fixed;
         z-index: 9999;
-        border-radius: 0.5rem;
+        border-radius: 5rem;
         background: var(--blueGreen);
         outline: none;
         border: none;
-        padding: 0.5rem;
+        padding-top: 0.7rem;
+        padding-bottom: 0.8rem;
         padding-left: 1rem;
         padding-right: 1rem;
         i {
@@ -77,10 +78,24 @@ const FooterWrapper = styled.div`
         }
         bottom: 5%;
         left: 93%;
+        animation: rotate-back 0.5s;
     }
     .scroll-top-btn:hover {
         transition: 0.5s;
         transform: scale(1.1);
         background: var(--mainOrange);
+    }
+    @media (max-width: 1200px) {
+        .scroll-top-btn {
+            left: 90%;
+        }
+    }
+    @media (max-width: 650px) {
+        .scroll-top-btn {
+            display: none;
+        }
+    }
+    @keyframes rotate-back {
+        from {transform: rotate(0deg)} to {transform: rotate(360deg)}
     }
 `

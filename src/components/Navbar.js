@@ -118,7 +118,7 @@ export default class Navbar extends Component {
                                 </ul>
                             </NavWrapper>
                             <NavWrapper className={this.state.hasScrolled ? 
-                                'navbar navbar-expand-lg navbar-dark px-3' : 
+                                'navbar navbar-expand-lg fixed-top navbar-dark px-3' : 
                                 'navbar navbar-expand-lg navbar-dark px-3'}>
                                 <Link to="/">
                                     <div className="navbar-brand" onClick={() => this.scrollTop()}>
@@ -396,6 +396,12 @@ const NavWrapper = styled.nav`
         }
         .search-item {
             display: none;
+        }
+    }
+    @media (min-width: 499px) {
+        .navbar {
+            position: initial !important;
+            top: 0% !important;
         }
     }
     @keyframes text-jump {

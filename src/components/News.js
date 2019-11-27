@@ -27,6 +27,7 @@ export default class News extends Component {
     componentDidMount() {
         // Listen on scrolling event, call our function.
         window.addEventListener('scroll', this.handleScroll); 
+        window.scrollTo(0,0)
     }
     componentWillUnmount() {
         // Unlisten if the component unmounts.
