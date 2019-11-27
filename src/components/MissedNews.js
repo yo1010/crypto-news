@@ -92,7 +92,7 @@ export default class MissedNews extends Component {
                                     <Link className="article-link" to={`/newsarticle/${value.newsLeft[25].urlName}`} onClick={() => clearInterval()}>
                                         <div className="img-mn">
                                             <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[25].imageUrl} className="img-fluid" alt="bitcoin dollars altcoins"/>
+                                                <img src={value.newsLeft[25].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
@@ -110,7 +110,7 @@ export default class MissedNews extends Component {
                                     <Link className="article-link" to={`/newsarticle/${value.newsLeft[35].urlName}`} onClick={() => clearInterval()}>
                                         <div className="img-mn">
                                             <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[35].imageUrl} className="img-fluid" alt="bitcoin dollars altcoins"/>
+                                                <img src={value.newsLeft[35].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
@@ -128,7 +128,7 @@ export default class MissedNews extends Component {
                                     <Link className="article-link" to={`/newsarticle/${value.newsLeft[30].urlName}`} onClick={() => clearInterval()}>
                                         <div className="img-mn">
                                             <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[30].imageUrl} className="img-fluid" alt="bitcoin dollars altcoins"/>
+                                                <img src={value.newsLeft[30].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
@@ -179,6 +179,7 @@ const MissedNewsWrapper = styled.div`
         width: 5rem;
     }
     .item-container-mn {
+
         width: 100%;
     }
     .item-container-mn:hover {
@@ -223,6 +224,10 @@ const MissedNewsWrapper = styled.div`
         height: 10rem;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    .img-sm-mn:hover {
+        transition: 1s;
+        transform: scale(1.3);
     }
     .container {
         border-radius: 0.2rem;

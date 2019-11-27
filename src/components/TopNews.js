@@ -356,7 +356,11 @@ const NewsContainer = styled.div`
             transform: scale(1.3);
         }
     }
-    img:hover {
+    .img-main:hover {
+        transition: 1s;
+        transform: scale(1.3);
+    }
+    .actual-img-sm:hover {
         transition: 1s;
         transform: scale(1.3);
     }
