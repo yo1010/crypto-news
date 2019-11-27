@@ -36,7 +36,7 @@ const BlockchainWrapper = styled.div`
     animation: show-on-load-blockchain;
     animation-duration: 2s;
     background: rgb(248,248,248);
-    margin-top: 7rem;
+    margin-top: 0.5rem;
     padding: 4rem; 
     .title-search {
         font-family: "Yeseva One", sans-serif;

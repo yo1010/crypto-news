@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import EditorNews from './EditorNews';
 import MostReadNews from './MostReadNews';
 import MissedNews from './MissedNews';
+import RecentNews from './RecentNews';
 
 export default class TopNews extends Component {
     constructor() {
@@ -66,7 +67,6 @@ export default class TopNews extends Component {
     }
     componentDidMount() {
         window.scrollTo(0,0);
-        
     }
     render() {
         return (
@@ -124,7 +124,8 @@ export default class TopNews extends Component {
                                     <EditorNews/>
                                     <MostReadNews handleLoad={this.handleLoad} />
                             </div>
-                            <div className="mx-auto">{this.state.hasloaded ? <MissedNews /> : " "}</div>
+                            <div className="mx-auto recent-news">{this.state.hasloaded ? <RecentNews /> : " "}</div>
+                            <div className="mx-auto old-news">{this.state.hasloaded ? <MissedNews /> : " "}</div>
                             <div className={this.state.hasloaded ? "container notloaded" : "container"}>
                                 <img src={imgBg} className="img-fluid loading-img"/>
                             </div>
@@ -144,14 +145,21 @@ const NewsContainer = styled.div`
     padding: 1rem;
     width: 100%;
     margin-right: 0.8rem;
-    margin-top: 5.5rem;
     border-bottom-color: var(--mainOrange);
     border-bottom-width: 1rem;
+    .old-news {
+        width: 100%;
+    }
+    .recent-news {
+        width: 100%;
+    }
+    .title-ni {
+        font-size: 1rem !important;
+    }
     .img-container {
         position: relative;
         overflow: hidden;
         width: 100%;
-        margin-top: 1rem;
     }
     .img-container-second {
         z-index: -1;
@@ -225,7 +233,7 @@ const NewsContainer = styled.div`
     }
     .dots {
         position: absolute;
-        top: 99%;
+        top: 90%;
         width:90%;
         text-align: center;
         background: none;
@@ -235,7 +243,7 @@ const NewsContainer = styled.div`
         cursor: pointer;
         height: 15px;
         width: 15px;
-        margin: 0 2px;
+        margin: 0 3px;
         background-color: black;
         border-radius: 50%;
         display: inline-block;
@@ -243,7 +251,12 @@ const NewsContainer = styled.div`
         z-index: 4;
     }
     .active, .dot: hover {
-        background-color: var(--mainOrange);
+        background-color: var(--blueGreen);
+        transform: scale(1.2);
+    }
+    .active {
+        animation: text-jump 0.2s;
+        animation-iteration-count: 1;
     }
     .btn-danger {
         position: absolute;
@@ -257,15 +270,13 @@ const NewsContainer = styled.div`
         border-top-right-radius: 0.4rem;
     }
     .editors-choice {
-        margin-top: 1rem;
         text-align: center;
     }
     .text-container {
-        margin-bottom: 1rem;
         margin-top: 1rem;
     }
     h5 {
-        marging-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
     }
     .heading, h1 {
         margin-top: 0.5rem;
@@ -320,28 +331,24 @@ const NewsContainer = styled.div`
         position: relative;
         border-width: 5px;
         border-color: var(--mainOrange);
-        margin-top: 1rem;
-        margin-bottom: 1rem;
     }
     .img-column-one {
         position: relative;
         border-width: 5px;
         border-color: var(--mainOrange);
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        box-shadow: 0px 0px 2px 2px black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border: solid 1px darkgrey;
     }
     .img-column-two {
         position: relative;
         border-width: 5px;
         border-color: var(--mainOrange);
-        margin-top: 1rem;
-        margin-bottom: 1rem;
         animation: show-on-load;
         animation-duration: 0.5s;
     }
     .img-sm-column {
-        box-shadow: 0px 0px 2px 2px black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border: solid 1px darkgrey;
     }
     .img-sm-column:hover {
         img {
@@ -405,6 +412,9 @@ const NewsContainer = styled.div`
         .missed-news {
             display: none;
         }
+        .dots {
+            top: 85%
+        }
     }
     @media (min-width: 768px) and (max-width: 992px) {
         .text-container {
@@ -422,6 +432,9 @@ const NewsContainer = styled.div`
         }
         .title-header {
             font-size: 1.1rem;
+        }
+        .dots {
+            top: 88%
         }
     }
     @media (min-width: 992px) and (max-width: 1200px) {
@@ -455,6 +468,9 @@ const NewsContainer = styled.div`
         }
         .text {
             color: var(--mainOrange);
+        }
+        .dots {
+            top: 85%
         }
     }
     @keyframes show-on-load {

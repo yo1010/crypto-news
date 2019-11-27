@@ -16,7 +16,7 @@ export default class SearchResults extends Component {
                                     if (article !== undefined) {
                                         return <SearchItem key={article.id}
                                             article={article} />
-                                    }
+                                    } 
                                     if (value.searchList < 1) {
                                         return <div className="no-results">No articles <span className="orange"> found</span></div>
                                     }
@@ -32,7 +32,7 @@ export default class SearchResults extends Component {
 
 const SearchWrapper = styled.div`
     background: rgb(248,248,248);
-    margin-top: 7rem;
+    margin-top: 0.5rem;
     padding: 4rem; 
     .title-search {
         font-family: "Yeseva One", sans-serif;

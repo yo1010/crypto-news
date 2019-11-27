@@ -21,18 +21,18 @@ export default class NewsItem extends Component {
                                 </Helmet>
                                 <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="container">
-                                        <div className="text-container">
+                                        <div className="text-container-ni">
                                             <div className="row header mb-1">
                                                 <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
                                                 <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
                                             </div>
                                         </div>
-                                        <div className="img-container">
+                                        <div className="img-container-ni">
                                             <img src={imageUrl ? imageUrl : img} className="img-fluid"alt="Биткойн новости сегодня"/>
                                         </div>
-                                        <div className="text-container mt-1">
-                                            <div className="text mt-1">
-                                                <div className="title"><h1>{title}</h1></div>
+                                        <div className="text-container-ni mt-1">
+                                            <div className="text-ni mt-1">
+                                                <div className="title-ni"><h1 className="h1-ni">{title}</h1></div>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@ const NewsItemWrapper = styled.div`
     .metatag {
         margin-bottom: 0.2rem;
     }
-    .title, h1 {
+    .title-ni, .h1-ni {
         font-size: 0.75rem;
         overflow: hidden;
         font-family: 'Yeseva One', sans-serif;
@@ -84,7 +84,7 @@ const NewsItemWrapper = styled.div`
         animation-duration: 0.3s;
         transition: 0.5s;
         box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-        .img-container {
+        .img-container-ni {
             border-bottom: solid 5px var(--blueGreen);
             transition: 0.5s;
         }
@@ -97,7 +97,7 @@ const NewsItemWrapper = styled.div`
             border-color: var(--blueGreen);
         }
     }
-    .img-container {
+    .img-container-ni {
         position: relative;
         overflow: hidden;
         width: 100%;
@@ -108,7 +108,7 @@ const NewsItemWrapper = styled.div`
     img {
         filter: grayscale(40%) brightness(80%);
     }
-    .text {
+    .text-ni {
         overflow: hidden;
     }
     .far {

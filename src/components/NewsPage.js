@@ -137,7 +137,7 @@ export default class NewsPage extends Component {
 NewsPage.contextType = ProductContext;
 
 const NewsPageWrapper = styled.div`
-    margin-top: 9rem;
+    margin-top: 0.5rem;
     .notloaded {
         display: none;
     }

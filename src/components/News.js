@@ -8,9 +8,30 @@ export default class News extends Component {
     constructor() {
         super();
         this.state = {
-            hasloaded: false
+            hasloaded: false,
+            hasScrolled: false,
         }   
     };
+    handleScroll = () => {
+        let scrolled = window.pageYOffset;
+        if (scrolled < 750) {
+            this.setState(() => {
+                return {hasScrolled: false}
+            })
+        } else {
+            this.setState(() => {
+                return {hasScrolled: true}
+            })
+        }
+    }
+    componentDidMount() {
+        // Listen on scrolling event, call our function.
+        window.addEventListener('scroll', this.handleScroll); 
+    }
+    componentWillUnmount() {
+        // Unlisten if the component unmounts.
+        window.removeEventListener('scroll', this.handleScroll);
+    }
     render() {
         return (
             <NewsWrapper>
@@ -24,7 +45,8 @@ export default class News extends Component {
                 <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
-                            return value.newsLeft.map(
+                            let newsLeftArray = value.newsLeft.slice(3);
+                            return newsLeftArray.map(
                                 article => {
                                     return  (
                                         <LazyLoad offset={50}>
@@ -50,6 +72,17 @@ animation: show-on-load-left ease-out;
 animation-duration: 1s;
 background: rgb(248,248,248);
 padding-bottom: 3rem;
+.scroll-top-btn {
+    position: fixed;
+    z-index: 9999;
+    border-radius: 0.5rem;
+    background: var(--blueGreen);
+    .i {
+        color: white;
+    }
+    bottom: 10%;
+    left: 90%;
+}
 .container {
     width: 100%;
 }

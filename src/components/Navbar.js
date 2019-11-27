@@ -98,7 +98,7 @@ export default class Navbar extends Component {
             <ProductConsumer>
                 {value => {
                     return (
-                        <div className="nav-container fixed-top">
+                        <div className="nav-container static-top">
                             <div className="header">
                                 <div className="row">
                                     <div className="col-sm-12 data">
@@ -118,8 +118,8 @@ export default class Navbar extends Component {
                                 </ul>
                             </NavWrapper>
                             <NavWrapper className={this.state.hasScrolled ? 
-                                'navbar op navbar-expand-lg navbar-dark px-3' : 
-                                'no-op navbar navbar-expand-lg navbar-dark px-3'}>
+                                'navbar navbar-expand-lg navbar-dark px-3' : 
+                                'navbar navbar-expand-lg navbar-dark px-3'}>
                                 <Link to="/">
                                     <div className="navbar-brand" onClick={() => this.scrollTop()}>
                                         <img src={logo} alt="logo" className="navbar-brand-img"/>
@@ -327,15 +327,6 @@ const NavWrapper = styled.nav`
     .navbar-brand-img:hover {
         transition:0.5s;
         padding: 0;
-    }
-    &.no-op{
-        background: white;
-        transition: 1s !important;
-    }
-    &.op{
-        box-shadow: 0px 4px 2px -2px darkgrey;
-        padding-bottom: 1rem;
-        transition: 0.5s;
     }
     &.fixed-top{
         background: white;

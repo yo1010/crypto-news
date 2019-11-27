@@ -63,7 +63,7 @@ export default function CryptoDictionary() {
 
 
 const CryptoDictionaryWrapper = styled.div`
-    margin-top: 8rem;
+    margin-top: 0.5rem;
     padding: 1rem;
     .heading {
         animation: show-on-load-right ease-out;

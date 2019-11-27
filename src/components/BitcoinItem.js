@@ -18,7 +18,7 @@ export default class BitcoinItem extends Component {
                                             <img src={imageUrl} className=""alt="Биткойн новости"/>
                                         </div>
                                         <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
-                                            <div className="text my-3">
+                                            <div className="text my-3 ml-2">
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">

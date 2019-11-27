@@ -9,27 +9,32 @@ export default class SearchItem extends Component {
         return (
                 <ProductConsumer>
                     {(value) => {
-                        return (
-                            <SearchItemWrapper className="container" 
-                            onClick={() => {value.handleDetail(id)}}>
-                                <Link className="article-link" to={`/newsarticle/${urlName}`}>
-                                    <div className="row mx-auto">
-                                        <div className="img-container col-4 col-md-2 col-lg-2">
-                                            <img src={imageUrl} className=""alt="bitcoin dollars altcoins"/>
-                                        </div>
-                                        <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
-                                            <div className="text my-3">
-                                                <div className="title">{title}</div>
+                        if (this.props.article.title !== undefined) {
+                            return (
+                                <SearchItemWrapper className="container" 
+                                onClick={() => {value.handleDetail(id)}}>
+                                    <Link className="article-link" to={`/newsarticle/${urlName}`}>
+                                        <div className="row mx-auto">
+                                            <div className="img-container col-4 col-md-2 col-lg-2">
+                                                <img src={imageUrl} className=""alt="bitcoin dollars altcoins"/>
                                             </div>
-                                            <div className="row header mx-1">
-                                                <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
-                                                <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
+                                            <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
+                                                <div className="text my-3 ml-2">
+                                                    <div className="title">{title}</div>
+                                                </div>
+                                                <div className="row header mx-1">
+                                                    <div className="metatag"><button className="keyword-btn"><i className="far fa-clock"></i>{readingTime} мин</button></div>
+                                                    <div className="date ml-auto"><button className="date-btn"><i className="far fa-calendar"></i>{publishedOn}</button></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            </SearchItemWrapper>
-                        )}}
+                                    </Link>
+                                </SearchItemWrapper>
+                            )
+                        } else {
+                            return <div className="no-results">Search <span className="orange"> again</span></div>
+                        }   
+                    }}
                 </ProductConsumer>
         )
     }
@@ -130,6 +135,18 @@ i {
 }
 .date {
     margin-right: 0.5rem;
+}
+.title-search {
+    font-family: "Yeseva One", sans-serif;
+    font-size: 1.5rem;
+}
+.orange {
+    color: var(--mainOrange);
+}
+.no-results {
+    margin-top: 5rem;
+    font-size: 1.5rem;
+    font-family: "Arsenal", sans-serif;
 }
 @media (max-width: 800px) {
     .title {

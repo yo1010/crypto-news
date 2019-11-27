@@ -15,10 +15,10 @@ export default class BlockchainItem extends Component {
                                 <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="row item-container mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
-                                            <img src={imageUrl} className=""alt="bitcoin dollars altcoins"/>
+                                            <img src={imageUrl} className="" alt="bitcoin dollars altcoins"/>
                                         </div>
                                         <div className="text-container col-12 col-sm-8 col-md-10 col-lg-10">
-                                            <div className="text my-3">
+                                            <div className="text my-3 ml-2">
                                                 <div className="title">{title}</div>
                                             </div>
                                             <div className="row header mx-1">
@@ -67,8 +67,11 @@ const BlockchainItemWrapper = styled.div`
     .title {
         font-size: 1rem;
         height: 50px;
-        overflow: hidden;
         font-family: 'Yeseva One', sans-serif;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width:100%;
     }
     .container {
         box-shadow: 0px 0px 3px 2px darkgrey;
