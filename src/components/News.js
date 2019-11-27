@@ -38,7 +38,7 @@ export default class News extends Component {
                 <div className="row">
                     <div className="separator1"></div>
                     <div className="separator2">
-                        <button className="title-separator text-capitalize px-1">все новостей:</button>
+                        <button className="title-separator text-capitalize px-1">все новости:</button>
                         <div className="smallseparator"></div>
                     </div>
                 </div>

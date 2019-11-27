@@ -32,7 +32,7 @@ export default class SearchItem extends Component {
                                 </SearchItemWrapper>
                             )
                         } else {
-                            return <div className="no-results">Search <span className="orange"> again</span></div>
+                            return <div className="no-results">Искать <span className="orange"> снова</span></div>
                         }   
                     }}
                 </ProductConsumer>

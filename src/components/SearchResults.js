@@ -7,7 +7,7 @@ export default class SearchResults extends Component {
     render() {
         return (
             <SearchWrapper>
-                <div className="title-search">Search <span className="orange">Results:</span></div>
+                <div className="title-search">Результаты <span className="orange">поиска:</span></div>
                 <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
@@ -18,7 +18,7 @@ export default class SearchResults extends Component {
                                             article={article} />
                                     } 
                                     if (value.searchList < 1) {
-                                        return <div className="no-results">No articles <span className="orange"> found</span></div>
+                                        return <div className="no-results">Статьи <span className="orange"> не найдены</span></div>
                                     }
                                 }
                             )
