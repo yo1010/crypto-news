@@ -46,7 +46,7 @@ export default class News extends Component {
                 <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
-                            let newsLeftArray = value.newsLeft.slice(3);
+                            let newsLeftArray = value.newsLeft.slice(4);
                             return newsLeftArray.map(
                                 article => {
                                     return  (
