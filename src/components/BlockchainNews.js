@@ -8,7 +8,6 @@ export default class BlockchainNews extends Component {
         return (
             <BlockchainWrapper>
                 <div className="title-search">Блокчейн <span className="orange">Новости:</span></div>
-                <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
                             return value.blockchainNews.map(
@@ -26,7 +25,6 @@ export default class BlockchainNews extends Component {
                             )
                         }}
                     </ProductConsumer>
-                </div>
             </BlockchainWrapper>
         )
     }
@@ -47,7 +45,7 @@ const BlockchainWrapper = styled.div`
         color: var(--mainOrange);
     }
     .no-results {
-        margin-top: 5rem;
+        margin-top: 0.5rem;
         font-size: 1.5rem;
         font-family: "Arsenal", sans-serif;
     }

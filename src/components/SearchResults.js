@@ -8,7 +8,6 @@ export default class SearchResults extends Component {
         return (
             <SearchWrapper>
                 <div className="title-search">Результаты <span className="orange">поиска:</span></div>
-                <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
                             return value.searchList.map(
@@ -24,7 +23,6 @@ export default class SearchResults extends Component {
                             )
                         }}
                     </ProductConsumer>
-                </div>
             </SearchWrapper>
         )
     }
@@ -42,7 +40,7 @@ const SearchWrapper = styled.div`
         color: var(--mainOrange);
     }
     .no-results {
-        margin-top: 5rem;
+        margin-top: 0.5rem;
         font-size: 1.5rem;
         font-family: "Arsenal", sans-serif;
     }

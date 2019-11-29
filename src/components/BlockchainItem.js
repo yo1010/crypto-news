@@ -10,7 +10,7 @@ export default class BlockchainItem extends Component {
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <BlockchainItemWrapper className="container" 
+                            <BlockchainItemWrapper className="" 
                             onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="row item-container mx-auto">
@@ -36,6 +36,7 @@ export default class BlockchainItem extends Component {
 }
 
 const BlockchainItemWrapper = styled.div`
+    padding-left: 1rem;
     .item-container {
         animation: show-on-load-blockchain;
         animation-duration: 0.5s;

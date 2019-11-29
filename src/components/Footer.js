@@ -34,7 +34,7 @@ export default class Footer extends Component {
     render() {
         return (
             <FooterWrapper>
-                <div className="text">Copyright© 2019. <span><img src={logo} alt="Биткойна"/></span> All rights reserved.</div>
+                <div className={this.state.hasScrolled ? "text" : "text nodisplay"}>Copyright© 2019. <span><img src={logo} alt="Биткойна"/></span> All rights reserved.</div>
                 <button className={this.state.hasScrolled ? "scroll-top-btn" : "scroll-top-btn nodisplay"} onClick={() => window.scrollTo(0,0)}><i className="fas fa-chevron-up"></i></button>
             </FooterWrapper>
         )

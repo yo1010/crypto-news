@@ -10,8 +10,7 @@ export default class BitcoinItem extends Component {
                 <ProductConsumer>
                     {(value) => {
                         return (
-                            <BitcoinItemWrapper className="container" 
-                            onClick={() => {value.handleDetail(id)}}>
+                            <BitcoinItemWrapper onClick={() => {value.handleDetail(id)}}>
                                 <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                     <div className="row item-container mx-auto">
                                         <div className="img-container col-4 col-md-2 col-lg-2">
@@ -36,6 +35,7 @@ export default class BitcoinItem extends Component {
 }
 
 const BitcoinItemWrapper = styled.div`
+    padding-left: 1rem;
     .item-container {
         animation: show-on-load;
         animation-duration: 0.5s;

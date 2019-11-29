@@ -11,8 +11,7 @@ export default class SearchItem extends Component {
                     {(value) => {
                         if (this.props.article.title !== undefined) {
                             return (
-                                <SearchItemWrapper className="container" 
-                                onClick={() => {value.handleDetail(id)}}>
+                                <SearchItemWrapper onClick={() => {value.handleDetail(id)}}>
                                     <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                         <div className="row mx-auto">
                                             <div className="img-container col-4 col-md-2 col-lg-2">
@@ -41,140 +40,141 @@ export default class SearchItem extends Component {
 }
 
 const SearchItemWrapper = styled.div`
-&:hover {
-    animation: small-jump ease-in;
-    animation-duration: 0.2s;
-    box-shadow: 0px 0px 4px 3px darkgrey;
-}
-background: white;
-padding-bottom: 1rem;
-box-shadow: 0px 0px 3px 2px darkgrey;
-margin-top: 3rem;
-border-radius: 0.3rem;
-&:hover {
-    cursor: pointer;
-}
-.keyword-btn {
-    border: none;
-    font-size: 0.75rem;
+    padding-left: 1rem;
+    &:hover {
+        animation: small-jump ease-in;
+        animation-duration: 0.2s;
+        box-shadow: 0px 0px 4px 3px darkgrey;
+    }
     background: white;
-    outline: none;
-    font-weight: bold;
-    color: var(--blueGreen);
-}
-.metatag {
-    margin-bottom: 0.2rem;
-}
-.title {
-    font-size: 1rem;
-    height: 50px;
-    overflow: hidden;
-    font-family: 'Yeseva One', sans-serif;
-}
-.container {
+    padding-bottom: 1rem;
     box-shadow: 0px 0px 3px 2px darkgrey;
-    border-radius: 0.2rem;
-    padding: 0.5rem;
-    margin-right: 1rem;
-    background: white;
-}
-.container:hover {
-    transition: 1s;
-    box-shadow: 0px 0px 4px 3px darkgrey;
-    .img-container {
-        border-bottom: solid 5px var(--blueGreen);
-        transition: 0.5s;
+    margin-top: 3rem;
+    border-radius: 0.3rem;
+    &:hover {
+        cursor: pointer;
     }
-}
-.img-container {
-    position: relative;
-    overflow:hidden;
-    margin-top: 1rem;
-    border-bottom: solid 5px var(--mainOrange);
-    border-radius: 0.2rem;
-    box-shadow: 0px 0px 1px 1px grey;
-    text-align: center;
-    display: block;
-}
-img {
-    filter: grayscale(40%) brightness(80%);
-    position: absolute;
-    top: -9999px;
-    bottom: -9999px;
-    left: -9999px;
-    right: -9999px;
-    margin: auto;
-    max-width: 180%;
-    max-height: 180%;
-}
-.text {
-    overflow: hidden;
-}
-.far {
-    margin-right: 3px;
-}
-.header {
-    width: 100%;
-    text-align: center;
-}
-.article-link {
-    text-decoration: none !important;
-    color: black;
-}
-.date-btn {
-    font-size: 0.75rem;
-    color: var(--blueGreen);
-    font-weight: bold;
-    border: none;
-    background: none;
-    outline: none;
-    cursor: default;
-}
-i {
-    font-size: 0.75rem;
-}
-.date {
-    margin-right: 0.5rem;
-}
-.title-search {
-    font-family: "Yeseva One", sans-serif;
-    font-size: 1.5rem;
-}
-.orange {
-    color: var(--mainOrange);
-}
-.no-results {
-    margin-top: 5rem;
-    font-size: 1.5rem;
-    font-family: "Arsenal", sans-serif;
-}
-@media (max-width: 800px) {
-    .title {
+    .keyword-btn {
+        border: none;
         font-size: 0.75rem;
+        background: white;
+        outline: none;
+        font-weight: bold;
+        color: var(--blueGreen);
     }
-}
-@media (max-width: 585px) {
+    .metatag {
+        margin-bottom: 0.2rem;
+    }
+    .title {
+        font-size: 1rem;
+        height: 50px;
+        overflow: hidden;
+        font-family: 'Yeseva One', sans-serif;
+    }
+    .container {
+        box-shadow: 0px 0px 3px 2px darkgrey;
+        border-radius: 0.2rem;
+        padding: 0.5rem;
+        margin-right: 1rem;
+        background: white;
+    }
+    .container:hover {
+        transition: 1s;
+        box-shadow: 0px 0px 4px 3px darkgrey;
+        .img-container {
+            border-bottom: solid 5px var(--blueGreen);
+            transition: 0.5s;
+        }
+    }
     .img-container {
-        display: none;
+        position: relative;
+        overflow:hidden;
+        margin-top: 1rem;
+        border-bottom: solid 5px var(--mainOrange);
+        border-radius: 0.2rem;
+        box-shadow: 0px 0px 1px 1px grey;
+        text-align: center;
+        display: block;
     }
     img {
-        display: none;
+        filter: grayscale(40%) brightness(80%);
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+        max-width: 180%;
+        max-height: 180%;
     }
-    .title {
+    .text {
+        overflow: hidden;
+    }
+    .far {
+        margin-right: 3px;
+    }
+    .header {
+        width: 100%;
         text-align: center;
     }
-}
-@media (max-width: 499px) {
-    .text-container {
-        width: 100%;
+    .article-link {
+        text-decoration: none !important;
+        color: black;
     }
-    img {
-        display: none;
+    .date-btn {
+        font-size: 0.75rem;
+        color: var(--blueGreen);
+        font-weight: bold;
+        border: none;
+        background: none;
+        outline: none;
+        cursor: default;
     }
-}
-@keyframes small-jump {
-    0% {transform:translate(0px, 0px)}
-    50% {transform:translate(0px, -5px)} 
-    100%{transform:translate(0px,0px)}
-}
+    i {
+        font-size: 0.75rem;
+    }
+    .date {
+        margin-right: 0.5rem;
+    }
+    .title-search {
+        font-family: "Yeseva One", sans-serif;
+        font-size: 1.5rem;
+    }
+    .orange {
+        color: var(--mainOrange);
+    }
+    .no-results {
+        margin-top: 5rem;
+        font-size: 1.5rem;
+        font-family: "Arsenal", sans-serif;
+    }
+    @media (max-width: 800px) {
+        .title {
+            font-size: 0.75rem;
+        }
+    }
+    @media (max-width: 585px) {
+        .img-container {
+            display: none;
+        }
+        img {
+            display: none;
+        }
+        .title {
+            text-align: center;
+        }
+    }
+    @media (max-width: 499px) {
+        .text-container {
+            width: 100%;
+        }
+        img {
+            display: none;
+        }
+    }
+    @keyframes small-jump {
+        0% {transform:translate(0px, 0px)}
+        50% {transform:translate(0px, -5px)} 
+        100%{transform:translate(0px,0px)}
+    }
 `

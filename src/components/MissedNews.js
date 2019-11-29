@@ -53,15 +53,13 @@ export default class MissedNews extends Component {
                                     <div className="main-header"><div className="separator"/>Пропущенный:</div>
                                     <Link className="article-link" to={`/newsarticle/${urlName}`} onClick={() => clearInterval()}>
                                         <div className="row item-container-mn mx-auto">
-                                            <div className="text-container-mn mx-auto">
-                                                <div className="text mx-3">
-                                                    <div className="title-mn mx-auto">{title}</div>
-                                                </div>
-                                            </div>
                                             <div className="img-container-mn">
                                                 <img src={imageUrl} className="img-fluid" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="text-container-mn mx-auto">
+                                                <div className="text mx-3">
+                                                    <div className="title-mn mx-auto">{title}</div>
+                                                </div>
                                                 <div className="text mb-3">
                                                     <div className="content-mn mx-2">{content ? (content, paragraph1) : (paragraph1, paragraph2)}</div>
                                                 </div>
@@ -72,9 +70,9 @@ export default class MissedNews extends Component {
                                             </div>
                                         </div>
                                     </Link>
-                                    <div className="main-header text-capitalize mt-1"><div className="separator"/>больше заголовков:</div>
+                                    <div className="main-header-sd text-capitalize mt-1"><div className="separator"/>больше заголовков:</div>
                                     <div className="row mx-auto missed-container-big">
-                                        <div className="wrapper mx-auto mt-2 px-1">
+                                        <div className="wrapper mx-auto px-1">
                                             <Link className="article-link" to={`/newsarticle/${this.state.currentItemSecond ? 
                                                 value.newsLeft[this.state.currentItemSecond].urlName : value.newsLeft[value.newsLeft.length - 7].urlName}`} onClick={() => clearInterval()}>
                                                 <div className="missed-container mx-auto">
@@ -89,57 +87,57 @@ export default class MissedNews extends Component {
                                 </div>
                                 <div className="col-4">
                                     <div className="main-header"><div className="separator"/>Рекомендуемые:</div>
-                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[25].urlName}`} onClick={() => clearInterval()}>
+                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[14].urlName}`} onClick={() => clearInterval()}>
                                         <div className="img-mn">
-                                            <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[25].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
+                                            <div className="img-container-mn">
+                                                <img src={value.newsLeft[14].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
                                                     <div className="heading-mn text ml-1">
-                                                        {value.newsLeft[25].publishedOn}
+                                                        {value.newsLeft[14].publishedOn}
                                                     </div>
                                                     <div className="heading-mn text ml-auto mr-1">
-                                                        {value.newsLeft[25].readingTime} мин чтение
+                                                        {value.newsLeft[14].readingTime} мин чтение
                                                     </div>
                                                 </div>
-                                                <p>{value.newsLeft[25].title}</p>
+                                                <p>{value.newsLeft[14].title}</p>
                                             </div>
                                         </div>
                                     </Link>
-                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[35].urlName}`} onClick={() => clearInterval()}>
+                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[10].urlName}`} onClick={() => clearInterval()}>
                                         <div className="img-mn">
                                             <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[35].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
+                                                <img src={value.newsLeft[10].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
                                                     <div className="heading-mn text ml-1">
-                                                        {value.newsLeft[35].publishedOn}
+                                                        {value.newsLeft[10].publishedOn}
                                                     </div>
                                                     <div className="heading-mn text ml-auto mr-1">
-                                                        {value.newsLeft[35].readingTime} мин чтение
+                                                        {value.newsLeft[10].readingTime} мин чтение
                                                     </div>
                                                 </div>
-                                                <p>{value.newsLeft[35].title}</p>
+                                                <p>{value.newsLeft[10].title}</p>
                                             </div>
                                         </div>
                                     </Link>
-                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[30].urlName}`} onClick={() => clearInterval()}>
+                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[12].urlName}`} onClick={() => clearInterval()}>
                                         <div className="img-mn">
                                             <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[30].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
+                                                <img src={value.newsLeft[12].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
                                                     <div className="heading-mn text ml-1">
-                                                        {value.newsLeft[30].publishedOn}
+                                                        {value.newsLeft[12].publishedOn}
                                                     </div>
                                                     <div className="heading-mn text ml-auto mr-1">
-                                                        {value.newsLeft[30].readingTime} мин чтение
+                                                        {value.newsLeft[12].readingTime} мин чтение
                                                     </div>
                                                 </div>
-                                                <p>{value.newsLeft[30].title}</p>
+                                                <p>{value.newsLeft[12].title}</p>
                                             </div>
                                         </div>
                                     </Link>
@@ -179,21 +177,24 @@ const MissedNewsWrapper = styled.div`
         width: 5rem;
     }
     .item-container-mn {
-
         width: 100%;
     }
     .item-container-mn:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        img {
+            transition: 1s;
+            transform: scale(1.05);
+        }
     }
     .main-header {
         font-family: 'Yeseva One', sans-serif;
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
-    background: white;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    border-radius: 0.3rem;
+    .main-header-sd {
+        font-family: 'Yeseva One', sans-serif;
+        font-size: 1.5rem;
+    }
     &:hover {
         cursor: pointer;
     }
@@ -282,10 +283,6 @@ const MissedNewsWrapper = styled.div`
     .black {
         color: black !important;
     }
-    .main-header {
-        font-family: 'Yeseva One', sans-serif;
-        font-size: 1.rem;
-    }
     .container {
         width: 100%;
     }
@@ -317,6 +314,12 @@ const MissedNewsWrapper = styled.div`
     }
     .wrapper {
         width: 100%;
+    }
+    @media (min-width: 1280px) {
+        .main-header-sd {
+            margin-bottom: 0.5rem !important;
+            margin-top: 1rem !important;
+        }
     }
     @media (max-width: 800px) {
         .title {

@@ -18,7 +18,7 @@ export default class RecentNews extends Component {
                     <div className="row mx-auto container-rn">
                         <ProductConsumer>
                             {(value) => {
-                                let firstNews = value.newsLeft.slice(0,4)
+                                let firstNews = value.newsLeft.slice(0,8)
                                 return firstNews.map(
                                     article => {
                                         return  (

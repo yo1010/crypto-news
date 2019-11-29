@@ -4,8 +4,8 @@ import styled from 'styled-components';
 export default function CryptoDictionary() {
     return (
         <CryptoDictionaryWrapper>
-            <div className="container dict-container">
-                <div className="heading text-capitalize my-5">крипто <span className="orange">
+            <div className="dict-container">
+                <div className="heading text-capitalize mb-5">крипто <span className="orange">
                     Словарь</span></div>
                 <div className="title text-capitalize my-3">Что такое криптовалюта?</div>
                 <div className="content">
@@ -64,7 +64,8 @@ export default function CryptoDictionary() {
 
 const CryptoDictionaryWrapper = styled.div`
     margin-top: 0.5rem;
-    padding: 1rem;
+    padding: 4rem;
+    padding-top: 1rem;
     .heading {
         animation: show-on-load-right ease-out;
         animation-duration: 1s;

@@ -8,7 +8,6 @@ export default class BitcoinNews extends Component {
         return (
             <BitcoinWrapper>
                 <div className="title-search">Биткойн <span className="orange">Новости:</span></div>
-                <div className="row mx-auto">
                     <ProductConsumer>
                         {(value) => {
                             return value.bitcoinNews.map(
@@ -24,7 +23,6 @@ export default class BitcoinNews extends Component {
                             )
                         }}
                     </ProductConsumer>
-                </div>
             </BitcoinWrapper>
         )
     }
@@ -45,7 +43,7 @@ const BitcoinWrapper = styled.div`
         color: var(--mainOrange);
     }
     .no-results {
-        margin-top: 5rem;
+        margin-top: 0.5rem;
         font-size: 1.5rem;
         font-family: "Arsenal", sans-serif;
     }

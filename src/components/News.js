@@ -14,7 +14,7 @@ export default class News extends Component {
     };
     handleScroll = () => {
         let scrolled = window.pageYOffset;
-        if (scrolled < 750) {
+        if (scrolled < 150) {
             this.setState(() => {
                 return {hasScrolled: false}
             })
@@ -36,17 +36,17 @@ export default class News extends Component {
     render() {
         return (
             <NewsWrapper>
-                <div className="row">
+                <div className={this.state.hasScrolled ? "row" : "row notloaded"}>
                     <div className="separator1"></div>
                     <div className="separator2">
                         <button className="title-separator text-capitalize px-1">все новости:</button>
                         <div className="smallseparator"></div>
                     </div>
                 </div>
-                <div className="row mx-auto">
+                <div className={this.state.hasScrolled ? "row mx-auto" : "row mx-auto notloaded"}>
                     <ProductConsumer>
                         {(value) => {
-                            let newsLeftArray = value.newsLeft.slice(4);
+                            let newsLeftArray = value.newsLeft.slice(8);
                             return newsLeftArray.map(
                                 article => {
                                     return  (

@@ -142,7 +142,9 @@ const NewsContainer = styled.div`
     .notloaded {
         display: none;
     }
+    overflow-y: hidden;
     padding: 1rem;
+    padding-bottom: 0px;
     width: 100%;
     margin-right: 0.8rem;
     border-bottom-color: var(--mainOrange);
@@ -174,7 +176,7 @@ const NewsContainer = styled.div`
     }
     .loading-img {
         animation: spin linear infinite;
-        animation-duration: 1s;
+        animation-duration: 1.5s;
     }
     .img-container-sm {
         background-image: url(${imgBg});

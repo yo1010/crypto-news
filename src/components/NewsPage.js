@@ -60,14 +60,16 @@ export default class NewsPage extends Component {
                         const index = value.indexNewsItem;
                         console.log(index);
                         const {title, content, paragraph1, paragraph2, paragraph3, paragraph4,
-                            paragraph5, publishedOn, keyword1, keyword2, keyword3, subtitle1,
-                            subtitle2, subtitle3, subtitle4, subtitle5, moreInfo, imageUrl} = Object.keys(this.context.openNewsItem).length > 0 ? 
+                            paragraph5, paragraph6, paragraph7, paragraph8, paragraph9, paragraph10,
+                            publishedOn, keyword1, keyword2, keyword3, subtitle1, subtitle2, subtitle3,
+                            subtitle4, subtitle5, subtitle6, subtitle7, subtitle8, subtitle9, subtitle10,
+                            moreInfo, imageUrl} = Object.keys(this.context.openNewsItem).length > 0 ? 
                             this.context.openNewsItem : this.state.currentItem;
                         return (
                             <NewsPageWrapper>
-                                <div className={this.state.dataloaded ? "container mx-auto" : "container mx-auto notloaded"}>
+                                <div className={this.state.dataloaded ? "mx-auto" : "mx-auto notloaded"}>
                                     <div className="row mx-auto">
-                                        <div className="col-12">
+                                        <div className="col-11 mx-auto">
                                             <div className="row header">
                                                 <div className="date">
                                                     <span className="icon-container mr-1"><i className="far fa-calendar-alt"></i></span>{publishedOn}
@@ -84,18 +86,18 @@ export default class NewsPage extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="text-container col-12 mt-1 border-container">
+                                        <div className="text-container col-11 mx-auto mt-1 border-container">
                                             <div className="title mt-1">
                                                 <h2>{title}</h2>
                                             </div>
                                         </div>
-                                        <div className="col-12 mt-1">
+                                        <div className="col-11 mx-auto mt-1">
                                             <div className="img-container">
                                                 <img src={imageUrl} onLoad={() => this.handleImgLoad()} className="img-fluid img-main" ref={elem => this.nv = elem} alt="news article"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="container content">
+                                    <div className="col-11 mx-auto content">
                                         <div className="mb-3">{content}</div>
                                         <div className="mb-3 sub-title"><h5>{subtitle1}</h5></div>
                                         <div className="mb-3">{paragraph1}</div>
@@ -107,6 +109,16 @@ export default class NewsPage extends Component {
                                         <div className="mb-3">{paragraph4}</div>
                                         <div className="mb-3 sub-title"><h5>{subtitle5}</h5></div>
                                         <div className="mb-3">{paragraph5}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle6}</h5></div>
+                                        <div className="mb-3">{paragraph6}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle7}</h5></div>
+                                        <div className="mb-3">{paragraph7}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle8}</h5></div>
+                                        <div className="mb-3">{paragraph8}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle9}</h5></div>
+                                        <div className="mb-3">{paragraph9}</div>
+                                        <div className="mb-3 sub-title"><h5>{subtitle10}</h5></div>
+                                        <div className="mb-3">{paragraph10}</div>
                                         <div className={moreInfo ? "more-info mt-5 sub-title" : "more-info mt-5 notloaded"}>
                                             <span className="orange">Больше Информации: <a className="infoLink"href={moreInfo}>{moreInfo}</a></span>
                                         </div>
