@@ -14,10 +14,10 @@ export default class MissedNews extends Component {
         this.changeNews = this.changeNews.bind(this);
     }
     changeNews(length) {
-        if (this.state.currentItem > length - 7) {
-            this.setState({currentItem: this.state.currentItem - 1})
+        if (this.state.currentItem < 11) {
+            this.setState({currentItem: this.state.currentItem + 1})
         } else  {
-            this.setState({currentItem: length - 2})
+            this.setState({currentItem: 8})
         }
         if (this.state.currentItemSecond > length - 13) {
             this.setState({currentItemSecond: this.state.currentItemSecond - 1})
@@ -28,7 +28,7 @@ export default class MissedNews extends Component {
     componentDidMount() {
         console.log(this.state.currentItem)
         if (this.context.newsLeft !== undefined) {
-            this.setState({currentItem: this.context.newsLeft.length - 1})
+            this.setState({currentItem: 8})
             this.setState({currentItemSecond: this.context.newsLeft.length - 7})
             console.log(this.context.newsLeft.length)
             const length = this.context.newsLeft.length;
@@ -44,15 +44,15 @@ export default class MissedNews extends Component {
                 <ProductConsumer>
                     {value => {
                         console.log(value.newsLeft.length - 7)
-                        const { urlName, title, readingTime, publishedOn, imageUrl, content, paragraph1, paragraph2 } = this.state.currentItem > value.newsLeft.length - 7 && 
-                        value.newsLeft[this.state.currentItem] !== undefined ? 
-                        value.newsLeft[this.state.currentItem] : value.newsLeft[value.newsLeft.length -1];
+                        const { urlName, title, readingTime, publishedOn, imageUrl, content, paragraph1, paragraph2, id } = 
+                        this.state.currentItem > 7 && value.newsLeft[this.state.currentItem] !== undefined ? 
+                        value.newsLeft[this.state.currentItem] : value.newsLeft[8];
                         return (
                             <div className="row main-container">
                                 <div className="col-8">
-                                    <div className="main-header"><div className="separator"/>Пропущенный:</div>
+                                    <div className="main-header"><div className="separator"/>Недавний:</div>
                                     <Link className="article-link" to={`/newsarticle/${urlName}`} onClick={() => clearInterval()}>
-                                        <div className="row item-container-mn mx-auto">
+                                        <div className="row item-container-mn mx-auto" onClick={() => {value.handleDetail(id)}}>
                                             <div className="img-container-mn">
                                                 <img src={imageUrl} className="img-fluid" alt="bitcoin dollars altcoins"/>
                                             </div>
@@ -72,7 +72,7 @@ export default class MissedNews extends Component {
                                     </Link>
                                     <div className="main-header-sd text-capitalize mt-1"><div className="separator"/>больше заголовков:</div>
                                     <div className="row mx-auto missed-container-big">
-                                        <div className="wrapper mx-auto px-1">
+                                        <div className="wrapper mx-auto px-1" onClick={() => {value.handleDetail(value.newsLeft[this.state.currentItemSecond].id)}}>
                                             <Link className="article-link" to={`/newsarticle/${this.state.currentItemSecond ? 
                                                 value.newsLeft[this.state.currentItemSecond].urlName : value.newsLeft[value.newsLeft.length - 7].urlName}`} onClick={() => clearInterval()}>
                                                 <div className="missed-container mx-auto">
@@ -87,8 +87,9 @@ export default class MissedNews extends Component {
                                 </div>
                                 <div className="col-4">
                                     <div className="main-header"><div className="separator"/>Рекомендуемые:</div>
-                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[14].urlName}`} onClick={() => clearInterval()}>
-                                        <div className="img-mn">
+                                    <Link className="article-link"
+                                        to={`/newsarticle/${value.newsLeft[14].urlName}`} onClick={() => clearInterval()}>
+                                        <div className="img-mn" onClick={() => {value.handleDetail(value.newsLeft[14].id)}}>
                                             <div className="img-container-mn">
                                                 <img src={value.newsLeft[14].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
@@ -105,39 +106,41 @@ export default class MissedNews extends Component {
                                             </div>
                                         </div>
                                     </Link>
-                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[10].urlName}`} onClick={() => clearInterval()}>
-                                        <div className="img-mn">
+                                    <Link className="article-link"
+                                        to={`/newsarticle/${value.newsLeft[24].urlName}`} onClick={() => clearInterval()}>
+                                        <div className="img-mn" onClick={() => {value.handleDetail(value.newsLeft[24].id)}}>
                                             <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[10].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
+                                                <img src={value.newsLeft[24].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
                                                     <div className="heading-mn text ml-1">
-                                                        {value.newsLeft[10].publishedOn}
+                                                        {value.newsLeft[24].publishedOn}
                                                     </div>
                                                     <div className="heading-mn text ml-auto mr-1">
-                                                        {value.newsLeft[10].readingTime} мин чтение
+                                                        {value.newsLeft[24].readingTime} мин чтение
                                                     </div>
                                                 </div>
-                                                <p>{value.newsLeft[10].title}</p>
+                                                <p>{value.newsLeft[24].title}</p>
                                             </div>
                                         </div>
                                     </Link>
-                                    <Link className="article-link" to={`/newsarticle/${value.newsLeft[12].urlName}`} onClick={() => clearInterval()}>
-                                        <div className="img-mn">
+                                    <Link className="article-link"
+                                        to={`/newsarticle/${value.newsLeft[19].urlName}`} onClick={() => clearInterval()}>
+                                        <div className="img-mn" onClick={() => {value.handleDetail(value.newsLeft[19].id)}}>
                                             <div className="img-container-mn mt-5">
-                                                <img src={value.newsLeft[12].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
+                                                <img src={value.newsLeft[19].imageUrl} className="img-fluid img-sm-mn" alt="bitcoin dollars altcoins"/>
                                             </div>
                                             <div className="editor-title-mn">
                                                 <div className="row date-minutes mt-3">
                                                     <div className="heading-mn text ml-1">
-                                                        {value.newsLeft[12].publishedOn}
+                                                        {value.newsLeft[19].publishedOn}
                                                     </div>
                                                     <div className="heading-mn text ml-auto mr-1">
-                                                        {value.newsLeft[12].readingTime} мин чтение
+                                                        {value.newsLeft[19].readingTime} мин чтение
                                                     </div>
                                                 </div>
-                                                <p>{value.newsLeft[12].title}</p>
+                                                <p>{value.newsLeft[19].title}</p>
                                             </div>
                                         </div>
                                     </Link>

@@ -46,7 +46,7 @@ export default class News extends Component {
                 <div className={this.state.hasScrolled ? "row mx-auto" : "row mx-auto notloaded"}>
                     <ProductConsumer>
                         {(value) => {
-                            let newsLeftArray = value.newsLeft.slice(8);
+                            let newsLeftArray = value.newsLeft.slice(9);
                             return newsLeftArray.map(
                                 article => {
                                     return  (
