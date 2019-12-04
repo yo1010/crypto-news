@@ -26,11 +26,9 @@ export default class MissedNews extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.state.currentItem)
         if (this.context.newsLeft !== undefined) {
             this.setState({currentItem: 8})
             this.setState({currentItemSecond: this.context.newsLeft.length - 7})
-            console.log(this.context.newsLeft.length)
             const length = this.context.newsLeft.length;
             setInterval(() => this.changeNews(length), 2000)
         }
@@ -43,7 +41,6 @@ export default class MissedNews extends Component {
             <MissedNewsWrapper className="missed-news mx-auto">
                 <ProductConsumer>
                     {value => {
-                        console.log(value.newsLeft.length - 7)
                         const { urlName, title, readingTime, publishedOn, imageUrl, content, paragraph1, paragraph2, id } = 
                         this.state.currentItem > 7 && value.newsLeft[this.state.currentItem] !== undefined ? 
                         value.newsLeft[this.state.currentItem] : value.newsLeft[8];

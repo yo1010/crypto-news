@@ -7,6 +7,18 @@ import EditorNews from './EditorNews';
 import MostReadNews from './MostReadNews';
 import MissedNews from './MissedNews';
 import RecentNews from './RecentNews';
+import BTC from "../../public/img/icons/BTC.png";
+import ETH from "../../public/img/icons/ETH.png";
+import ADA from "../../public/img/icons/ADA.png";
+import BCH from "../../public/img/icons/BCH.png";
+import BCHSV from "../../public/img/icons/BCHSV.png";
+import EOS from "../../public/img/icons/EOS.png";
+import LTC from "../../public/img/icons/LTC.png";
+import TRX from "../../public/img/icons/TRX.png";
+import USDT from "../../public/img/icons/USDT.png";
+import XLM from "../../public/img/icons/XLM.png";
+import XRP from "../../public/img/icons/XRP.png";
+import BNB from "../../public/img/icons/BNB.png";
 
 export default class TopNews extends Component {
     constructor() {
@@ -23,12 +35,14 @@ export default class TopNews extends Component {
             firstNews: {},
             finalUrls: [],
             urlName: "",
-            hasloaded: false
+            hasloaded: false, 
+            showCoins: false,
         };
         this.plusSlides=this.plusSlides.bind(this);
         this.minusSlides=this.minusSlides.bind(this);
         this.currentSlide=this.currentSlide.bind(this);
         this.handleLoad=this.handleLoad.bind(this);
+        this.handleCoins=this.handleCoins.bind(this);
     }
     plusSlides(n) {
         let slideIndex = this.state.slideIndex;
@@ -65,71 +79,128 @@ export default class TopNews extends Component {
             hasloaded: true
         })
     }
+    handleCoins() {
+        if (this.state.showCoins === false) {
+            this.setState({
+                showCoins: true
+            })
+        } else {
+            this.setState({
+                showCoins: false
+            })
+        }
+    }
     componentDidMount() {
+        setInterval(() => this.handleCoins(), 1500)
         window.scrollTo(0,0);
     }
     render() {
+        console.log(this.state.showCoins)
         return (
             <ProductConsumer>
                 {value => {
                     const {id, title, publishedOn, readingTime, imageUrl, urlName} = value.topNews[this.state.slideIndex] ? 
                         value.topNews[this.state.slideIndex] : value.topNews[0];
                     return (
-                        <NewsContainer className={this.state.hasloaded ? "row mx-auto mb-1" : "row mx-auto mb-1 notloaded"}>
-                            <div className={this.state.hasloaded ? "img-column mx-auto col-12 col-md-8 col-lg-8" : "img-column mx-auto col-12 col-md-8 col-lg-8 notloaded"}
-                            onClick={() => {value.handleDetail(id)}}>
-                                <Link className="article-link" to={`/newsarticle/${urlName}`}>
-                                    <div className="img-column-one mx-auto">
-                                        <button className="btn-danger text-capitalize">
-                                            последние новости</button>
-                                        <div className="img-container">
-                                                <img src={imageUrl} className="img-fluid img-main" alt="top-news"/>
-                                            <div className="img-container-second">
+                        <React.Fragment>
+                            <div className={this.state.showCoins ? "row mt-2 coin-row mx-auto displaynone" : "row mt-2 coin-row mx-auto"}>
+                                {value.coinApiData.slice(0, 6).map(
+                                    currency => {
+                                        return (
+                                            <div className={this.state.hasloaded ? "col-2 coin-col mx-auto" : "col-2 coin-col mx-auto displaynone"}>
+                                                    <div className="coinApi">
+                                                        <img className={this.state.hasloaded ? "img-coin mr-1" : "img-coin mr-1 displaynone"}  
+                                                        src={currency.asset_id === 'BTC' ? BTC : currency.asset_id === 'ETH' ? 
+                                                        ETH : currency.asset_id === 'USDT' ? USDT : currency.asset_id === 'TRX' ? TRX :
+                                                        currency.asset_id === 'XLM' ? XLM : currency.asset_id === 'XRP' ? XRP : currency.asset_id === 'BCHSV' ? 
+                                                        BCHSV : currency.asset_id === 'EOS' ? EOS : currency.asset_id === 'BNB' ? BNB : currency.asset_id === 'LTC' ?
+                                                        LTC : currency.asset_id === 'ADA' ? ADA : currency.asset_id === "BCH" ? BCH : ''} />
+                                                        <p className="coin-text">{currency.price_usd ? currency.asset_id === "BTC" ? currency.price_usd.toFixed(1) : 
+                                                        currency.asset_id === "ETH" ? currency.price_usd.toFixed(2) : currency.asset_id === "BCH" ? currency.price_usd.toFixed(2)
+                                                        : currency.price_usd.toFixed(3) : currency.price_usd}<span className="small">USD</span></p>
+                                                    </div>
+                                            </div>
+                                        )
+                                    }
+                                )}
+                            </div>
+                            <div className={this.state.showCoins ? "row mt-2 coin-row mx-auto" : "row mt-2 mx-auto displaynone coin-row"}>
+                                {value.coinApiData.slice(6, 12).map(
+                                    currency => {
+                                        return (
+                                            <div className={this.state.hasloaded ? "col-2 coin-col mx-auto" : "col-2 coin-col mx-auto displaynone"}>
+                                                    <div className="coinApi">
+                                                        <img className={this.state.hasloaded ? "img-coin mr-1" : "img-coin mr-1 displaynone"} 
+                                                        src={currency.asset_id === 'BTC' ? BTC : currency.asset_id === 'ETH' ? 
+                                                        ETH : currency.asset_id === 'USDT' ? USDT : currency.asset_id === 'TRX' ? TRX :
+                                                        currency.asset_id === 'XLM' ? XLM : currency.asset_id === 'XRP' ? XRP : currency.asset_id === 'BCHSV' ? 
+                                                        BCHSV : currency.asset_id === 'EOS' ? EOS : currency.asset_id === 'BNB' ? BNB : currency.asset_id === 'LTC' ?
+                                                        LTC : currency.asset_id === 'ADA' ? ADA : currency.asset_id === "BCH" ? BCH : ''} />
+                                                        <p className="coin-text">{currency.price_usd ? currency.asset_id === "BTC" ? currency.price_usd.toFixed(1) : 
+                                                        currency.asset_id === "BCH" ? currency.price_usd.toFixed(2) :
+                                                        currency.asset_id === "ETH" ? currency.price_usd.toFixed(2) : currency.price_usd.toFixed(3) 
+                                                        : currency.price_usd}<span className="small">USD</span></p></div>
+                                            </div>
+                                        )
+                                    }
+                                )}
+                            </div>
+                            <NewsContainer className={this.state.hasloaded ? "row mx-auto mb-1" : "row mx-auto mb-1 notloaded"}>
+                                <div className={this.state.hasloaded ? "img-column mx-auto col-12 col-md-8 col-lg-8" : "img-column mx-auto col-12 col-md-8 col-lg-8 notloaded"}
+                                onClick={() => {value.handleDetail(id)}}>
+                                    <Link className="article-link" to={`/newsarticle/${urlName}`}>
+                                        <div className="img-column-one mx-auto">
+                                            <button className="btn-danger text-capitalize">
+                                                последние новости</button>
+                                            <div className="img-container">
+                                                    <img src={imageUrl} className="img-fluid img-main" alt="top-news"/>
+                                                <div className="img-container-second">
+                                                </div>
+                                            </div>
+                                            <div className="text-column">
+                                                <div className="text-container mx-auto">
+                                                    <div className="heading text-capitalize">
+                                                        <h1>{title}</h1>
+                                                    </div>
+                                                    <div className="row date-minutes">
+                                                        <div className="heading text ml-3">
+                                                            {publishedOn}
+                                                        </div>
+                                                        <div className="heading text ml-5">
+                                                            {readingTime} мин чтение
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="text-column">
-                                            <div className="text-container mx-auto">
-                                                <div className="heading text-capitalize">
-                                                    <h1>{title}</h1>
-                                                </div>
-                                                <div className="row date-minutes">
-                                                    <div className="heading text ml-3">
-                                                        {publishedOn}
-                                                    </div>
-                                                    <div className="heading text ml-5">
-                                                        {readingTime} мин чтение
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </Link>
+                                    <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
+                                        <i className="fas fa-chevron-left arrow"></i></button>
+                                    <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
+                                        <i className="fas fa-chevron-right arrow"></i></button>
+                                    <div className="dots">
+                                        <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(0)}></span>
+                                        <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(1)}></span>
+                                        <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(2)}></span>
+                                        <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
+                                        onClick={()=>this.currentSlide(3)}></span>
                                     </div>
-                                </Link>
-                                <button className="prev btn-slide" onClick={()=>this.minusSlides(1)}>
-                                    <i className="fas fa-chevron-left arrow"></i></button>
-                                <button className="next btn-slide" onClick={()=>this.plusSlides(1)}>
-                                    <i className="fas fa-chevron-right arrow"></i></button>
-                                <div className="dots">
-                                    <span className={this.state.slideIndex === 0 ? "active dot" : "dot"} 
-                                    onClick={()=>this.currentSlide(0)}></span>
-                                    <span className={this.state.slideIndex === 1 ? "active dot" : "dot"} 
-                                    onClick={()=>this.currentSlide(1)}></span>
-                                    <span className={this.state.slideIndex === 2 ? "active dot" : "dot"} 
-                                    onClick={()=>this.currentSlide(2)}></span>
-                                    <span className={this.state.slideIndex === 3 ? "active dot" : "dot"} 
-                                    onClick={()=>this.currentSlide(3)}></span>
                                 </div>
-                            </div>
-                            <div className={this.state.hasloaded ? "img-column-two mx-auto col-10 col-md-4 col-lg-4" 
-                                : "img-column-two mx-auto col-10 col-md-4 col-lg-4 notloaded"}>
-                                    <EditorNews/>
-                                    <MostReadNews handleLoad={this.handleLoad} />
-                            </div>
-                            <div className="mx-auto recent-news">{this.state.hasloaded ? <RecentNews /> : " "}</div>
-                            <div className="mx-auto old-news">{this.state.hasloaded ? <MissedNews /> : " "}</div>
-                            <div className={this.state.hasloaded ? "container notloaded" : "container"}>
-                                <img src={imgBg} className="img-fluid loading-img"/>
-                            </div>
-                        </NewsContainer>
+                                <div className={this.state.hasloaded ? "img-column-two mx-auto col-10 col-md-4 col-lg-4" 
+                                    : "img-column-two mx-auto col-10 col-md-4 col-lg-4 notloaded"}>
+                                        <EditorNews/>
+                                        <MostReadNews handleLoad={this.handleLoad} />
+                                </div>
+                                <div className="mx-auto recent-news">{this.state.hasloaded ? <RecentNews /> : " "}</div>
+                                <div className="mx-auto old-news">{this.state.hasloaded ? <MissedNews /> : " "}</div>
+                                <div className={this.state.hasloaded ? "container notloaded" : "container"}>
+                                    <img src={imgBg} className="img-fluid loading-img"/>
+                                </div>
+                            </NewsContainer>
+                        </React.Fragment>
                     )
                 }}
             </ProductConsumer>
@@ -142,11 +213,26 @@ const NewsContainer = styled.div`
     .notloaded {
         display: none;
     }
+    .displaynone {
+        display: none;
+    }
+    .coin-container {
+        width: 100%;
+    }
+    .coinApi {
+        color: var(--mainOrange); 
+        padding: 1rem;
+    }
+    .img-coin {
+        border-radius: 50% !important;
+        filter: grayscale(40%) brightness(80%) !important;
+        animation: show-on-load 1s;
+    }
     overflow-y: hidden;
     padding: 1rem;
     padding-bottom: 0px;
+    padding-top: 0px;
     width: 100%;
-    margin-right: 0.8rem;
     border-bottom-color: var(--mainOrange);
     border-bottom-width: 1rem;
     .old-news {
@@ -274,14 +360,11 @@ const NewsContainer = styled.div`
     .editors-choice {
         text-align: center;
     }
-    .text-container {
-        margin-top: 1rem;
-    }
     h5 {
         margin-bottom: 0.5rem;
     }
     .heading, h1 {
-        margin-top: 0.5rem;
+        margin-top: 0.75rem;
         font-size: 1.5rem;
         font-weight: bold;
         font-family: 'Arsenal', sans-serif;
@@ -301,7 +384,6 @@ const NewsContainer = styled.div`
     }
     .img-sm-two {
         position: relative;
-        margin-top: 1.2rem;
     }
     .second-image {
         margin-top: 1.25rem;

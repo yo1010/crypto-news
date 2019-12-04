@@ -35,7 +35,9 @@ class ProductProvider extends Component {
             blockchainNews: [{}],
             urlArray: [],
             readingTime: 0,
-            arrVal: []
+            arrVal: [],
+            coinApiData: [{}],
+            coinApiDataIcons: [{}]
         };
         this.storage.listAll().then((res) => {
             let urlArray = [];
@@ -116,6 +118,45 @@ class ProductProvider extends Component {
                 blockchainNews: this.arrayBlockchainNews
             });
         });
+        const options = {
+            method: 'GET',
+            qs: {
+                'start': '1',
+                'limit': '1'
+            },
+            headers: {
+                'X-CoinAPI-Key': 'A8F4F942-03AD-4799-8878-415921B4BB56'
+            }
+        }
+        fetch('https://rest.coinapi.io/v1/assets/', options)
+            .then(res => res.json())
+            .then(res => {
+                let coinApiData = []
+                for (let i in res) {
+                    if (res[i].price_usd !== undefined && res[i].volume_1day_usd > 20000000 &&
+                        res[i].asset_id.includes('4') !== true && res[i].type_is_crypto !== 0) {
+                        coinApiData.push(res[i])
+                    }
+                }
+                console.log(coinApiData)
+                let sortedData = []
+                for (let i=0; i < coinApiData.length - 1; i++) {
+                    if ((coinApiData[i].asset_id==="BTC") || (coinApiData[i].asset_id==="ETH") || (coinApiData[i].asset_id==="USDT")
+                        || (coinApiData[i].asset_id==="TRX") || (coinApiData[i].asset_id==="XRP") || (coinApiData[i].asset_id==="EOS")
+                        || (coinApiData[i].asset_id==="LTC") || (coinApiData[i].asset_id==="BCH") || (coinApiData[i].asset_id==="BNB")
+                        || (coinApiData[i].asset_id==="XLM") || (coinApiData[i].asset_id==="ADA") || (coinApiData[i].asset_id==="BCHSV")) {
+                        sortedData.push(coinApiData[i])
+                    }
+                }
+                for (let i=0; i < sortedData.length - 1; i++) {
+                    if (sortedData[i].asset_id === sortedData[i+1].asset_id) {
+                        sortedData.splice(i+1, 1)
+                    } 
+                }
+                this.setState({coinApiData: sortedData})
+                console.log(this.state.coinApiData)
+                })
+            .catch(err => console.log('API call error', err.message))
     }
     handleDetail = (id) => {
         this.openNewsItem = this.state.editorNews.find((item => item.id === id));

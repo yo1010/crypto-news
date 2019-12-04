@@ -113,7 +113,7 @@ export default class Navbar extends Component {
                             </div>
                             <NavWrapper className="top-nav">
                                 <ul className="navbar-nav icon-nav">                                                                                 
-                                    <li className="text-capitalize nav-item ml-auto mr-3 nav-date">
+                                    <li className="text-capitalize nav-item ml-auto mr-1 nav-date">
                                         <CurrentDate /></li> 
                                 </ul>
                             </NavWrapper>
@@ -269,7 +269,7 @@ const NavWrapper = styled.nav`
         background: none;
         margin-bottom: 0.5rem;
         border: none;
-        font-weight: 900;
+        font-weight: bold;
         outline: none;
         font-size: 0.9rem;
         color: var(--blueGreen);
@@ -277,7 +277,7 @@ const NavWrapper = styled.nav`
         width: 9rem;
         text-transform: capitalize;
         cursor: default;
-        font-family: 'Yeseva One', sans-serif;
+        font-family: 'Arsenal', sans-serif;
     }
     .navbar-nav {
         vertical-align: top !important;
@@ -301,7 +301,6 @@ const NavWrapper = styled.nav`
         border: none;
         outline: none;
         font-size: 1rem;
-        font-family: 'Yeseva One', sans-serif;
         height: 2.5rem;
     }
     .slider {

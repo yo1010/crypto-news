@@ -3,3 +3,62 @@
     --blueGreen: #18717c;
     --mainRed: #de0400;
 }
+
+@media (max-width: 625px) {
+    .coinApi {
+        font-size: 0.7rem !important;
+        transform: translate(-3px, 0px);
+    }
+    .coin-text {
+        transform: translate(-2px, 0px);
+        margin-top: 2px;
+    }
+}
+@media (max-width: 1193px) {
+    .coinApi {
+        font-size: 0.8rem;
+    }
+    .small {
+        font-size: 0.2rem !important;
+    }
+}
+@keyframes show-on-load-coin {
+    0% {transform: translate(0px,0px)}
+    25% {transform: translate(0px,3px)}
+    50% {transform: translate(0px,-5px)}
+    100% {transform: translate(0px,0px)}
+}
+@keyframes spin-coin {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+}
+.coin-col {
+    animation: show-on-load-coin;
+    animation-duration: 0.5s;
+    padding-bottom: 0rem;
+
+}
+.coinApi {
+    color: var(--mainOrange); 
+    font-weight: bold;
+    text-align: center;
+}
+.img-coin {
+    animation: spin-coin 0.5s;
+    border-radius: 100% !important;
+    border: none;
+    filter: grayscale(40%) brightness(100%) !important;
+    height: 32px;
+    width: 32px;
+    box-shadow: 0px 2px 2px 2px rgb(173, 171, 171); 
+}
+.displaynone {
+    display: none;
+}
+.small {
+    font-size: 0.75rem;
+    color: var(--blueGreen);
+}
+.coin-row {
+    width: 100%;
+}
