@@ -91,7 +91,7 @@ export default class TopNews extends Component {
         }
     }
     componentDidMount() {
-        setInterval(() => this.handleCoins(), 1500)
+        setInterval(() => this.handleCoins(), 2000)
         window.scrollTo(0,0);
     }
     render() {
