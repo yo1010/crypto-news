@@ -13,7 +13,7 @@ export default class TopNewsItem extends Component {
             <ProductConsumer>
                 {(value) => {
                     return (
-                        <TopNewsItemWrapper className="col-10 col-sm-6 col-md-6 col-lg-3 col-xl-3" 
+                        <TopNewsItemWrapper className="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3" 
                         onClick={() => {value.handleDetail(id)}}>
                             <Helmet>
                                 <meta property="og:title" content={title}/>

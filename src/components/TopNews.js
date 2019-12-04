@@ -94,7 +94,10 @@ export default class TopNews extends Component {
         setInterval(() => this.handleCoins(), 2000)
         window.scrollTo(0,0);
     }
-    render() {
+    componentWillUnmount() {
+        clearInterval();
+    }
+    render() { 
         console.log(this.state.showCoins)
         return (
             <ProductConsumer>
