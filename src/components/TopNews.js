@@ -231,7 +231,7 @@ const NewsContainer = styled.div`
         filter: grayscale(40%) brightness(80%) !important;
         animation: show-on-load 1s;
     }
-    overflow-y: hidden;
+    overflow: hidden;
     padding: 1rem;
     padding-bottom: 0px;
     padding-top: 0px;

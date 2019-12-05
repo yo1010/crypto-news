@@ -149,7 +149,7 @@ export default class NewsPage extends Component {
 NewsPage.contextType = ProductContext;
 
 const NewsPageWrapper = styled.div`
-    overflow-y: hidden;
+    overflow: hidden;
     margin-top: 0.5rem;
     .notloaded {
         display: none;
