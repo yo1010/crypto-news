@@ -189,8 +189,8 @@ export default class TopNews extends Component {
                                         <EditorNews/>
                                         <MostReadNews/>
                                 </div>
-                                <div className="mx-auto recent-news">{title ? <RecentNews /> : " "}</div>
-                                <div className="mx-auto old-news">{title ? <MissedNews /> : " "}</div>
+                                <div className="mx-auto recent-news">{imageUrl ? <RecentNews /> : " "}</div>
+                                <div className="mx-auto old-news">{imageUrl ? <MissedNews /> : " "}</div>
                                 <div className={title ? "container notloaded" : "container"}>
                                     <img src={imgBg} className="img-fluid loading-img"/>
                                 </div>
