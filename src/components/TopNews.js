@@ -35,13 +35,11 @@ export default class TopNews extends Component {
             firstNews: {},
             finalUrls: [],
             urlName: "",
-            hasloaded: false, 
             showCoins: false,
         };
         this.plusSlides=this.plusSlides.bind(this);
         this.minusSlides=this.minusSlides.bind(this);
         this.currentSlide=this.currentSlide.bind(this);
-        this.handleLoad=this.handleLoad.bind(this);
         this.handleCoins=this.handleCoins.bind(this);
     }
     plusSlides(n) {
@@ -71,12 +69,6 @@ export default class TopNews extends Component {
     currentSlide(n) {
         this.setState(() => {
             return {slideIndex: n}
-        })
-    }
-    handleLoad() {
-        console.log('has loaded')
-        this.setState({
-            hasloaded: true
         })
     }
     handleCoins() {
@@ -110,9 +102,9 @@ export default class TopNews extends Component {
                                 {value.coinApiData.slice(0, 6).map(
                                     currency => {
                                         return (
-                                            <div className={this.state.hasloaded ? "col-2 coin-col mx-auto" : "col-2 coin-col mx-auto displaynone"}>
+                                            <div className={title ? "col-2 coin-col mx-auto" : "col-2 coin-col mx-auto displaynone"}>
                                                     <div className="coinApi">
-                                                        <img className={this.state.hasloaded ? "img-coin mr-1" : "img-coin mr-1 displaynone"}  
+                                                        <img className={title ? "img-coin mr-1" : "img-coin mr-1 displaynone"}  
                                                         src={currency.asset_id === 'BTC' ? BTC : currency.asset_id === 'ETH' ? 
                                                         ETH : currency.asset_id === 'USDT' ? USDT : currency.asset_id === 'TRX' ? TRX :
                                                         currency.asset_id === 'XLM' ? XLM : currency.asset_id === 'XRP' ? XRP : currency.asset_id === 'BCHSV' ? 
@@ -131,9 +123,9 @@ export default class TopNews extends Component {
                                 {value.coinApiData.slice(6, 12).map(
                                     currency => {
                                         return (
-                                            <div className={this.state.hasloaded ? "col-2 coin-col mx-auto" : "col-2 coin-col mx-auto displaynone"}>
+                                            <div className={title ? "col-2 coin-col mx-auto" : "col-2 coin-col mx-auto displaynone"}>
                                                     <div className="coinApi">
-                                                        <img className={this.state.hasloaded ? "img-coin mr-1" : "img-coin mr-1 displaynone"} 
+                                                        <img className={title ? "img-coin mr-1" : "img-coin mr-1 displaynone"} 
                                                         src={currency.asset_id === 'BTC' ? BTC : currency.asset_id === 'ETH' ? 
                                                         ETH : currency.asset_id === 'USDT' ? USDT : currency.asset_id === 'TRX' ? TRX :
                                                         currency.asset_id === 'XLM' ? XLM : currency.asset_id === 'XRP' ? XRP : currency.asset_id === 'BCHSV' ? 
@@ -148,15 +140,15 @@ export default class TopNews extends Component {
                                     }
                                 )}
                             </div>
-                            <NewsContainer className={this.state.hasloaded ? "row mx-auto mb-1" : "row mx-auto mb-1 notloaded"}>
-                                <div className={this.state.hasloaded ? "img-column mx-auto col-12 col-md-8 col-lg-8" : "img-column mx-auto col-12 col-md-8 col-lg-8 notloaded"}
+                            <NewsContainer className="row mx-auto mb-1">
+                                <div className={title ? "img-column mx-auto col-12 col-md-8 col-lg-8" : "img-column mx-auto col-12 col-md-8 col-lg-8 notloaded"}
                                 onClick={() => {value.handleDetail(id)}}>
                                     <Link className="article-link" to={`/newsarticle/${urlName}`}>
                                         <div className="img-column-one mx-auto">
                                             <button className="btn-danger text-capitalize">
                                                 последние новости</button>
                                             <div className="img-container">
-                                                    <img src={imageUrl} className="img-fluid img-main" alt="top-news"/>
+                                                    <img src={imageUrl ? imageUrl : imgBg} className="img-fluid img-main" alt="top-news"/>
                                                 <div className="img-container-second">
                                                 </div>
                                             </div>
@@ -192,14 +184,14 @@ export default class TopNews extends Component {
                                         onClick={()=>this.currentSlide(3)}></span>
                                     </div>
                                 </div>
-                                <div className={this.state.hasloaded ? "img-column-two mx-auto col-10 col-md-4 col-lg-4" 
+                                <div className={title ? "img-column-two mx-auto col-10 col-md-4 col-lg-4" 
                                     : "img-column-two mx-auto col-10 col-md-4 col-lg-4 notloaded"}>
                                         <EditorNews/>
-                                        <MostReadNews handleLoad={this.handleLoad} />
+                                        <MostReadNews/>
                                 </div>
-                                <div className="mx-auto recent-news">{this.state.hasloaded ? <RecentNews /> : " "}</div>
-                                <div className="mx-auto old-news">{this.state.hasloaded ? <MissedNews /> : " "}</div>
-                                <div className={this.state.hasloaded ? "container notloaded" : "container"}>
+                                <div className="mx-auto recent-news">{title ? <RecentNews /> : " "}</div>
+                                <div className="mx-auto old-news">{title ? <MissedNews /> : " "}</div>
+                                <div className={title ? "container notloaded" : "container"}>
                                     <img src={imgBg} className="img-fluid loading-img"/>
                                 </div>
                             </NewsContainer>
